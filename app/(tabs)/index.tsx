@@ -1,98 +1,174 @@
-import { Image } from 'expo-image';
-import { Platform, StyleSheet } from 'react-native';
+import { type Href, useRouter } from 'expo-router';
+import { FlatList, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-import { HelloWave } from '@/components/hello-wave';
-import ParallaxScrollView from '@/components/parallax-scroll-view';
-import { ThemedText } from '@/components/themed-text';
-import { ThemedView } from '@/components/themed-view';
-import { Link } from 'expo-router';
+import { Button } from '@/components/ui/Button';
+import { Card } from '@/components/ui/Card';
+import { AppColors } from '@/constants/colors';
+import { useColorScheme } from '@/hooks/use-color-scheme';
+
+const recentDocuments = [
+  {
+    id: 'doc_1',
+    title: 'Affidavit - R. Sharma',
+    subtitle: 'Uploaded today - 12 pages',
+  },
+  {
+    id: 'doc_2',
+    title: 'Contract - Vendor Agreement',
+    subtitle: 'Uploaded yesterday - 18 pages',
+  },
+];
 
 export default function HomeScreen() {
-  return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
-        <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
-        />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12',
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <Link href="/modal">
-          <Link.Trigger>
-            <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-          </Link.Trigger>
-          <Link.Preview />
-          <Link.Menu>
-            <Link.MenuAction title="Action" icon="cube" onPress={() => alert('Action pressed')} />
-            <Link.MenuAction
-              title="Share"
-              icon="square.and.arrow.up"
-              onPress={() => alert('Share pressed')}
-            />
-            <Link.Menu title="More" icon="ellipsis">
-              <Link.MenuAction
-                title="Delete"
-                icon="trash"
-                destructive
-                onPress={() => alert('Delete pressed')}
-              />
-            </Link.Menu>
-          </Link.Menu>
-        </Link>
+  const router = useRouter();
+  const colorScheme = useColorScheme();
+  const palette = AppColors[colorScheme ?? 'light'];
 
-        <ThemedText>
-          {`Tap the Explore tab to learn more about what's included in this starter app.`}
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          {`When you're ready, run `}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+  return (
+    <View style={[styles.container, { backgroundColor: palette.background }]}>
+      <View style={[styles.header, { backgroundColor: palette.primary }]}> 
+        <View style={[styles.headerGlow, { backgroundColor: palette.accent }]} />
+        <Text style={[styles.headerTitle, { color: palette.accent }]}>LexAI</Text>
+        <Text style={[styles.headerSubtitle, { color: palette.surface }]}>Legal Document AI</Text>
+        <Text style={[styles.headerTagline, { color: palette.accentSoft }]}>
+          AI-powered legal clarity for professionals.
+        </Text>
+      </View>
+
+      <View style={styles.content}>
+        <Card style={styles.heroCard}>
+          <Text style={[styles.heroTitle, { color: palette.textPrimary }]}>
+            Upload a document and get clarity in minutes.
+          </Text>
+          <Text style={[styles.heroSubtitle, { color: palette.textSecondary }]}>
+            Summary, risks, obligations, and a document-aware chat assistant.
+          </Text>
+          <Button
+            label="Upload PDF"
+            onPress={() => router.push({ pathname: '/upload' } as unknown as Href)}
+          />
+        </Card>
+
+        <View style={styles.sectionHeader}>
+          <View style={styles.sectionTitleRow}>
+            <View style={[styles.sectionAccent, { backgroundColor: palette.accent }]} />
+            <Text style={[styles.sectionTitle, { color: palette.textPrimary }]}>Recent documents</Text>
+          </View>
+          <TouchableOpacity onPress={() => router.push({ pathname: '/upload' } as unknown as Href)}>
+            <Text style={[styles.sectionLink, { color: palette.primary }]}>Upload new</Text>
+          </TouchableOpacity>
+        </View>
+
+        <FlatList
+          data={recentDocuments}
+          keyExtractor={(item) => item.id}
+          scrollEnabled={false}
+          renderItem={({ item }) => (
+            <Card style={styles.recentCard}>
+              <Text style={[styles.recentTitle, { color: palette.textPrimary }]}>{item.title}</Text>
+              <Text style={[styles.recentSubtitle, { color: palette.textMuted }]}>{item.subtitle}</Text>
+              <Button
+                label="View summary"
+                variant="ghost"
+                onPress={() =>
+                  router.push({
+                    pathname: '/summary/[documentId]',
+                    params: { documentId: item.id },
+                  } as unknown as Href)
+                }
+              />
+            </Card>
+          )}
+        />
+      </View>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
+  container: {
+    flex: 1,
+  },
+  header: {
+    paddingHorizontal: 20,
+    paddingTop: 60,
+    paddingBottom: 28,
+    overflow: 'hidden',
+  },
+  headerGlow: {
+    position: 'absolute',
+    width: 180,
+    height: 180,
+    borderRadius: 90,
+    top: -80,
+    right: -40,
+    opacity: 0.22,
+  },
+  headerTitle: {
+    fontSize: 24,
+    fontWeight: '700',
+  },
+  headerSubtitle: {
+    marginTop: 4,
+    fontSize: 14,
+    fontWeight: '600',
+  },
+  headerTagline: {
+    marginTop: 6,
+    fontSize: 12,
+    fontWeight: '600',
+  },
+  content: {
+    flex: 1,
+    paddingHorizontal: 20,
+    paddingTop: 16,
+  },
+  heroCard: {
+    marginBottom: 20,
+  },
+  heroTitle: {
+    fontSize: 18,
+    fontWeight: '700',
+    marginBottom: 8,
+  },
+  heroSubtitle: {
+    fontSize: 14,
+    marginBottom: 16,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 12,
+  },
+  sectionTitleRow: {
     flexDirection: 'row',
     alignItems: 'center',
     gap: 8,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  sectionAccent: {
+    width: 6,
+    height: 18,
+    borderRadius: 3,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  sectionTitle: {
+    fontSize: 16,
+    fontWeight: '700',
+  },
+  sectionLink: {
+    fontSize: 13,
+    fontWeight: '600',
+  },
+  recentCard: {
+    marginBottom: 12,
+  },
+  recentTitle: {
+    fontSize: 15,
+    fontWeight: '600',
+  },
+  recentSubtitle: {
+    fontSize: 12,
+    marginTop: 4,
+    marginBottom: 12,
   },
 });
