@@ -19,7 +19,7 @@ import { C, GlassCard, Radius } from '@/constants/colors';
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
 }
-import { generateStructure, generateDocument } from '@/services/draftAI';
+import { generateStructure, generateDocument, formatDocument } from '@/services/draftAI';
 import { saveDraft } from '@/storage/draftStorage';
 import type { DraftDetails, DocumentType, TriggerFlag, Party, DocumentStructure } from '@/types/draft';
 
@@ -54,6 +54,7 @@ export default function DraftNewScreen() {
   const router = useRouter();
 
   const [step, setStep] = useState<Step>('type');
+  const [loadingMsg, setLoadingMsg] = useState('');
   const [docType, setDocType] = useState<DocumentType>('NDA');
   const [title, setTitle] = useState('');
   const [parties, setParties] = useState<Party[]>([
@@ -110,6 +111,7 @@ export default function DraftNewScreen() {
       context,
       flags,
     };
+    setLoadingMsg('Analysing requirements…');
     setStep('drafting');
     startSpin();
     try {
@@ -136,16 +138,19 @@ export default function DraftNewScreen() {
       context,
       flags,
     };
+    setLoadingMsg('Drafting your document…');
     setStep('drafting');
     startSpin();
     try {
       const result = await generateDocument(details, structure, answers);
+      setLoadingMsg('Formatting to legal standard…');
+      const formattedText = await formatDocument(result.documentText);
       const draftId = generateId();
       await saveDraft({
         draftId,
         details,
         structure,
-        documentText: result.documentText,
+        documentText: formattedText,
         complianceReport: result.complianceReport,
         riskAnalysis: result.riskAnalysis,
         createdAt: new Date().toISOString(),
@@ -169,11 +174,11 @@ export default function DraftNewScreen() {
           <Animated.View style={{ transform: [{ rotate: spin }] }}>
             <Ionicons name="document-text-outline" size={48} color={C.gold} />
           </Animated.View>
-          <Text style={styles.loadingTitle}>
-            {structure ? 'Drafting your document…' : 'Analysing requirements…'}
-          </Text>
+          <Text style={styles.loadingTitle}>{loadingMsg || 'Processing…'}</Text>
           <Text style={styles.loadingSubtitle}>
-            {structure
+            {loadingMsg === 'Formatting to legal standard…'
+              ? 'Applying law firm formatting standards'
+              : loadingMsg === 'Drafting your document…'
               ? 'LexAI is writing your legal document'
               : 'LexAI is planning the document structure'}
           </Text>

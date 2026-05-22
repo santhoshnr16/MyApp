@@ -21,6 +21,7 @@ export default function RootLayout() {
           <Stack.Screen name="moot/verdict/[documentId]" options={{ headerShown: false }} />
           <Stack.Screen name="draft/new" options={{ headerShown: false }} />
           <Stack.Screen name="draft/[draftId]" options={{ headerShown: false }} />
+          <Stack.Screen name="negotiate/[documentId]" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         </Stack>
       </DocumentProvider>

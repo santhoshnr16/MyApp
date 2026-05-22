@@ -153,6 +153,16 @@ export default function SummaryScreen() {
                   params: { documentId },
                 } as unknown as Href),
             },
+            {
+              label: 'Negotiate',
+              icon: 'briefcase-outline' as const,
+              gold: true,
+              onPress: () =>
+                router.push({
+                  pathname: '/negotiate/[documentId]',
+                  params: { documentId },
+                } as unknown as Href),
+            },
           ].map((action) => (
             <TouchableOpacity
               key={action.label}

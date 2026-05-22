@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import { buildStructurePrompt, buildDraftingPrompt } from '@/constants/draftPrompts';
+import { buildStructurePrompt, buildDraftingPrompt, buildFormattingPrompt } from '@/constants/draftPrompts';
 import type {
   DraftDetails,
   DocumentStructure,
@@ -160,4 +160,34 @@ export async function generateDocument(
   }
 
   return { documentText, complianceReport, riskAnalysis };
+}
+
+export async function formatDocument(rawText: string): Promise<string> {
+  const prompt = buildFormattingPrompt(rawText);
+  try {
+    const response = await apiClient.post<{ result: string }>('/api/draft/format', { prompt });
+    const raw = response.data.result.trim();
+    if (!raw) return rawText;
+
+    // Model continues from the pre-seeded start delimiter — take everything after it
+    const afterStart = raw.split('---FORMATTED_DOCUMENT_START---').pop();
+    if (afterStart) {
+      // Strip trailing end delimiter if present
+      const cleaned = afterStart
+        .replace(/---FORMATTED_DOCUMENT_END---[\s\S]*$/, '')
+        .trim();
+      if (cleaned.length > 100) return cleaned;
+    }
+
+    // Delimiter absent but model returned something — strip common preamble phrases
+    const stripped = raw
+      .replace(/^(here'?s?|below is|the following is)[^:]*:\s*/i, '')
+      .replace(/^reformatted[^:]*:\s*/i, '')
+      .trim();
+    if (stripped.length > 100) return stripped;
+
+    return rawText;
+  } catch {
+    return rawText;
+  }
 }

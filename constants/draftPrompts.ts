@@ -29,6 +29,45 @@ JSON (fill in the values, keep descriptions under 10 words):
 Return that JSON with values filled in for this ${details.documentType}. ONLY JSON, nothing else.`;
 }
 
+export function buildFormattingPrompt(documentText: string): string {
+  return `You are a professional legal document formatter at a top-tier Indian law firm. A document has already been drafted. Your ONLY job is to reformat the raw legal text into a perfectly structured, print-ready legal document exactly as it would appear on white paper when prepared by a senior advocate.
+
+DO NOT change any legal content, clauses, or wording.
+DO NOT add or remove any clause.
+ONLY reformat, restructure, and apply correct legal document presentation standards.
+
+═══════════════════════════════════════════
+RAW DOCUMENT INPUT
+═══════════════════════════════════════════
+${documentText}
+
+═══════════════════════════════════════════
+FORMATTING RULES
+═══════════════════════════════════════════
+
+1. Center the document title in CAPS at the top, followed by a horizontal rule
+2. Right-align document metadata (Agreement No., Date, Place of Execution)
+3. Format parties with formal THIS AGREEMENT block — BETWEEN ... AND
+4. Add WHEREAS recitals block before operative clauses
+5. Number each clause as: 1. CLAUSE TITLE IN CAPS, with sub-clauses as 1.1, 1.2 etc.
+6. List items use (a), (b), (c) indent format
+7. Separate major clauses with:    * * *
+8. Signature block at end: two-column format for both parties with witness lines
+9. Footer disclaimer after signature block
+
+TYPOGRAPHY:
+- Document title: ALL CAPS, centered
+- Section titles: ALL CAPS, bold, numbered
+- Defined terms: "Quoted" first use, Capitalised thereafter
+- Act references: italicised
+- Dates: written in full — 1st day of July, 2026
+- Numbers: words then digits — two (2) years
+
+Apply ALL formatting rules above. Begin the formatted document immediately after the marker below. Do not write any explanation or preamble.
+
+---FORMATTED_DOCUMENT_START---`;
+}
+
 export function buildDraftingPrompt(
   details: DraftDetails,
   structure: DocumentStructure,
@@ -43,7 +82,7 @@ export function buildDraftingPrompt(
   return `You are LexAI DraftCounsel. Draft a complete Indian legal document and analysis. Output ONLY the three sections below with their exact delimiters.
 
 DOCUMENT TYPE: ${details.documentType}
-TITLE: ${details.documentTitle || details.title}
+TITLE: ${structure.documentTitle || details.title}
 PARTIES: ${partiesList}
 JURISDICTION: ${details.jurisdiction}
 CONTEXT: ${details.context}
