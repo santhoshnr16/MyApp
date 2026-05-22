@@ -1,113 +1,223 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo } from 'react';
+import { useMemo, useRef } from 'react';
 import {
   FlatList,
   KeyboardAvoidingView,
   Platform,
+  ScrollView,
   StyleSheet,
   Text,
+  TextInput,
   TouchableOpacity,
   View,
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { ChatInput } from '@/components/chat/ChatInput';
-import { MessageBubble } from '@/components/chat/MessageBubble';
-import { SuggestedQuestions } from '@/components/chat/SuggestedQuestions';
-import { TypingIndicator } from '@/components/chat/TypingIndicator';
-import { AppColors } from '@/constants/colors';
+import { C, GlassCard, Radius } from '@/constants/colors';
 import { SUGGESTED_QUESTIONS } from '@/constants/prompts';
 import { useDocumentContext } from '@/context/document-context';
 import { useChat } from '@/hooks/useChat';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import type { ChatMessage } from '@/types/chat';
+import { useState } from 'react';
+
+function Bubble({ message }: { message: ChatMessage }) {
+  const isUser = message.sender === 'user';
+  const time = new Date(message.timestamp).toLocaleTimeString([], {
+    hour: '2-digit',
+    minute: '2-digit',
+  });
+
+  return (
+    <View style={[styles.bubbleWrap, isUser ? styles.bubbleRight : styles.bubbleLeft]}>
+      {!isUser && <Text style={styles.aiLabel}>LexAI</Text>}
+      <View
+        style={[
+          styles.bubble,
+          isUser ? styles.userBubble : styles.aiBubble,
+        ]}>
+        <Text style={[styles.bubbleText, isUser && styles.userBubbleText]}>
+          {message.message}
+        </Text>
+        {!isUser && message.disclaimer && (
+          <Text style={styles.disclaimer}>{message.disclaimer}</Text>
+        )}
+      </View>
+      {!isUser && message.followUpSuggestions && message.followUpSuggestions.length > 0 && (
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={styles.suggestions}>
+          {message.followUpSuggestions.map((s) => (
+            <View key={s} style={styles.suggestionChip}>
+              <Text style={styles.suggestionText}>{s}</Text>
+            </View>
+          ))}
+        </ScrollView>
+      )}
+      <Text style={styles.timeLabel}>{time}</Text>
+    </View>
+  );
+}
+
+function TypingIndicator() {
+  return (
+    <View style={styles.typingRow}>
+      <Text style={styles.typingLabel}>LexAI</Text>
+      <View style={styles.typingBubble}>
+        <View style={styles.typingDot} />
+        <View style={[styles.typingDot, styles.typingDotMid]} />
+        <View style={styles.typingDot} />
+      </View>
+    </View>
+  );
+}
 
 export default function ChatScreen() {
   const router = useRouter();
   const { documentId } = useLocalSearchParams<{ documentId: string }>();
-  const colorScheme = useColorScheme();
-  const palette = AppColors[colorScheme ?? 'light'];
   const { state } = useDocumentContext();
-  const chatError = state.errors.chat;
+  const [inputValue, setInputValue] = useState('');
 
-  if (!documentId) {
-    return null;
-  }
+  if (!documentId) return null;
 
   const document = state.documents[documentId];
   const { messages, isChatting, sendMessage, clearMessages } = useChat(documentId);
 
   const suggestedQuestions = useMemo(() => {
     const docType = document?.analysis?.documentType?.toLowerCase() ?? 'default';
-    const list = (SUGGESTED_QUESTIONS as Record<string, string[]>)[docType];
+    const list = (SUGGESTED_QUESTIONS as unknown as Record<string, string[]>)[docType];
     return list ?? SUGGESTED_QUESTIONS.default;
   }, [document?.analysis?.documentType]);
 
+  const handleSend = () => {
+    if (!inputValue.trim()) return;
+    sendMessage(inputValue.trim());
+    setInputValue('');
+  };
+
+  const QUICK_ACTIONS = ['Summarize', 'Find Risks', 'Deadlines', 'Explain Clause', 'Simplify'];
+
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={[styles.container, { backgroundColor: palette.background }]}>
-      <View style={[styles.header, { backgroundColor: palette.primary }]}> 
-        <TouchableOpacity onPress={() => router.back()} style={styles.iconButton}>
-          <Ionicons name="arrow-back" size={20} color={palette.surface} />
+    <SafeAreaView style={styles.container}>
+      {/* Header */}
+      <View style={styles.header}>
+        <TouchableOpacity style={styles.iconBtn} onPress={() => router.back()}>
+          <Ionicons name="arrow-back" size={20} color={C.textPrimary} />
         </TouchableOpacity>
         <View style={styles.headerCenter}>
-          <Text style={[styles.headerTitle, { color: palette.surface }]} numberOfLines={1}>
+          <Text style={styles.headerTitle} numberOfLines={1}>
             {document?.filename ?? 'Document Chat'}
           </Text>
-          <Text style={[styles.headerSubtitle, { color: palette.accent }]}>AI Legal Assistant</Text>
+          <Text style={styles.headerSub}>AI Legal Assistant</Text>
         </View>
-        <TouchableOpacity onPress={clearMessages} style={styles.clearButton}>
-          <Ionicons name="trash-outline" size={16} color={palette.surface} />
-          <Text style={[styles.clearText, { color: palette.surface }]}>Clear</Text>
+        <TouchableOpacity style={styles.clearBtn} onPress={clearMessages}>
+          <Ionicons name="trash-outline" size={16} color={C.textMuted} />
         </TouchableOpacity>
       </View>
 
-      <View style={[styles.banner, { backgroundColor: palette.accentSoft, borderLeftColor: palette.accent }]}> 
-        <Ionicons name="information-circle" size={18} color={palette.primary} />
-        <Text style={[styles.bannerText, { color: palette.primary }]}>
-          I am answering based on your uploaded document: {document?.filename ?? 'this file'}.
-          Ask me anything about it.
+      {/* Context Banner */}
+      <View style={styles.contextBanner}>
+        <View style={styles.contextBorderLeft} />
+        <Text style={styles.contextText}>
+          Answering based on: <Text style={styles.contextFileName}>{document?.filename ?? 'your document'}</Text>. Not legal advice.
         </Text>
       </View>
 
       <KeyboardAvoidingView
         style={styles.chatArea}
         behavior={Platform.select({ ios: 'padding', android: undefined })}
-        keyboardVerticalOffset={Platform.select({ ios: 92, android: 0 })}>
+        keyboardVerticalOffset={Platform.select({ ios: 96, android: 0 })}>
+
         <FlatList
           data={messages}
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
           keyboardShouldPersistTaps="handled"
-          renderItem={({ item }) => (
-            <MessageBubble
-              message={item}
-              onSuggestionPress={(suggestion) => sendMessage(suggestion)}
-            />
-          )}
+          renderItem={({ item }) => <Bubble message={item} />}
           ListEmptyComponent={
             <View style={styles.emptyState}>
-              <Ionicons name="chatbubble-ellipses" size={56} color={palette.primary} />
-              <Text style={[styles.emptyTitle, { color: palette.textPrimary }]}>Ask about your document</Text>
-              <Text style={[styles.emptySubtitle, { color: palette.textMuted }]}> 
-                I have read your document. Ask me anything in plain language.
+              <Ionicons name="chatbubble-ellipses-outline" size={48} color={C.gold} />
+              <Text style={styles.emptyTitle}>Ask about your document</Text>
+              <Text style={styles.emptyBody}>
+                I have read your document. Ask anything in plain language.
               </Text>
-              <SuggestedQuestions questions={suggestedQuestions} onSelect={sendMessage} />
+              <ScrollView
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                contentContainerStyle={styles.suggestedRow}>
+                {suggestedQuestions.slice(0, 4).map((q) => (
+                  <TouchableOpacity
+                    key={q}
+                    style={styles.suggestedChip}
+                    onPress={() => sendMessage(q)}>
+                    <Text style={styles.suggestedChipText}>{q}</Text>
+                  </TouchableOpacity>
+                ))}
+              </ScrollView>
             </View>
           }
           ListFooterComponent={isChatting ? <TypingIndicator /> : null}
         />
-        {chatError && (
+
+        {state.errors.chat && (
           <View style={styles.errorRow}>
-            <Text style={[styles.errorText, { color: palette.danger }]}>{chatError}</Text>
+            <Ionicons name="alert-circle" size={14} color={C.highRisk} />
+            <Text style={styles.errorText}>{state.errors.chat}</Text>
           </View>
         )}
-        <ChatInput
-          onSend={sendMessage}
-          onAttach={() => router.push({ pathname: '/upload' })}
-          quickActions={['Summarize', 'Find Risks', 'Deadlines', 'Explain Clause', 'Simplify']}
-        />
+
+        {/* Input Area */}
+        <View style={styles.inputArea}>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.quickRow}>
+            {QUICK_ACTIONS.map((a) => (
+              <TouchableOpacity
+                key={a}
+                onPress={() => {
+                  setInputValue(a);
+                }}
+                style={styles.quickChip}>
+                <Text style={styles.quickChipText}>{a}</Text>
+              </TouchableOpacity>
+            ))}
+          </ScrollView>
+
+          <View style={styles.inputRow}>
+            <View style={styles.inputWrapper}>
+              <TextInput
+                value={inputValue}
+                onChangeText={setInputValue}
+                placeholder="Ask anything about your document..."
+                placeholderTextColor={C.textMuted}
+                multiline
+                maxLength={500}
+                style={styles.input}
+                onSubmitEditing={handleSend}
+                returnKeyType="send"
+                blurOnSubmit
+              />
+              {inputValue.length > 200 && (
+                <Text style={styles.charCount}>{inputValue.length}/500</Text>
+              )}
+            </View>
+            <TouchableOpacity
+              onPress={handleSend}
+              disabled={!inputValue.trim() || isChatting}
+              style={[
+                styles.sendBtn,
+                (!inputValue.trim() || isChatting) && styles.sendBtnDisabled,
+              ]}>
+              <Ionicons
+                name="arrow-up"
+                size={18}
+                color={inputValue.trim() && !isChatting ? C.bg : C.textMuted}
+              />
+            </TouchableOpacity>
+          </View>
+        </View>
       </KeyboardAvoidingView>
     </SafeAreaView>
   );
@@ -116,6 +226,7 @@ export default function ChatScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: C.bg,
   },
   header: {
     flexDirection: 'row',
@@ -123,78 +234,301 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     paddingVertical: 12,
     gap: 12,
+    borderBottomWidth: 1,
+    borderBottomColor: C.border,
   },
-  iconButton: {
+  iconBtn: {
     width: 36,
     height: 36,
     borderRadius: 18,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
+    backgroundColor: C.surface,
+    borderWidth: 1,
+    borderColor: C.border,
   },
   headerCenter: {
     flex: 1,
+    gap: 2,
   },
   headerTitle: {
     fontSize: 14,
     fontWeight: '700',
+    color: C.textPrimary,
   },
-  headerSubtitle: {
-    fontSize: 12,
-    fontWeight: '600',
-  },
-  clearButton: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 6,
-    paddingHorizontal: 10,
-    paddingVertical: 6,
-    borderRadius: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.08)',
-  },
-  clearText: {
+  headerSub: {
     fontSize: 11,
+    color: C.gold,
     fontWeight: '600',
+    letterSpacing: 0.5,
   },
-  banner: {
+  clearBtn: {
+    width: 36,
+    height: 36,
+    borderRadius: 18,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: C.surface,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  contextBanner: {
     flexDirection: 'row',
-    gap: 8,
-    paddingHorizontal: 16,
+    backgroundColor: C.surface,
     paddingVertical: 10,
-    borderLeftWidth: 3,
+    paddingRight: 16,
+    paddingLeft: 0,
+    gap: 10,
+    alignItems: 'center',
   },
-  bannerText: {
+  contextBorderLeft: {
+    width: 3,
+    alignSelf: 'stretch',
+    backgroundColor: C.gold,
+    borderRadius: 2,
+    marginLeft: 16,
+  },
+  contextText: {
     flex: 1,
-    fontSize: 12,
-    lineHeight: 18,
+    fontSize: 11,
+    color: C.textMuted,
+    fontStyle: 'italic',
+    lineHeight: 16,
+  },
+  contextFileName: {
+    color: C.gold,
+    fontStyle: 'normal',
+    fontWeight: '600',
   },
   chatArea: {
     flex: 1,
   },
   listContent: {
-    padding: 16,
-    paddingBottom: 0,
+    paddingHorizontal: 16,
+    paddingVertical: 12,
+    paddingBottom: 8,
+  },
+  bubbleWrap: {
+    marginVertical: 6,
+    gap: 4,
+  },
+  bubbleRight: {
+    alignItems: 'flex-end',
+  },
+  bubbleLeft: {
+    alignItems: 'flex-start',
+  },
+  aiLabel: {
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 1,
+    color: C.gold,
+    marginLeft: 2,
+  },
+  bubble: {
+    maxWidth: '82%',
+    borderRadius: Radius.bubble,
+    padding: 14,
+  },
+  userBubble: {
+    backgroundColor: C.elevated,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderTopRightRadius: 4,
+  },
+  aiBubble: {
+    backgroundColor: C.surface,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderTopLeftRadius: 4,
+  },
+  bubbleText: {
+    fontSize: 14,
+    color: C.bodyText,
+    lineHeight: 21,
+  },
+  userBubbleText: {
+    color: C.textPrimary,
+  },
+  disclaimer: {
+    fontSize: 10,
+    color: C.textMuted,
+    fontStyle: 'italic',
+    marginTop: 8,
+    paddingTop: 8,
+    borderTopWidth: 1,
+    borderTopColor: C.border,
+  },
+  suggestions: {
+    gap: 6,
+    paddingTop: 2,
+  },
+  suggestionChip: {
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    borderRadius: Radius.pill,
+    paddingHorizontal: 10,
+    paddingVertical: 4,
+    backgroundColor: C.goldGlow,
+  },
+  suggestionText: {
+    fontSize: 11,
+    fontWeight: '600',
+    color: C.gold,
+  },
+  timeLabel: {
+    fontSize: 10,
+    color: C.textMuted,
+    marginHorizontal: 2,
+  },
+  typingRow: {
+    marginVertical: 6,
+    alignItems: 'flex-start',
+    gap: 4,
+    paddingHorizontal: 16,
+  },
+  typingLabel: {
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 1,
+    color: C.gold,
+    marginLeft: 2,
+  },
+  typingBubble: {
+    flexDirection: 'row',
+    gap: 4,
+    backgroundColor: C.surface,
+    borderRadius: Radius.bubble,
+    borderTopLeftRadius: 4,
+    paddingHorizontal: 14,
+    paddingVertical: 12,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  typingDot: {
+    width: 6,
+    height: 6,
+    borderRadius: 3,
+    backgroundColor: C.gold,
+    opacity: 0.6,
+  },
+  typingDotMid: {
+    opacity: 1,
   },
   emptyState: {
-    alignItems: 'flex-start',
     paddingTop: 48,
-    paddingHorizontal: 20,
     gap: 12,
+    paddingHorizontal: 4,
   },
   emptyTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '700',
+    color: C.textPrimary,
+    letterSpacing: -0.3,
   },
-  emptySubtitle: {
+  emptyBody: {
+    fontSize: 13,
+    color: C.textMuted,
+    lineHeight: 20,
+  },
+  suggestedRow: {
+    gap: 8,
+    marginTop: 4,
+  },
+  suggestedChip: {
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: Radius.pill,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    backgroundColor: C.surface,
+  },
+  suggestedChipText: {
     fontSize: 12,
-    textAlign: 'left',
+    fontWeight: '600',
+    color: C.textSecondary,
   },
   errorRow: {
+    flexDirection: 'row',
+    gap: 6,
+    alignItems: 'center',
     paddingHorizontal: 16,
     paddingBottom: 6,
   },
   errorText: {
     fontSize: 12,
+    color: C.highRisk,
+    fontWeight: '500',
+  },
+  inputArea: {
+    borderTopWidth: 1,
+    borderTopColor: C.border,
+    backgroundColor: C.surface,
+    paddingHorizontal: 14,
+    paddingTop: 10,
+    paddingBottom: 12,
+    gap: 10,
+  },
+  quickRow: {
+    gap: 8,
+  },
+  quickChip: {
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: Radius.pill,
+    paddingHorizontal: 12,
+    paddingVertical: 6,
+    backgroundColor: C.elevated,
+  },
+  quickChipText: {
+    fontSize: 11,
     fontWeight: '600',
+    color: C.textSecondary,
+  },
+  inputRow: {
+    flexDirection: 'row',
+    alignItems: 'flex-end',
+    gap: 8,
+  },
+  inputWrapper: {
+    flex: 1,
+    backgroundColor: C.elevated,
+    borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: 22,
+    paddingHorizontal: 14,
+    paddingVertical: 8,
+    minHeight: 42,
+    justifyContent: 'center',
+  },
+  input: {
+    fontSize: 14,
+    color: C.textPrimary,
+    maxHeight: 100,
+    lineHeight: 20,
+  },
+  charCount: {
+    fontSize: 10,
+    color: C.textMuted,
+    textAlign: 'right',
+    marginTop: 4,
+  },
+  sendBtn: {
+    width: 42,
+    height: 42,
+    borderRadius: 21,
+    backgroundColor: C.gold,
+    alignItems: 'center',
+    justifyContent: 'center',
+    shadowColor: C.gold,
+    shadowOpacity: 0.3,
+    shadowRadius: 8,
+    shadowOffset: { width: 0, height: 3 },
+    elevation: 4,
+  },
+  sendBtnDisabled: {
+    backgroundColor: C.border,
+    shadowOpacity: 0,
+    elevation: 0,
   },
 });

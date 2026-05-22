@@ -17,7 +17,7 @@ export function useFileUpload() {
         return null;
       }
       if ('error' in result) {
-        setError(result.error);
+        setError(result.error ?? 'Unknown error');
         return null;
       }
       setFile(result.file);

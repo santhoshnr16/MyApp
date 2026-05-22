@@ -1,27 +1,13 @@
 import { PropsWithChildren } from 'react';
 import { StyleSheet, View, ViewProps } from 'react-native';
 
-import { AppColors, Radius } from '@/constants/colors';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { C, Radius } from '@/constants/colors';
 
 type CardProps = PropsWithChildren<ViewProps>;
 
 export function Card({ children, style, ...rest }: CardProps) {
-  const colorScheme = useColorScheme();
-  const palette = AppColors[colorScheme ?? 'light'];
-
   return (
-    <View
-      style={[
-        styles.base,
-        {
-          backgroundColor: palette.surface,
-          borderColor: palette.border,
-          shadowColor: palette.primary,
-        },
-        style,
-      ]}
-      {...rest}>
+    <View style={[styles.base, style]} {...rest}>
       {children}
     </View>
   );
@@ -29,12 +15,21 @@ export function Card({ children, style, ...rest }: CardProps) {
 
 const styles = StyleSheet.create({
   base: {
-    borderRadius: Radius.standard,
-    borderWidth: 1,
+    borderRadius: Radius.card,
+    borderTopWidth: 2,
+    borderTopColor: C.gold,
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderBottomWidth: 1,
+    borderLeftColor: C.glassBorder,
+    borderRightColor: C.glassBorder,
+    borderBottomColor: C.glassBorder,
+    backgroundColor: C.glass,
     padding: 16,
-    shadowOpacity: 0.12,
-    shadowRadius: 14,
+    shadowColor: C.gold,
+    shadowOpacity: 0.1,
+    shadowRadius: 20,
     shadowOffset: { width: 0, height: 8 },
-    elevation: 3,
+    elevation: 5,
   },
 });

@@ -1,7 +1,6 @@
 import { ActivityIndicator, StyleSheet, Text, TouchableOpacity, ViewStyle } from 'react-native';
 
-import { AppColors, Radius } from '@/constants/colors';
-import { useColorScheme } from '@/hooks/use-color-scheme';
+import { C, Radius } from '@/constants/colors';
 
 type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost';
 
@@ -22,33 +21,32 @@ export function Button({
   variant = 'primary',
   style,
 }: ButtonProps) {
-  const colorScheme = useColorScheme();
-  const palette = AppColors[colorScheme ?? 'light'];
   const isDisabled = disabled || loading;
-  const showElevated = (variant === 'primary' || variant === 'secondary') && !isDisabled;
 
-  const variantStyles = {
+  const variantConfig: Record<ButtonVariant, { bg: string; border: string; text: string }> = {
     primary: {
-      backgroundColor: isDisabled ? palette.border : palette.primary,
-      borderColor: isDisabled ? palette.border : palette.primary,
-      textColor: isDisabled ? palette.textMuted : palette.accent,
+      bg: isDisabled ? C.border : C.gold,
+      border: isDisabled ? C.border : C.gold,
+      text: isDisabled ? C.textMuted : C.bg,
     },
     secondary: {
-      backgroundColor: isDisabled ? palette.border : palette.accent,
-      borderColor: isDisabled ? palette.border : palette.accent,
-      textColor: isDisabled ? palette.textMuted : palette.primary,
+      bg: isDisabled ? C.border : C.elevated,
+      border: isDisabled ? C.border : C.goldBorder,
+      text: isDisabled ? C.textMuted : C.gold,
     },
     outline: {
-      backgroundColor: 'transparent',
-      borderColor: palette.primary,
-      textColor: palette.primary,
+      bg: 'transparent',
+      border: C.goldBorder,
+      text: C.gold,
     },
     ghost: {
-      backgroundColor: 'transparent',
-      borderColor: 'transparent',
-      textColor: palette.primary,
+      bg: 'transparent',
+      border: 'transparent',
+      text: C.gold,
     },
-  }[variant];
+  };
+
+  const { bg, border, text } = variantConfig[variant];
 
   return (
     <TouchableOpacity
@@ -58,16 +56,16 @@ export function Button({
       style={[
         styles.base,
         {
-          backgroundColor: variantStyles.backgroundColor,
-          borderColor: variantStyles.borderColor,
+          backgroundColor: bg,
+          borderColor: border,
         },
-        showElevated ? styles.elevated : null,
+        variant === 'primary' && !isDisabled && styles.primaryElevated,
         style,
       ]}>
       {loading ? (
-        <ActivityIndicator color={variantStyles.textColor} />
+        <ActivityIndicator color={text} />
       ) : (
-        <Text style={[styles.label, { color: variantStyles.textColor }]}>{label}</Text>
+        <Text style={[styles.label, { color: text }]}>{label}</Text>
       )}
     </TouchableOpacity>
   );
@@ -75,21 +73,23 @@ export function Button({
 
 const styles = StyleSheet.create({
   base: {
-    height: 54,
-    borderRadius: Radius.standard,
+    height: 52,
+    borderRadius: Radius.button,
     borderWidth: 1,
     alignItems: 'center',
     justifyContent: 'center',
     paddingHorizontal: 16,
   },
-  elevated: {
-    shadowOpacity: 0.18,
-    shadowRadius: 10,
+  primaryElevated: {
+    shadowColor: C.gold,
+    shadowOpacity: 0.35,
+    shadowRadius: 16,
     shadowOffset: { width: 0, height: 6 },
-    elevation: 3,
+    elevation: 8,
   },
   label: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: 15,
+    fontWeight: '700',
+    letterSpacing: 0.2,
   },
 });

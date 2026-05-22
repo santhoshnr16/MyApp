@@ -2,6 +2,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { useRouter } from 'expo-router';
 import { useEffect, useMemo, useState } from 'react';
 import {
+  Animated,
   Modal,
   ScrollView,
   StyleSheet,
@@ -12,18 +13,13 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { UploadCard } from '@/components/document/UploadCard';
-import { Button } from '@/components/ui/Button';
-import { Card } from '@/components/ui/Card';
-import { ProgressBar } from '@/components/ui/ProgressBar';
-import { AppColors, Radius } from '@/constants/colors';
+import { C, GlassCard, Radius } from '@/constants/colors';
 import { useDocumentContext } from '@/context/document-context';
 import { useDocumentAnalysis } from '@/hooks/useDocumentAnalysis';
 import { useFileUpload } from '@/hooks/useFileUpload';
-import { useColorScheme } from '@/hooks/use-color-scheme';
 import type { AnalysisOptions, DocumentLanguage } from '@/types/document';
 
-const languages: DocumentLanguage[] = [
+const LANGUAGES: DocumentLanguage[] = [
   'English',
   'Hindi',
   'Marathi',
@@ -33,7 +29,7 @@ const languages: DocumentLanguage[] = [
   'Gujarati',
 ];
 
-const steps = [
+const STEPS = [
   'Reading your document...',
   'Identifying document type...',
   'AI analyzing content...',
@@ -41,10 +37,21 @@ const steps = [
   'Preparing your report...',
 ];
 
+const OPTION_ROWS = [
+  { key: 'fullSummary', icon: 'document-text' as const, title: 'Full Summary', subtitle: 'Plain English summary of entire document' },
+  { key: 'riskAnalysis', icon: 'warning' as const, title: 'Risk Analysis', subtitle: 'Find risky clauses and obligations' },
+  { key: 'enableChat', icon: 'chatbubble-ellipses' as const, title: 'Enable AI Chat', subtitle: 'Ask questions about this document' },
+  { key: 'translateSummary', icon: 'language' as const, title: 'Translate Summary', subtitle: 'Get summary in your local language' },
+];
+
+function formatBytes(bytes: number): string {
+  if (bytes < 1024) return `${bytes} B`;
+  if (bytes < 1048576) return `${(bytes / 1024).toFixed(1)} KB`;
+  return `${(bytes / 1048576).toFixed(1)} MB`;
+}
+
 export default function UploadScreen() {
   const router = useRouter();
-  const colorScheme = useColorScheme();
-  const palette = AppColors[colorScheme ?? 'light'];
   const { state } = useDocumentContext();
   const { analyzeDocument, cancelAnalysis } = useDocumentAnalysis();
   const { file, error, isPicking, pickFile, removeFile, setError } = useFileUpload();
@@ -59,181 +66,198 @@ export default function UploadScreen() {
   });
 
   const [activeStep, setActiveStep] = useState(0);
-  const [progress, setProgress] = useState(0.1);
+  const [progressAnim] = useState(new Animated.Value(0));
 
   const isAnalyzing = state.loading.analyzing || state.loading.uploading;
+  const canSubmit = !!file && !isAnalyzing && !isPicking;
 
   useEffect(() => {
     if (!isAnalyzing) {
       setActiveStep(0);
-      setProgress(0.1);
+      Animated.timing(progressAnim, { toValue: 0, duration: 300, useNativeDriver: false }).start();
       return;
     }
-
     let step = 0;
     const interval = setInterval(() => {
       step += 1;
-      setActiveStep(Math.min(step, steps.length - 1));
-      setProgress(Math.min(0.1 + step * 0.2, 0.9));
+      const next = Math.min(step, STEPS.length - 1);
+      setActiveStep(next);
+      Animated.timing(progressAnim, {
+        toValue: Math.min(0.1 + step * 0.2, 0.9),
+        duration: 800,
+        useNativeDriver: false,
+      }).start();
     }, 1200);
-
     return () => clearInterval(interval);
-  }, [isAnalyzing]);
-
-  const canSubmit = !!file && !isAnalyzing && !isPicking;
+  }, [isAnalyzing, progressAnim]);
 
   const handleAnalyze = async () => {
     if (!file) {
       setError('Please select a PDF file first.');
       return;
     }
-
     const documentId = await analyzeDocument(file, options);
     if (documentId) {
       router.push({ pathname: '/summary/[documentId]', params: { documentId } });
     }
   };
 
-  const optionRows = useMemo(
-    () => [
-      {
-        key: 'fullSummary',
-        title: 'Full Summary',
-        subtitle: 'Plain English summary of entire document',
-      },
-      {
-        key: 'riskAnalysis',
-        title: 'Risk Analysis',
-        subtitle: 'Find risky clauses and obligations',
-      },
-      {
-        key: 'enableChat',
-        title: 'Enable AI Chat',
-        subtitle: 'Ask questions about this document',
-      },
-      {
-        key: 'translateSummary',
-        title: 'Translate Summary',
-        subtitle: 'Get summary in your local language',
-      },
-    ],
-    []
-  );
+  const progressWidth = progressAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: ['0%', '100%'],
+  });
+
+  const displayError = error ?? apiError;
 
   return (
-    <SafeAreaView
-      className="flex-1"
-      style={[styles.container, { backgroundColor: palette.background }]}>
-      <View style={[styles.header, { backgroundColor: palette.primary }]}> 
-        <TouchableOpacity onPress={() => router.back()} style={styles.backButton}>
-          <Ionicons name="arrow-back" size={22} color={palette.surface} />
-        </TouchableOpacity>
-        <View>
-          <Text style={[styles.headerTitle, { color: palette.accent }]}>Legal Document AI</Text>
-          <Text style={[styles.headerSubtitle, { color: palette.surface }]}>Upload and analyze</Text>
+    <SafeAreaView style={styles.container}>
+      <ScrollView
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={styles.scroll}
+        keyboardShouldPersistTaps="handled">
+
+        {/* Header */}
+        <View style={styles.header}>
+          <Text style={styles.heading}>Analyse Document</Text>
+          <Text style={styles.subheading}>Upload a PDF to begin AI analysis</Text>
         </View>
-      </View>
 
-      <ScrollView contentContainerStyle={styles.content} showsVerticalScrollIndicator={false}>
-        <UploadCard file={file} onPick={pickFile} onRemove={removeFile} onCamera={pickFile} />
+        {/* Upload Zone */}
+        <TouchableOpacity
+          onPress={file ? undefined : pickFile}
+          disabled={isPicking}
+          activeOpacity={file ? 1 : 0.8}
+          style={[styles.uploadZone, file && styles.uploadZoneFilled]}>
+          {file ? (
+            <View style={styles.filePreview}>
+              <View style={styles.fileIconRow}>
+                <Ionicons name="document" size={28} color={C.gold} />
+                <View style={styles.fileDetails}>
+                  <Text style={styles.fileName} numberOfLines={1}>{file.name}</Text>
+                  <Text style={styles.fileSize}>{formatBytes(file.size)}</Text>
+                </View>
+                <Ionicons name="checkmark-circle" size={22} color={C.lowRisk} />
+              </View>
+              <TouchableOpacity style={styles.removeBtn} onPress={removeFile}>
+                <Ionicons name="close-circle" size={18} color={C.textMuted} />
+                <Text style={styles.removeBtnText}>Remove</Text>
+              </TouchableOpacity>
+            </View>
+          ) : (
+            <View style={styles.uploadPrompt}>
+              <Ionicons name="scale" size={40} color={C.gold} style={styles.uploadIcon} />
+              <Text style={styles.uploadTitle}>Drop PDF here or tap to browse</Text>
+              <Text style={styles.uploadSub}>Supports PDF documents up to 50MB</Text>
+              <View style={styles.browseBtn}>
+                <Text style={styles.browseBtnText}>Browse Files</Text>
+              </View>
+            </View>
+          )}
+        </TouchableOpacity>
 
-        <View style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <View style={[styles.sectionAccent, { backgroundColor: palette.accent }]} />
-            <Text style={[styles.sectionTitle, { color: palette.textPrimary }]}>Document Language</Text>
-          </View>
-          <ScrollView horizontal showsHorizontalScrollIndicator={false} contentContainerStyle={styles.pillRow}>
-            {languages.map((language) => {
-              const isSelected = options.language === language;
+        {/* Language Selector */}
+        <View style={styles.sectionBlock}>
+          <Text style={styles.sectionLabel}>DOCUMENT LANGUAGE</Text>
+          <ScrollView
+            horizontal
+            showsHorizontalScrollIndicator={false}
+            contentContainerStyle={styles.pillRow}>
+            {LANGUAGES.map((lang) => {
+              const active = options.language === lang;
               return (
                 <TouchableOpacity
-                  key={language}
-                  onPress={() => setOptions((prev) => ({ ...prev, language }))}
-                  style={[
-                    styles.pill,
-                    {
-                      backgroundColor: isSelected ? palette.primary : palette.surface,
-                      borderColor: palette.primary,
-                    },
-                  ]}>
-                  <Text style={[styles.pillText, { color: isSelected ? palette.accent : palette.primary }]}> 
-                    {language}
-                  </Text>
+                  key={lang}
+                  onPress={() => setOptions((p) => ({ ...p, language: lang }))}
+                  style={[styles.pill, active && styles.pillActive]}>
+                  <Text style={[styles.pillText, active && styles.pillTextActive]}>{lang}</Text>
                 </TouchableOpacity>
               );
             })}
           </ScrollView>
         </View>
 
-        <Card style={styles.section}>
-          <View style={styles.sectionHeader}>
-            <View style={[styles.sectionAccent, { backgroundColor: palette.accent }]} />
-            <Text style={[styles.sectionTitle, { color: palette.textPrimary }]}>What do you need?</Text>
-          </View>
-          {optionRows.map((row) => (
-            <View key={row.key} style={styles.optionRow}>
+        {/* Analysis Options */}
+        <View style={[GlassCard, styles.optionsCard]}>
+          <Text style={styles.sectionLabel}>ANALYSIS OPTIONS</Text>
+          {OPTION_ROWS.map((row, index) => (
+            <View
+              key={row.key}
+              style={[styles.optionRow, index < OPTION_ROWS.length - 1 && styles.optionRowBorder]}>
+              <View style={styles.optionIconBox}>
+                <Ionicons name={row.icon} size={18} color={C.gold} />
+              </View>
               <View style={styles.optionText}>
-                <Text style={[styles.optionTitle, { color: palette.textPrimary }]}>{row.title}</Text>
-                <Text style={[styles.optionSubtitle, { color: palette.textMuted }]}>{row.subtitle}</Text>
+                <Text style={styles.optionTitle}>{row.title}</Text>
+                <Text style={styles.optionSub}>{row.subtitle}</Text>
               </View>
               <Switch
                 value={options[row.key as keyof AnalysisOptions] as boolean}
-                onValueChange={(value) =>
-                  setOptions((prev) => ({ ...prev, [row.key]: value }))
-                }
-                trackColor={{ false: palette.border, true: palette.primary }}
-                thumbColor={palette.accent}
+                onValueChange={(v) => setOptions((p) => ({ ...p, [row.key]: v }))}
+                trackColor={{ false: C.border, true: C.goldGlow }}
+                thumbColor={options[row.key as keyof AnalysisOptions] ? C.gold : C.textMuted}
+                ios_backgroundColor={C.border}
               />
             </View>
           ))}
-        </Card>
+        </View>
 
-        {(error || apiError) && (
-          <Card style={styles.errorCard}>
-            <Text style={[styles.errorText, { color: palette.danger }]}>{error ?? apiError}</Text>
-          </Card>
+        {/* Error */}
+        {displayError && (
+          <View style={styles.errorBanner}>
+            <Ionicons name="alert-circle" size={16} color={C.highRisk} />
+            <Text style={styles.errorText}>{displayError}</Text>
+          </View>
         )}
 
-        <Button
-          label={isAnalyzing ? 'Analyzing with AI...' : 'Analyze Document ->'}
+        {/* CTA */}
+        <TouchableOpacity
           onPress={handleAnalyze}
           disabled={!canSubmit}
-          loading={isAnalyzing}
-          style={styles.ctaButton}
-        />
+          activeOpacity={0.85}
+          style={[styles.cta, !canSubmit && styles.ctaDisabled]}>
+          <Text style={[styles.ctaText, !canSubmit && styles.ctaTextDisabled]}>
+            {isAnalyzing ? 'Analysing with AI...' : 'Analyse Document'}
+          </Text>
+          {!isAnalyzing && canSubmit && (
+            <Ionicons name="arrow-forward" size={18} color={C.bg} />
+          )}
+        </TouchableOpacity>
 
-        <Text style={[styles.securityText, { color: palette.textMuted }]}> 
+        <Text style={styles.disclaimer}>
           Your document is processed securely and never stored permanently.
         </Text>
       </ScrollView>
 
+      {/* Analysis Progress Overlay */}
       <Modal visible={isAnalyzing} transparent animationType="fade">
-        <View style={[styles.overlay, { backgroundColor: palette.overlay }]}> 
-          <Card style={styles.overlayCard}>
-            <Text style={[styles.overlayTitle, { color: palette.textPrimary }]}>Analyzing document</Text>
-            {steps.map((step, index) => {
-              const isDone = index < activeStep;
-              const isActive = index === activeStep;
+        <View style={styles.overlay}>
+          <View style={[GlassCard, styles.overlayCard]}>
+            <Text style={styles.overlayTitle}>Analysing Document</Text>
+            <Text style={styles.overlaySub}>AI is reading your file...</Text>
+
+            <View style={styles.progressTrack}>
+              <Animated.View style={[styles.progressFill, { width: progressWidth }]} />
+            </View>
+
+            {STEPS.map((step, i) => {
+              const done = i < activeStep;
+              const active = i === activeStep;
               return (
                 <View key={step} style={styles.stepRow}>
                   <Ionicons
-                    name={isDone ? 'checkmark-circle' : 'time-outline'}
-                    size={18}
-                    color={isDone ? palette.success : isActive ? palette.accent : palette.textMuted}
+                    name={done ? 'checkmark-circle' : active ? 'ellipse' : 'ellipse-outline'}
+                    size={16}
+                    color={done ? C.lowRisk : active ? C.gold : C.textMuted}
                   />
-                  <Text
-                    style={[
-                      styles.stepText,
-                      { color: isDone ? palette.textPrimary : palette.textMuted },
-                    ]}>
-                    {step}
-                  </Text>
+                  <Text style={[styles.stepText, active && styles.stepTextActive]}>{step}</Text>
                 </View>
               );
             })}
-            <ProgressBar progress={progress} />
-            <Button label="Cancel" onPress={cancelAnalysis} variant="ghost" />
-          </Card>
+
+            <TouchableOpacity style={styles.cancelBtn} onPress={cancelAnalysis}>
+              <Text style={styles.cancelBtnText}>Cancel</Text>
+            </TouchableOpacity>
+          </View>
         </View>
       </Modal>
     </SafeAreaView>
@@ -243,115 +267,286 @@ export default function UploadScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: C.bg,
+  },
+  scroll: {
+    paddingHorizontal: 20,
+    paddingBottom: 100,
+    gap: 20,
   },
   header: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    paddingHorizontal: 16,
-    paddingVertical: 14,
+    paddingTop: 20,
+    gap: 4,
   },
-  backButton: {
-    marginRight: 12,
-  },
-  headerTitle: {
-    fontSize: 16,
+  heading: {
+    fontSize: 26,
     fontWeight: '700',
+    letterSpacing: -0.5,
+    color: C.textPrimary,
   },
-  headerSubtitle: {
-    fontSize: 12,
-    fontWeight: '600',
-    marginTop: 2,
+  subheading: {
+    fontSize: 14,
+    color: C.textSecondary,
   },
-  content: {
-    padding: 16,
-    paddingBottom: 32,
-  },
-  section: {
-    marginBottom: 16,
-  },
-  sectionHeader: {
-    flexDirection: 'row',
+  uploadZone: {
+    borderWidth: 1.5,
+    borderColor: C.goldBorder,
+    borderStyle: 'dashed',
+    borderRadius: Radius.card,
+    backgroundColor: C.glass,
+    minHeight: 180,
     alignItems: 'center',
-    gap: 8,
-    marginBottom: 12,
+    justifyContent: 'center',
+    overflow: 'hidden',
   },
-  sectionAccent: {
-    width: 6,
-    height: 18,
-    borderRadius: 3,
+  uploadZoneFilled: {
+    borderStyle: 'solid',
+    borderColor: C.gold,
+    borderWidth: 1,
   },
-  sectionTitle: {
+  uploadPrompt: {
+    alignItems: 'center',
+    padding: 32,
+    gap: 10,
+  },
+  uploadIcon: {
+    marginBottom: 4,
+    opacity: 0.9,
+  },
+  uploadTitle: {
     fontSize: 15,
+    fontWeight: '600',
+    color: C.textPrimary,
+    textAlign: 'center',
+  },
+  uploadSub: {
+    fontSize: 12,
+    color: C.textMuted,
+  },
+  browseBtn: {
+    marginTop: 8,
+    borderWidth: 1,
+    borderColor: C.goldBorder,
+    borderRadius: Radius.button,
+    paddingHorizontal: 20,
+    paddingVertical: 8,
+  },
+  browseBtnText: {
+    fontSize: 13,
+    fontWeight: '600',
+    color: C.gold,
+  },
+  filePreview: {
+    width: '100%',
+    padding: 16,
+    gap: 12,
+  },
+  fileIconRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 12,
+  },
+  fileDetails: {
+    flex: 1,
+    gap: 2,
+  },
+  fileName: {
+    fontSize: 14,
+    fontWeight: '600',
+    color: C.textPrimary,
+  },
+  fileSize: {
+    fontSize: 11,
+    color: C.textMuted,
+  },
+  removeBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 4,
+    alignSelf: 'flex-start',
+  },
+  removeBtnText: {
+    fontSize: 12,
+    color: C.textMuted,
+  },
+  sectionBlock: {
+    gap: 12,
+  },
+  sectionLabel: {
+    fontSize: 10,
     fontWeight: '700',
+    letterSpacing: 2,
+    color: C.gold,
   },
   pillRow: {
-    gap: 10,
+    gap: 8,
     paddingBottom: 4,
   },
   pill: {
-    borderRadius: Radius.pill,
     borderWidth: 1,
+    borderColor: C.border,
+    borderRadius: Radius.pill,
     paddingHorizontal: 14,
     paddingVertical: 8,
+    backgroundColor: C.surface,
+  },
+  pillActive: {
+    backgroundColor: C.gold,
+    borderColor: C.gold,
   },
   pillText: {
     fontSize: 12,
     fontWeight: '600',
+    color: C.textSecondary,
+  },
+  pillTextActive: {
+    color: C.bg,
+  },
+  optionsCard: {
+    gap: 0,
+    padding: 0,
+    overflow: 'hidden',
   },
   optionRow: {
     flexDirection: 'row',
-    justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
+    padding: 14,
+    gap: 12,
+  },
+  optionRowBorder: {
+    borderBottomWidth: 1,
+    borderBottomColor: C.glassBorder,
+  },
+  optionIconBox: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: C.goldGlow,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   optionText: {
     flex: 1,
-    marginRight: 12,
+    gap: 2,
   },
   optionTitle: {
     fontSize: 14,
     fontWeight: '600',
+    color: C.textPrimary,
   },
-  optionSubtitle: {
-    fontSize: 12,
-    marginTop: 4,
+  optionSub: {
+    fontSize: 11,
+    color: C.textMuted,
   },
-  errorCard: {
-    borderColor: '#C0392B',
+  errorBanner: {
+    flexDirection: 'row',
+    gap: 8,
+    alignItems: 'center',
+    backgroundColor: 'rgba(229,62,62,0.1)',
+    borderWidth: 1,
+    borderColor: 'rgba(229,62,62,0.3)',
+    borderRadius: Radius.button,
+    padding: 12,
   },
   errorText: {
+    flex: 1,
     fontSize: 13,
-    fontWeight: '600',
+    color: C.highRisk,
+    fontWeight: '500',
   },
-  ctaButton: {
-    height: 54,
+  cta: {
+    height: 52,
+    backgroundColor: C.gold,
+    borderRadius: Radius.button,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 8,
+    shadowColor: C.gold,
+    shadowOpacity: 0.35,
+    shadowRadius: 16,
+    shadowOffset: { width: 0, height: 6 },
+    elevation: 8,
   },
-  securityText: {
+  ctaDisabled: {
+    backgroundColor: C.border,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
+  ctaText: {
+    fontSize: 16,
+    fontWeight: '700',
+    color: C.bg,
+    letterSpacing: 0.2,
+  },
+  ctaTextDisabled: {
+    color: C.textMuted,
+  },
+  disclaimer: {
     fontSize: 11,
-    textAlign: 'left',
-    marginTop: 12,
+    color: C.textMuted,
+    textAlign: 'center',
   },
   overlay: {
     flex: 1,
+    backgroundColor: C.overlay,
     alignItems: 'center',
     justifyContent: 'center',
     padding: 24,
   },
   overlayCard: {
     width: '100%',
+    padding: 24,
+    gap: 12,
   },
   overlayTitle: {
-    fontSize: 16,
+    fontSize: 18,
     fontWeight: '700',
-    marginBottom: 12,
+    color: C.textPrimary,
+    letterSpacing: -0.3,
+  },
+  overlaySub: {
+    fontSize: 13,
+    color: C.textSecondary,
+    marginTop: -6,
+  },
+  progressTrack: {
+    height: 4,
+    backgroundColor: C.border,
+    borderRadius: 2,
+    overflow: 'hidden',
+    marginVertical: 8,
+  },
+  progressFill: {
+    height: '100%',
+    backgroundColor: C.gold,
+    borderRadius: 2,
   },
   stepRow: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 8,
-    marginBottom: 8,
+    gap: 10,
   },
   stepText: {
-    fontSize: 12,
+    fontSize: 13,
+    color: C.textMuted,
+  },
+  stepTextActive: {
+    color: C.textPrimary,
+    fontWeight: '600',
+  },
+  cancelBtn: {
+    marginTop: 8,
+    alignSelf: 'center',
+    paddingHorizontal: 20,
+    paddingVertical: 10,
+    borderRadius: Radius.pill,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  cancelBtnText: {
+    fontSize: 13,
+    color: C.textSecondary,
+    fontWeight: '600',
   },
 });
