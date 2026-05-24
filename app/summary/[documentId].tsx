@@ -11,7 +11,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius } from '@/constants/colors';
+import { C, GlassCard, Radius, Serif } from '@/constants/colors';
 import { useDocumentContext } from '@/context/document-context';
 import { getSummary } from '@/services/legalAI';
 import type { DocumentAnalysis, RiskLevel } from '@/types/document';
@@ -95,7 +95,7 @@ export default function SummaryScreen() {
           <Text style={styles.headerTitle} numberOfLines={1}>
             {document?.filename ?? 'Document Summary'}
           </Text>
-          <Text style={styles.headerSub}>AI Legal Summary</Text>
+          <Text style={styles.headerSub}>AI LEGAL SUMMARY</Text>
         </View>
         <TouchableOpacity style={styles.iconBtn} onPress={handleShare}>
           <Ionicons name="share-outline" size={20} color={C.textPrimary} />
@@ -126,59 +126,31 @@ export default function SummaryScreen() {
           )}
         </View>
 
-        {/* Action Row */}
-        <ScrollView
-          horizontal
-          showsHorizontalScrollIndicator={false}
-          contentContainerStyle={styles.actionRow}>
-          {[
-            { label: 'Share', icon: 'share-social' as const, onPress: handleShare },
-            {
-              label: 'Chat',
-              icon: 'chatbubble-ellipses' as const,
-              onPress: () =>
-                router.push({
-                  pathname: '/chat/[documentId]',
-                  params: { documentId },
-                } as unknown as Href),
-            },
-            { label: 'Copy', icon: 'copy' as const, onPress: handleShare },
-            {
-              label: 'Start Moot',
-              icon: 'scale' as const,
-              gold: true,
-              onPress: () =>
-                router.push({
-                  pathname: '/moot/[documentId]',
-                  params: { documentId },
-                } as unknown as Href),
-            },
-            {
-              label: 'Negotiate',
-              icon: 'briefcase-outline' as const,
-              gold: true,
-              onPress: () =>
-                router.push({
-                  pathname: '/negotiate/[documentId]',
-                  params: { documentId },
-                } as unknown as Href),
-            },
-          ].map((action) => (
-            <TouchableOpacity
-              key={action.label}
-              onPress={action.onPress}
-              style={[styles.actionBtn, action.gold && styles.actionBtnGold]}>
-              <Ionicons
-                name={action.icon}
-                size={16}
-                color={action.gold ? C.gold : C.textSecondary}
-              />
-              <Text style={[styles.actionBtnText, action.gold && styles.actionBtnTextGold]}>
-                {action.label}
-              </Text>
-            </TouchableOpacity>
-          ))}
-        </ScrollView>
+        {/* Action Grid — 2×2 */}
+        <View style={styles.actionGrid}>
+          <TouchableOpacity style={[styles.actionBtn, styles.actionBtnHalf]} onPress={handleShare}>
+            <Ionicons name="copy-outline" size={15} color={C.textSecondary} />
+            <Text style={styles.actionBtnText}>Copy</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.actionBtnHalf, styles.actionBtnGold]}
+            onPress={() => router.push({ pathname: '/moot/[documentId]', params: { documentId } } as unknown as Href)}>
+            <Ionicons name="scale-outline" size={15} color={C.elevated} />
+            <Text style={[styles.actionBtnText, styles.actionBtnTextGold]}>Start Moot</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.actionBtnHalf]}
+            onPress={() => router.push({ pathname: '/negotiate/[documentId]', params: { documentId } } as unknown as Href)}>
+            <Ionicons name="briefcase-outline" size={15} color={C.textSecondary} />
+            <Text style={styles.actionBtnText}>Negotiate</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.actionBtnHalf]}
+            onPress={() => router.push({ pathname: '/assist/[documentId]', params: { documentId } } as unknown as Href)}>
+            <Ionicons name="chatbubble-outline" size={15} color={C.textSecondary} />
+            <Text style={styles.actionBtnText}>Explain</Text>
+          </TouchableOpacity>
+        </View>
 
         {/* Tab Bar */}
         <View style={styles.tabBar}>
@@ -349,15 +321,16 @@ const styles = StyleSheet.create({
     gap: 2,
   },
   headerTitle: {
-    fontSize: 15,
-    fontWeight: '700',
+    fontSize: 14,
+    fontWeight: '600',
     color: C.textPrimary,
+    fontFamily: Serif,
   },
   headerSub: {
-    fontSize: 11,
+    fontSize: 9,
     color: C.gold,
-    fontWeight: '600',
-    letterSpacing: 0.5,
+    fontWeight: '700',
+    letterSpacing: 2,
   },
   scroll: {
     paddingHorizontal: 16,
@@ -413,23 +386,29 @@ const styles = StyleSheet.create({
     lineHeight: 20,
     fontStyle: 'italic',
   },
-  actionRow: {
-    gap: 8,
+  actionGrid: {
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    gap: 10,
   },
   actionBtn: {
     flexDirection: 'row',
     alignItems: 'center',
-    gap: 6,
+    justifyContent: 'center',
+    gap: 7,
     borderWidth: 1,
     borderColor: C.border,
     borderRadius: Radius.button,
-    paddingHorizontal: 14,
-    paddingVertical: 10,
+    paddingVertical: 13,
     backgroundColor: C.surface,
   },
+  actionBtnHalf: {
+    flex: 1,
+    minWidth: '45%',
+  },
   actionBtnGold: {
-    borderColor: C.gold,
-    backgroundColor: C.goldGlow,
+    borderColor: C.ink,
+    backgroundColor: C.ink,
   },
   actionBtnText: {
     fontSize: 13,
@@ -437,7 +416,7 @@ const styles = StyleSheet.create({
     color: C.textSecondary,
   },
   actionBtnTextGold: {
-    color: C.gold,
+    color: C.elevated,
   },
   tabBar: {
     flexDirection: 'row',

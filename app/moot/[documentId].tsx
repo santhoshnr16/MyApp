@@ -15,7 +15,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius } from '@/constants/colors';
+import { C, GlassCard, Radius, Serif } from '@/constants/colors';
 import { ARGUMENT_STARTERS, MAX_EXCHANGES } from '@/constants/mootPrompt';
 import { useDocumentContext } from '@/context/document-context';
 import { saveVerdict, sendMootArgument } from '@/services/mootAI';
@@ -69,19 +69,22 @@ function RoleSelection({
     <ScrollView
       contentContainerStyle={styles.selectionScroll}
       showsVerticalScrollIndicator={false}>
-      {/* Scales */}
-      <View style={styles.scalesCenter}>
-        <ScalesAnimation />
-      </View>
 
       {/* Title */}
-      <Text style={styles.mootTitle}>LexAI Moot</Text>
-      <Text style={styles.mootSubtitle}>AI Moot Court Simulator</Text>
+      <View style={styles.mootTitleRow}>
+        <Ionicons name="scale-outline" size={24} color={C.textSecondary} />
+        <View>
+          <Text style={styles.mootTitle}>LexAI Moot</Text>
+          <Text style={styles.mootSubtitle}>AI Moot Court Simulator</Text>
+        </View>
+      </View>
+
+      <View style={styles.dividerThin} />
 
       {/* Document Context Card */}
       <View style={[GlassCard, styles.docContextCard]}>
         <View style={styles.docContextTop}>
-          <Ionicons name="document-text" size={16} color={C.gold} />
+          <Ionicons name="square-outline" size={14} color={C.gold} />
           <Text style={styles.docContextLabel}>DOCUMENT BEING ARGUED</Text>
         </View>
         <Text style={styles.docContextName} numberOfLines={2}>{documentName}</Text>
@@ -104,33 +107,41 @@ function RoleSelection({
         <TouchableOpacity
           style={[
             styles.roleCard,
-            styles.roleCardLeft,
             selectedRole === 'petitioner' && styles.roleCardSelected,
           ]}
           onPress={() => onSelectRole('petitioner')}
           activeOpacity={0.8}>
-          <Text style={styles.roleIcon}>⚖️</Text>
-          <Text style={[styles.roleTitle, { color: '#6BAAFF' }]}>PETITIONER</Text>
-          <Text style={styles.roleDesc}>You filed the case. Argue for relief.</Text>
-          {selectedRole === 'petitioner' && (
-            <View style={styles.roleSelectedDot} />
-          )}
+          <View style={styles.roleIconBox}>
+            <Ionicons
+              name="scale-outline"
+              size={22}
+              color={selectedRole === 'petitioner' ? C.gold : C.textMuted}
+            />
+          </View>
+          <Text style={[styles.roleTitle, selectedRole === 'petitioner' && styles.roleTitleActive]}>
+            Petitioner
+          </Text>
+          <Text style={styles.roleDesc}>Filed the case. Argue for relief.</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
           style={[
             styles.roleCard,
-            styles.roleCardRight,
             selectedRole === 'respondent' && styles.roleCardSelected,
           ]}
           onPress={() => onSelectRole('respondent')}
           activeOpacity={0.8}>
-          <Text style={styles.roleIcon}>🛡️</Text>
-          <Text style={[styles.roleTitle, { color: '#FF8080' }]}>RESPONDENT</Text>
-          <Text style={styles.roleDesc}>You defend. Argue against the claim.</Text>
-          {selectedRole === 'respondent' && (
-            <View style={styles.roleSelectedDot} />
-          )}
+          <View style={styles.roleIconBox}>
+            <Ionicons
+              name="shield-outline"
+              size={22}
+              color={selectedRole === 'respondent' ? C.gold : C.textMuted}
+            />
+          </View>
+          <Text style={[styles.roleTitle, selectedRole === 'respondent' && styles.roleTitleActive]}>
+            Respondent
+          </Text>
+          <Text style={styles.roleDesc}>Defend against the claim.</Text>
         </TouchableOpacity>
       </View>
 
@@ -140,7 +151,7 @@ function RoleSelection({
         onPress={onEnter}
         disabled={!selectedRole}
         activeOpacity={0.85}>
-        <Ionicons name="scale" size={18} color={selectedRole ? C.bg : C.textMuted} />
+        <Ionicons name="square-outline" size={16} color={selectedRole ? C.elevated : C.textMuted} />
         <Text style={[styles.enterBtnText, !selectedRole && styles.enterBtnTextDisabled]}>
           Enter Courtroom
         </Text>
@@ -467,7 +478,7 @@ export default function MootScreen() {
               <Ionicons
                 name="scale"
                 size={18}
-                color={inputValue.trim() && !isResponding ? C.textPrimary : C.textMuted}
+                color={inputValue.trim() && !isResponding ? C.elevated : C.textMuted}
               />
             </TouchableOpacity>
           </View>
@@ -490,26 +501,35 @@ const styles = StyleSheet.create({
   },
   selectionScroll: {
     paddingHorizontal: 20,
+    paddingTop: 8,
     paddingBottom: 40,
     alignItems: 'center',
-    gap: 16,
+    gap: 18,
   },
-  scalesCenter: {
-    marginTop: 8,
-    marginBottom: 4,
+  mootTitleRow: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 14,
+    width: '100%',
+    paddingVertical: 8,
+  },
+  dividerThin: {
+    width: '100%',
+    height: 1,
+    backgroundColor: C.border,
+    marginVertical: 4,
   },
   mootTitle: {
-    fontSize: 32,
-    fontWeight: '800',
-    color: C.gold,
-    letterSpacing: -0.5,
+    fontFamily: Serif,
+    fontSize: 26,
+    color: C.ink,
+    lineHeight: 32,
   },
   mootSubtitle: {
-    fontSize: 14,
-    color: C.textSecondary,
+    fontSize: 12,
+    color: C.textMuted,
     fontWeight: '500',
-    letterSpacing: 0.5,
-    marginTop: -8,
+    marginTop: 1,
   },
   docContextCard: {
     width: '100%',
@@ -577,40 +597,39 @@ const styles = StyleSheet.create({
     padding: 16,
     alignItems: 'center',
     gap: 8,
-    backgroundColor: C.glass,
-    position: 'relative',
-  },
-  roleCardLeft: {
-    borderColor: C.mootNavyBorder,
-  },
-  roleCardRight: {
-    borderColor: C.mootRedBorder,
+    backgroundColor: C.elevated,
+    borderColor: C.border,
   },
   roleCardSelected: {
     borderColor: C.gold,
     borderWidth: 2,
-    backgroundColor: C.goldGlow,
+    backgroundColor: C.goldSoft,
   },
-  roleIcon: {
-    fontSize: 28,
+  roleIconBox: {
+    width: 44,
+    height: 44,
+    borderRadius: 12,
+    backgroundColor: C.surface,
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    borderColor: C.border,
   },
   roleTitle: {
-    fontSize: 12,
-    fontWeight: '800',
-    letterSpacing: 1.5,
+    fontSize: 14,
+    fontWeight: '600',
+    color: C.textPrimary,
+    letterSpacing: -0.2,
+  },
+  roleTitleActive: {
+    color: C.ink,
+    fontWeight: '700',
   },
   roleDesc: {
     fontSize: 11,
     color: C.textMuted,
     textAlign: 'center',
     lineHeight: 16,
-  },
-  roleSelectedDot: {
-    width: 8,
-    height: 8,
-    borderRadius: 4,
-    backgroundColor: C.gold,
-    marginTop: 4,
   },
   enterBtn: {
     width: '100%',
@@ -812,7 +831,7 @@ const styles = StyleSheet.create({
   },
   msgText: {
     fontSize: 14,
-    color: C.textPrimary,
+    color: C.elevated,
     lineHeight: 21,
   },
   counselMsgText: {

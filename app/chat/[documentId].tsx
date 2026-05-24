@@ -14,7 +14,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius } from '@/constants/colors';
+import { C, GlassCard, Radius, Serif } from '@/constants/colors';
 import { SUGGESTED_QUESTIONS } from '@/constants/prompts';
 import { useDocumentContext } from '@/context/document-context';
 import { useChat } from '@/hooks/useChat';
@@ -109,7 +109,7 @@ export default function ChatScreen() {
           <Text style={styles.headerTitle} numberOfLines={1}>
             {document?.filename ?? 'Document Chat'}
           </Text>
-          <Text style={styles.headerSub}>AI Legal Assistant</Text>
+          <Text style={styles.headerSub}>AI LEGAL ASSISTANT</Text>
         </View>
         <TouchableOpacity style={styles.clearBtn} onPress={clearMessages}>
           <Ionicons name="trash-outline" size={16} color={C.textMuted} />
@@ -253,14 +253,15 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 14,
-    fontWeight: '700',
+    fontWeight: '600',
     color: C.textPrimary,
+    fontFamily: Serif,
   },
   headerSub: {
-    fontSize: 11,
+    fontSize: 9,
     color: C.gold,
-    fontWeight: '600',
-    letterSpacing: 0.5,
+    fontWeight: '700',
+    letterSpacing: 2,
   },
   clearBtn: {
     width: 36,

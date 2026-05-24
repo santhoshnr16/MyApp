@@ -1,8 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { type Href, useRouter } from 'expo-router';
-import { useEffect, useRef } from 'react';
 import {
-  Animated,
   ScrollView,
   StyleSheet,
   Text,
@@ -11,45 +9,18 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius } from '@/constants/colors';
+import { C, GlassCard, Radius, Serif } from '@/constants/colors';
 import { useDocumentContext } from '@/context/document-context';
-
-const STAT_CARDS = [
-  { label: 'DOCUMENTS', icon: 'document-text' as const, valueKey: 'docs' },
-  { label: 'RISKS FOUND', icon: 'warning' as const, valueKey: 'risks' },
-  { label: 'MOOT SESSIONS', icon: 'scale' as const, valueKey: 'moots' },
-];
-
-function GoldUnderline({ width }: { width: Animated.Value }) {
-  return (
-    <Animated.View
-      style={[styles.goldUnderline, { width }]}
-    />
-  );
-}
 
 export default function HomeScreen() {
   const router = useRouter();
   const { state } = useDocumentContext();
-
-  const underlineWidth = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.timing(underlineWidth, {
-      toValue: 220,
-      duration: 900,
-      delay: 300,
-      useNativeDriver: false,
-    }).start();
-  }, [underlineWidth]);
 
   const documents = Object.values(state.documents);
   const totalRisks = documents.reduce(
     (sum, doc) => sum + (doc.analysis?.risks?.length ?? 0),
     0
   );
-  const statValues = { docs: documents.length, risks: totalRisks, moots: 0 };
-
 
   return (
     <SafeAreaView style={styles.container}>
@@ -57,7 +28,7 @@ export default function HomeScreen() {
         showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.scroll}>
 
-        {/* Header */}
+        {/* Top bar */}
         <View style={styles.topBar}>
           <Text style={styles.wordmark}>LEXAI</Text>
           <TouchableOpacity style={styles.settingsBtn} onPress={() => {}}>
@@ -65,24 +36,32 @@ export default function HomeScreen() {
           </TouchableOpacity>
         </View>
 
-        {/* Hero */}
-        <View style={styles.hero}>
-          <Text style={styles.heroHeading}>Your AI Legal{'\n'}Assistant</Text>
-          <GoldUnderline width={underlineWidth} />
-          <Text style={styles.heroSub}>Upload. Analyse. Understand.</Text>
-        </View>
+        {/* Eyebrow */}
+        <Text style={styles.eyebrow}>LEGAL INTELLIGENCE</Text>
+
+        {/* Hero heading */}
+        <Text style={styles.heroHeading}>
+          {'Smart counsel for every\n'}
+          <Text style={styles.heroAccent}>document.</Text>
+        </Text>
+
+        {/* Divider */}
+        <View style={styles.divider} />
 
         {/* Stats row */}
         <View style={styles.statsRow}>
-          {STAT_CARDS.map((card) => (
-            <View key={card.label} style={[GlassCard, styles.statCard]}>
-              <Ionicons name={card.icon} size={18} color={C.gold} />
-              <Text style={styles.statValue}>
-                {String(statValues[card.valueKey as keyof typeof statValues])}
-              </Text>
-              <Text style={styles.statLabel}>{card.label}</Text>
-            </View>
-          ))}
+          <View style={[GlassCard, styles.statCard]}>
+            <Text style={styles.statValue}>{documents.length}</Text>
+            <Text style={styles.statLabel}>DOCUMENTS</Text>
+          </View>
+          <View style={[GlassCard, styles.statCard]}>
+            <Text style={styles.statValue}>{totalRisks}</Text>
+            <Text style={styles.statLabel}>RISKS FOUND</Text>
+          </View>
+          <View style={[GlassCard, styles.statCard]}>
+            <Text style={styles.statValue}>0</Text>
+            <Text style={styles.statLabel}>MOOTS</Text>
+          </View>
         </View>
 
         {/* DraftCounsel CTA */}
@@ -90,19 +69,21 @@ export default function HomeScreen() {
           style={styles.draftCta}
           onPress={() => router.push('/draft/new' as Href)}>
           <View style={styles.draftCtaLeft}>
-            <Ionicons name="create-outline" size={22} color={C.gold} />
-            <View style={styles.draftCtaText}>
+            <View style={styles.draftCtaIcon}>
+              <Ionicons name="create-outline" size={20} color={C.elevated} />
+            </View>
+            <View>
               <Text style={styles.draftCtaTitle}>DraftCounsel</Text>
               <Text style={styles.draftCtaSub}>AI-generated legal documents</Text>
             </View>
           </View>
-          <Ionicons name="arrow-forward-circle" size={22} color={C.gold} />
+          <Ionicons name="chevron-forward" size={18} color={C.textMuted} />
         </TouchableOpacity>
 
-        {/* Recent Documents */}
+        {/* Recent section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
-            <Text style={styles.sectionTitle}>Recent Documents</Text>
+            <Text style={styles.sectionTitle}>RECENT</Text>
             <TouchableOpacity onPress={() => router.push('/upload' as Href)}>
               <Text style={styles.sectionLink}>+ Upload</Text>
             </TouchableOpacity>
@@ -110,7 +91,7 @@ export default function HomeScreen() {
 
           {documents.length === 0 ? (
             <View style={[GlassCard, styles.emptyCard]}>
-              <Ionicons name="document-text-outline" size={36} color={C.textMuted} />
+              <Ionicons name="document-text-outline" size={32} color={C.textMuted} />
               <Text style={styles.emptyTitle}>No documents yet</Text>
               <Text style={styles.emptySubtitle}>Upload a PDF to get started</Text>
               <TouchableOpacity
@@ -120,11 +101,10 @@ export default function HomeScreen() {
               </TouchableOpacity>
             </View>
           ) : (
-            documents.map((doc, index) => {
+            documents.map((doc) => {
               const riskScore = doc.analysis?.riskScore ?? 0;
               const riskColor =
                 riskScore >= 70 ? C.highRisk : riskScore >= 40 ? C.mediumRisk : C.lowRisk;
-              const isFirst = index === 0;
               return (
                 <TouchableOpacity
                   key={doc.documentId}
@@ -134,8 +114,8 @@ export default function HomeScreen() {
                       params: { documentId: doc.documentId },
                     } as unknown as Href)
                   }
-                  style={[GlassCard, styles.docCard, isFirst && styles.docCardActive]}>
-                  {isFirst && <View style={styles.goldLeftBorder} />}
+                  style={[GlassCard, styles.docCard]}>
+                  <View style={styles.goldLeftBorder} />
                   <View style={styles.docCardInner}>
                     <View style={styles.docInfo}>
                       <Text style={styles.docName} numberOfLines={1}>
@@ -158,7 +138,7 @@ export default function HomeScreen() {
                           {riskScore}
                         </Text>
                       </View>
-                      <Ionicons name="chevron-forward" size={16} color={C.textMuted} />
+                      <Ionicons name="chevron-forward" size={14} color={C.textMuted} />
                     </View>
                   </View>
                 </TouchableOpacity>
@@ -167,6 +147,13 @@ export default function HomeScreen() {
           )}
         </View>
       </ScrollView>
+
+      {/* FAB */}
+      <TouchableOpacity
+        style={styles.fab}
+        onPress={() => router.push('/upload' as Href)}>
+        <Ionicons name="add" size={28} color={C.elevated} />
+      </TouchableOpacity>
     </SafeAreaView>
   );
 }
@@ -177,21 +164,21 @@ const styles = StyleSheet.create({
     backgroundColor: C.bg,
   },
   scroll: {
-    paddingHorizontal: 20,
-    paddingBottom: 100,
+    paddingHorizontal: 22,
+    paddingBottom: 120,
   },
   topBar: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     paddingTop: 16,
-    paddingBottom: 8,
+    paddingBottom: 20,
   },
   wordmark: {
     fontSize: 13,
     fontWeight: '800',
-    letterSpacing: 4,
-    color: C.gold,
+    letterSpacing: 5,
+    color: C.ink,
   },
   settingsBtn: {
     width: 36,
@@ -203,68 +190,103 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: C.border,
   },
-  hero: {
-    paddingTop: 28,
-    paddingBottom: 32,
-    gap: 12,
+  eyebrow: {
+    fontSize: 10,
+    fontWeight: '700',
+    letterSpacing: 3,
+    color: C.gold,
+    marginBottom: 10,
   },
   heroHeading: {
-    fontSize: 34,
-    fontWeight: '700',
-    letterSpacing: -0.5,
-    color: C.textPrimary,
-    lineHeight: 40,
+    fontFamily: Serif,
+    fontSize: 36,
+    color: C.ink,
+    lineHeight: 44,
+    marginBottom: 24,
   },
-  goldUnderline: {
-    height: 2,
-    backgroundColor: C.gold,
-    borderRadius: 1,
-    marginTop: -4,
+  heroAccent: {
+    fontFamily: Serif,
+    fontSize: 36,
+    color: C.gold,
+    fontStyle: 'italic',
+    lineHeight: 44,
   },
-  heroSub: {
-    fontSize: 15,
-    color: C.textSecondary,
-    fontWeight: '500',
-    letterSpacing: 1,
+  divider: {
+    height: 1,
+    backgroundColor: C.border,
+    marginBottom: 24,
   },
   statsRow: {
     flexDirection: 'row',
     gap: 10,
-    marginBottom: 28,
+    marginBottom: 20,
   },
   statCard: {
     flex: 1,
     alignItems: 'center',
     paddingVertical: 16,
     paddingHorizontal: 8,
-    gap: 6,
+    gap: 5,
   },
   statValue: {
-    fontSize: 22,
+    fontSize: 24,
     fontWeight: '700',
-    color: C.textPrimary,
+    color: C.ink,
+    fontFamily: Serif,
   },
   statLabel: {
-    fontSize: 9,
+    fontSize: 8,
     fontWeight: '700',
     letterSpacing: 1.5,
-    color: C.gold,
+    color: C.textMuted,
     textAlign: 'center',
   },
-  section: {
+  draftCta: {
+    ...GlassCard,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    padding: 16,
+    marginBottom: 28,
+  },
+  draftCtaLeft: {
+    flexDirection: 'row',
+    alignItems: 'center',
     gap: 12,
+  },
+  draftCtaIcon: {
+    width: 36,
+    height: 36,
+    borderRadius: 10,
+    backgroundColor: C.ink,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  draftCtaTitle: {
+    fontSize: 15,
+    fontWeight: '700',
+    color: C.textPrimary,
+    letterSpacing: -0.2,
+  },
+  draftCtaSub: {
+    fontSize: 11,
+    color: C.textMuted,
+    marginTop: 1,
+  },
+  section: {
+    gap: 10,
   },
   sectionHeader: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 4,
+    marginBottom: 6,
   },
   sectionTitle: {
-    fontSize: 16,
+    fontSize: 10,
     fontWeight: '700',
-    color: C.textPrimary,
-    letterSpacing: -0.3,
+    letterSpacing: 3,
+    color: C.textSecondary,
   },
   sectionLink: {
     fontSize: 13,
@@ -277,7 +299,7 @@ const styles = StyleSheet.create({
     gap: 10,
   },
   emptyTitle: {
-    fontSize: 16,
+    fontSize: 15,
     fontWeight: '600',
     color: C.textPrimary,
   },
@@ -287,23 +309,20 @@ const styles = StyleSheet.create({
   },
   uploadCta: {
     marginTop: 8,
-    backgroundColor: C.gold,
+    backgroundColor: C.ink,
     paddingHorizontal: 24,
-    paddingVertical: 12,
+    paddingVertical: 11,
     borderRadius: Radius.button,
   },
   uploadCtaText: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '700',
-    color: C.bg,
+    color: C.elevated,
+    letterSpacing: 0.5,
   },
   docCard: {
     overflow: 'hidden',
     paddingLeft: 0,
-  },
-  docCardActive: {
-    borderLeftColor: C.gold,
-    borderLeftWidth: 2,
   },
   goldLeftBorder: {
     position: 'absolute',
@@ -320,10 +339,11 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-between',
     padding: 16,
+    paddingLeft: 18,
   },
   docInfo: {
     flex: 1,
-    gap: 6,
+    gap: 5,
     marginRight: 12,
   },
   docName: {
@@ -352,44 +372,35 @@ const styles = StyleSheet.create({
   },
   docRight: {
     alignItems: 'center',
-    gap: 8,
+    gap: 6,
   },
   riskCircle: {
-    width: 44,
-    height: 44,
-    borderRadius: 22,
+    width: 42,
+    height: 42,
+    borderRadius: 21,
     borderWidth: 2,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: C.surface,
   },
   riskScore: {
-    fontSize: 14,
+    fontSize: 13,
     fontWeight: '700',
   },
-  draftCta: {
-    ...GlassCard,
-    flexDirection: 'row',
+  fab: {
+    position: 'absolute',
+    right: 22,
+    bottom: 24,
+    width: 56,
+    height: 56,
+    borderRadius: 28,
+    backgroundColor: C.ink,
     alignItems: 'center',
-    justifyContent: 'space-between',
-    padding: 16,
-    marginBottom: 24,
-  },
-  draftCtaLeft: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 12,
-  },
-  draftCtaText: {
-    gap: 2,
-  },
-  draftCtaTitle: {
-    fontSize: 15,
-    fontWeight: '700',
-    color: C.textPrimary,
-  },
-  draftCtaSub: {
-    fontSize: 12,
-    color: C.textSecondary,
+    justifyContent: 'center',
+    shadowColor: '#000',
+    shadowOpacity: 0.18,
+    shadowRadius: 12,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 8,
   },
 });
