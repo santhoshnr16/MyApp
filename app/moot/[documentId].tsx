@@ -23,31 +23,6 @@ import type { ArgumentStrength, MootMessage, MootPhase, MootRole } from '@/types
 
 const COUNSEL_NAME = 'Sr. Adv. Rajan Iyer';
 
-function ScalesAnimation() {
-  const sway = useRef(new Animated.Value(0)).current;
-
-  useEffect(() => {
-    Animated.loop(
-      Animated.sequence([
-        Animated.timing(sway, { toValue: 1, duration: 1600, useNativeDriver: true }),
-        Animated.timing(sway, { toValue: -1, duration: 1600, useNativeDriver: true }),
-        Animated.timing(sway, { toValue: 0, duration: 800, useNativeDriver: true }),
-      ])
-    ).start();
-  }, [sway]);
-
-  const rotate = sway.interpolate({
-    inputRange: [-1, 0, 1],
-    outputRange: ['-6deg', '0deg', '6deg'],
-  });
-
-  return (
-    <Animated.View style={{ transform: [{ rotate }] }}>
-      <Ionicons name="scale" size={52} color={C.gold} />
-    </Animated.View>
-  );
-}
-
 // ─── Role Selection ───────────────────────────────────────────────────────────
 
 interface RoleSelectionProps {
@@ -251,10 +226,10 @@ export default function MootScreen() {
   const router = useRouter();
   const { documentId } = useLocalSearchParams<{ documentId: string }>();
   const { state } = useDocumentContext();
+  const activeDocumentId = typeof documentId === 'string' ? documentId : '';
 
-  if (!documentId) return null;
+  const document = activeDocumentId ? state.documents[activeDocumentId] : undefined;
 
-  const document = state.documents[documentId];
   const documentName = document?.filename ?? 'Unknown Document';
   const documentType = document?.analysis?.documentType ?? 'Legal Document';
   const documentSummary =
@@ -275,6 +250,8 @@ export default function MootScreen() {
       listRef.current?.scrollToEnd({ animated: true });
     }, 100);
   }, []);
+
+  if (!activeDocumentId) return null;
 
   const handleEnterCourtroom = () => {
     if (!selectedRole) return;
@@ -300,7 +277,7 @@ export default function MootScreen() {
 
     try {
       const result = await sendMootArgument({
-        documentId,
+        documentId: activeDocumentId,
         documentSummary,
         documentType,
         jurisdiction: 'India',
@@ -312,10 +289,10 @@ export default function MootScreen() {
       });
 
       if (result.isVerdict) {
-        await saveVerdict(documentId, result.verdict);
+        await saveVerdict(activeDocumentId, result.verdict);
         router.replace({
           pathname: '/moot/verdict/[documentId]',
-          params: { documentId },
+          params: { documentId: activeDocumentId },
         } as unknown as Href);
         return;
       }

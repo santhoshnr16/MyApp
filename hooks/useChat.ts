@@ -19,6 +19,9 @@ export function useChat(documentId: string) {
   const messages = useMemo(() => state.chatByDocument[documentId] ?? [], [state, documentId]);
 
   useEffect(() => {
+    if (!documentId) {
+      return;
+    }
     let mounted = true;
     loadChatMessages(documentId).then((stored) => {
       if (!mounted) {
@@ -33,6 +36,9 @@ export function useChat(documentId: string) {
 
   const persist = useCallback(
     async (updatedMessages: ChatMessage[]) => {
+      if (!documentId) {
+        return;
+      }
       await saveChatMessages(documentId, updatedMessages);
     },
     [documentId]
@@ -40,6 +46,9 @@ export function useChat(documentId: string) {
 
   const sendMessage = useCallback(
     async (text: string) => {
+      if (!documentId) {
+        return;
+      }
       if (!text.trim()) {
         return;
       }
@@ -78,6 +87,9 @@ export function useChat(documentId: string) {
   );
 
   const clearMessages = useCallback(async () => {
+    if (!documentId) {
+      return;
+    }
     dispatch({ type: 'SET_CHAT_HISTORY', payload: { documentId, messages: [] } });
     await clearChatMessages(documentId);
   }, [dispatch, documentId]);

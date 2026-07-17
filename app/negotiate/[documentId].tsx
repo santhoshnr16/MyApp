@@ -16,7 +16,7 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius, RiskLevelColors } from '@/constants/colors';
+import { C, GlassCard, Radius } from '@/constants/colors';
 import { analyseForNegotiation } from '@/services/negotiationAI';
 import type {
   NegotiationContext,
@@ -293,7 +293,7 @@ export default function NegotiateScreen() {
 
               {analysis.finalRecommendation.length > 0 && (
                 <View style={[GlassCard, rStyles.recommendBlock]}>
-                  <Text style={rStyles.recommendLabel}>COUNSEL'S RECOMMENDATION</Text>
+                  <Text style={rStyles.recommendLabel}>COUNSEL&apos;S RECOMMENDATION</Text>
                   <Text style={rStyles.recommendText}>{analysis.finalRecommendation}</Text>
                 </View>
               )}

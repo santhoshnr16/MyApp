@@ -51,7 +51,7 @@ export function VerdictCard({ verdict, onRetry, onBackToSummary }: VerdictCardPr
       <View style={[GlassCard, styles.remarksCard]}>
         <View style={styles.remarksTop}>
           <Ionicons name="scale" size={14} color={C.gold} />
-          <Text style={styles.remarksLabel}>JUDGE'S REMARKS</Text>
+          <Text style={styles.remarksLabel}>JUDGE&apos;S REMARKS</Text>
         </View>
         <Text style={styles.remarksText}>{verdict.judgeRemarks}</Text>
       </View>

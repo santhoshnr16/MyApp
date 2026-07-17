@@ -1,6 +1,6 @@
 import { StyleSheet, Text, View } from 'react-native';
 
-import { AppColors, Radius } from '@/constants/colors';
+import { AppColors } from '@/constants/colors';
 import type { RiskLevel } from '@/types/document';
 import { useColorScheme } from '@/hooks/use-color-scheme';
 

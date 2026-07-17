@@ -231,7 +231,7 @@ export default function VerdictScreen() {
         <View style={[GlassCard, styles.judgeCard]}>
           <View style={styles.judgeTop}>
             <Ionicons name="scale" size={18} color={C.gold} />
-            <Text style={styles.judgeLabel}>JUDGE'S REMARKS</Text>
+            <Text style={styles.judgeLabel}>JUDGE&apos;S REMARKS</Text>
           </View>
           <Text style={styles.judgeRemarks}>{verdict.judgeRemarks}</Text>
         </View>

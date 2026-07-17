@@ -15,13 +15,13 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { C, GlassCard, Radius } from '@/constants/colors';
+import { generateStructure, generateDocument, formatDocument } from '@/services/draftAI';
+import { saveDraft } from '@/storage/draftStorage';
+import type { DraftDetails, DocumentType, TriggerFlag, Party, DocumentStructure } from '@/types/draft';
 
 function generateId(): string {
   return Date.now().toString(36) + Math.random().toString(36).slice(2, 9);
 }
-import { generateStructure, generateDocument, formatDocument } from '@/services/draftAI';
-import { saveDraft } from '@/storage/draftStorage';
-import type { DraftDetails, DocumentType, TriggerFlag, Party, DocumentStructure } from '@/types/draft';
 
 const DOCUMENT_TYPES: DocumentType[] = [
   'NDA',

@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
-import { useMemo, useRef } from 'react';
+import { useMemo, useState } from 'react';
 import {
   FlatList,
   KeyboardAvoidingView,
@@ -14,12 +14,11 @@ import {
 } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 
-import { C, GlassCard, Radius, Serif } from '@/constants/colors';
+import { C, Radius, Serif } from '@/constants/colors';
 import { SUGGESTED_QUESTIONS } from '@/constants/prompts';
 import { useDocumentContext } from '@/context/document-context';
 import { useChat } from '@/hooks/useChat';
 import type { ChatMessage } from '@/types/chat';
-import { useState } from 'react';
 
 function Bubble({ message }: { message: ChatMessage }) {
   const isUser = message.sender === 'user';
@@ -77,18 +76,19 @@ export default function ChatScreen() {
   const router = useRouter();
   const { documentId } = useLocalSearchParams<{ documentId: string }>();
   const { state } = useDocumentContext();
+  const activeDocumentId = typeof documentId === 'string' ? documentId : '';
   const [inputValue, setInputValue] = useState('');
 
-  if (!documentId) return null;
-
-  const document = state.documents[documentId];
-  const { messages, isChatting, sendMessage, clearMessages } = useChat(documentId);
+  const document = activeDocumentId ? state.documents[activeDocumentId] : undefined;
+  const { messages, isChatting, sendMessage, clearMessages } = useChat(activeDocumentId);
 
   const suggestedQuestions = useMemo(() => {
     const docType = document?.analysis?.documentType?.toLowerCase() ?? 'default';
     const list = (SUGGESTED_QUESTIONS as unknown as Record<string, string[]>)[docType];
     return list ?? SUGGESTED_QUESTIONS.default;
   }, [document?.analysis?.documentType]);
+
+  if (!activeDocumentId) return null;
 
   const handleSend = () => {
     if (!inputValue.trim()) return;

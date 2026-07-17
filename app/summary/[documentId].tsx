@@ -1,6 +1,6 @@
 import { Ionicons } from '@expo/vector-icons';
 import { type Href, useLocalSearchParams, useRouter } from 'expo-router';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   ScrollView,
   Share,
@@ -42,21 +42,21 @@ export default function SummaryScreen() {
   const router = useRouter();
   const { documentId } = useLocalSearchParams<{ documentId: string }>();
   const { state, dispatch } = useDocumentContext();
+  const activeDocumentId = typeof documentId === 'string' ? documentId : '';
   const [activeTab, setActiveTab] = useState<Tab>('Summary');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  if (!documentId) return null;
-
-  const document = state.documents[documentId];
+  const document = activeDocumentId ? state.documents[activeDocumentId] : undefined;
 
   useEffect(() => {
+    if (!activeDocumentId) return;
     if (document?.analysis) return;
     const load = async () => {
       setLoading(true);
       setError(null);
       try {
-        const summary = await getSummary(documentId);
+        const summary = await getSummary(activeDocumentId);
         const analysis: DocumentAnalysis = {
           summary: summary.summary,
           keyPoints: summary.keyPoints,
@@ -65,7 +65,7 @@ export default function SummaryScreen() {
           riskScore: summary.riskScore,
           documentType: summary.documentType,
         };
-        dispatch({ type: 'SET_DOCUMENT_ANALYSIS', payload: { documentId, analysis } });
+        dispatch({ type: 'SET_DOCUMENT_ANALYSIS', payload: { documentId: activeDocumentId, analysis } });
       } catch {
         setError('Unable to load summary. Please try again.');
       } finally {
@@ -73,7 +73,9 @@ export default function SummaryScreen() {
       }
     };
     load();
-  }, [dispatch, document?.analysis, documentId]);
+  }, [dispatch, document?.analysis, activeDocumentId]);
+
+  if (!activeDocumentId) return null;
 
   const analysis = document?.analysis;
   const riskLevel = mapRiskLevel(analysis?.riskScore);
@@ -134,19 +136,19 @@ export default function SummaryScreen() {
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionBtn, styles.actionBtnHalf, styles.actionBtnGold]}
-            onPress={() => router.push({ pathname: '/moot/[documentId]', params: { documentId } } as unknown as Href)}>
+            onPress={() => router.push({ pathname: '/moot/[documentId]', params: { documentId: activeDocumentId } } as unknown as Href)}>
             <Ionicons name="scale-outline" size={15} color={C.elevated} />
             <Text style={[styles.actionBtnText, styles.actionBtnTextGold]}>Start Moot</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionBtn, styles.actionBtnHalf]}
-            onPress={() => router.push({ pathname: '/negotiate/[documentId]', params: { documentId } } as unknown as Href)}>
+            onPress={() => router.push({ pathname: '/negotiate/[documentId]', params: { documentId: activeDocumentId } } as unknown as Href)}>
             <Ionicons name="briefcase-outline" size={15} color={C.textSecondary} />
             <Text style={styles.actionBtnText}>Negotiate</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={[styles.actionBtn, styles.actionBtnHalf]}
-            onPress={() => router.push({ pathname: '/assist/[documentId]', params: { documentId } } as unknown as Href)}>
+            onPress={() => router.push({ pathname: '/assist/[documentId]', params: { documentId: activeDocumentId } } as unknown as Href)}>
             <Ionicons name="chatbubble-outline" size={15} color={C.textSecondary} />
             <Text style={styles.actionBtnText}>Explain</Text>
           </TouchableOpacity>
