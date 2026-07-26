@@ -82,6 +82,8 @@ jobs:
     if: github.event_name != 'pull_request'
 
     runs-on: ubuntu-latest
+    env:
+      BASE_URL: ${{ needs.deploy.outputs.page_url }}
 
     steps:
       - name: Checkout repository
