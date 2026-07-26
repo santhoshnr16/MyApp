@@ -32,6 +32,7 @@ BASE_URL=https://username.github.io/repository-name/ npm run automation:reports
 - GitHub Pages deployment runs on non-PR events.
 - Live Selenium runs only after deployment verification succeeds.
 - Artifacts are uploaded for 30 days.
+- Repository settings must have GitHub Pages enabled with source set to GitHub Actions, or the deploy step will fail with HTTP 404.
 
 ## Troubleshooting
 
