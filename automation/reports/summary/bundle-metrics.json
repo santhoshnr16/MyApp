@@ -1,0 +1,51 @@
+{
+  "baseUrl": "https://username.github.io/project-name/",
+  "seleniumMetrics": {
+    "Total Tests": 300,
+    "Executed": 0,
+    "Passed": 0,
+    "Failed": 0,
+    "Skipped": 0,
+    "Success Rate": "0.00%",
+    "Execution Stamp": "2026-07-26T15-23-20-313Z",
+    "Deployment URL": "https://username.github.io/project-name/",
+    "suiteName": "selenium",
+    "failures": []
+  },
+  "appiumMetrics": {
+    "Total Tests": 300,
+    "Executed": 0,
+    "Passed": 0,
+    "Failed": 0,
+    "Skipped": 0,
+    "Success Rate": "0.00%",
+    "Execution Stamp": "2026-07-26T15-23-20-324Z",
+    "Deployment URL": "https://username.github.io/project-name/",
+    "suiteName": "appium",
+    "failures": []
+  },
+  "vulnerabilityMetrics": {
+    "Total Tests": 300,
+    "Executed": 0,
+    "Passed": 0,
+    "Failed": 0,
+    "Skipped": 0,
+    "Success Rate": "0.00%",
+    "Execution Stamp": "2026-07-26T15-23-20-333Z",
+    "Deployment URL": "https://username.github.io/project-name/",
+    "suiteName": "vulnerability",
+    "failures": []
+  },
+  "loadMetrics": {
+    "Total Tests": 300,
+    "Executed": 0,
+    "Passed": 0,
+    "Failed": 0,
+    "Skipped": 0,
+    "Success Rate": "0.00%",
+    "Execution Stamp": "2026-07-26T15-23-20-343Z",
+    "Deployment URL": "https://username.github.io/project-name/",
+    "suiteName": "load",
+    "failures": []
+  }
+}
