@@ -1,0 +1,26 @@
+[
+  {
+    "testId": "SEL-001",
+    "module": "Authentication",
+    "testName": "Verify login page loads",
+    "status": "PASSED",
+    "executionTime": "1200ms",
+    "priority": "HIGH"
+  },
+  {
+    "testId": "SEL-002",
+    "module": "Navigation",
+    "testName": "Verify home page navigation",
+    "status": "PASSED",
+    "executionTime": "900ms",
+    "priority": "MEDIUM"
+  },
+  {
+    "testId": "SEL-003",
+    "module": "UI Validation",
+    "testName": "Verify UI elements visibility",
+    "status": "PASSED",
+    "executionTime": "1100ms",
+    "priority": "HIGH"
+  }
+]

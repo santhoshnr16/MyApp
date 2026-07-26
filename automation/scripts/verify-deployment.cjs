@@ -48,26 +48,16 @@ async function main() {
 
   let attempt = 0;
   let result;
-  let healthyStreak = 0;
-  const maxAttempts = waitMode ? 60 : 1;
   do {
     attempt += 1;
     result = await verifyOnce(baseUrl);
     if (result.deploymentLooksHealthy) {
-      healthyStreak += 1;
-      if (!waitMode || healthyStreak >= 2) {
-        break;
-      }
-    } else {
-      healthyStreak = 0;
-    }
-    if (attempt >= maxAttempts) {
       break;
     }
-    const waitMs = waitMode ? Math.min(5000 + attempt * 5000, 30000) : 0;
-    if (waitMs > 0) {
-      await delay(waitMs);
+    if (!waitMode || attempt >= 30) {
+      break;
     }
+    await delay(10000);
   } while (true);
 
   const reportDir = path.join(reportsRoot(), 'selenium');
