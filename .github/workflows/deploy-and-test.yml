@@ -25,6 +25,7 @@ jobs:
   build:
     name: Build and Analyze
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -42,41 +43,46 @@ jobs:
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@v5
-        with:
-          token: ${{ secrets.PAGES_ENABLEMENT_TOKEN }}
-          enablement: true
 
       - name: Static analysis
         run: npm run lint
 
-      - name: Build static site
-        run: npm run build:web
+      - name: Build Expo web app
+        run: npx expo export --platform web
 
       - name: Upload build artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: dist
 
+
   deploy:
     name: Deploy to GitHub Pages
     needs: build
     if: github.event_name != 'pull_request'
+
     runs-on: ubuntu-latest
+
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
+
     outputs:
       page_url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
       - name: Deploy Pages artifact
         id: deployment
         uses: actions/deploy-pages@v4
 
+
   live-e2e:
     name: Verify Deployment and Run Selenium
     needs: deploy
     if: github.event_name != 'pull_request'
+
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
