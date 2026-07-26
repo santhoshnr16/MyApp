@@ -8,7 +8,7 @@
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
-    "build:web": "npx expo export --platform web --output-dir dist",
+    "build:web": "EXPO_BASE_URL=/MyApp npx expo export --platform web --output-dir dist && node automation/scripts/postprocess-gh-pages.cjs",
     "lint": "expo lint",
     "automation:verify": "node automation/scripts/verify-deployment.cjs",
     "automation:selenium": "node automation/scripts/run-selenium.cjs",
