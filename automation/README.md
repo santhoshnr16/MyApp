@@ -33,6 +33,7 @@ BASE_URL=https://username.github.io/repository-name/ npm run automation:reports
 - Live Selenium runs only after deployment verification succeeds.
 - Artifacts are uploaded for 30 days.
 - Repository settings must have GitHub Pages enabled with source set to GitHub Actions, or the deploy step will fail with HTTP 404.
+- If Pages is not already enabled, add a repository secret named `PAGES_ENABLEMENT_TOKEN` containing a PAT with `repo` scope so `actions/configure-pages` can enable the site automatically.
 
 ## Troubleshooting
 
