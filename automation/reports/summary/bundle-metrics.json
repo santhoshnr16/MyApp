@@ -1,14 +1,14 @@
 {
-  "baseUrl": "https://username.github.io/project-name/",
+  "baseUrl": "https://santhoshnr16.github.io/MyApp/",
   "seleniumMetrics": {
     "Total Tests": 300,
-    "Executed": 0,
-    "Passed": 0,
+    "Executed": 300,
+    "Passed": 300,
     "Failed": 0,
     "Skipped": 0,
-    "Success Rate": "0.00%",
-    "Execution Stamp": "2026-07-26T15-23-20-313Z",
-    "Deployment URL": "https://username.github.io/project-name/",
+    "Success Rate": "100.00%",
+    "Execution Stamp": "2026-07-26T17-40-12-400Z",
+    "Deployment URL": "https://santhoshnr16.github.io/MyApp/",
     "suiteName": "selenium",
     "failures": []
   },
@@ -19,8 +19,8 @@
     "Failed": 0,
     "Skipped": 0,
     "Success Rate": "0.00%",
-    "Execution Stamp": "2026-07-26T15-23-20-324Z",
-    "Deployment URL": "https://username.github.io/project-name/",
+    "Execution Stamp": "2026-07-26T17-40-12-411Z",
+    "Deployment URL": "https://santhoshnr16.github.io/MyApp/",
     "suiteName": "appium",
     "failures": []
   },
@@ -31,8 +31,8 @@
     "Failed": 0,
     "Skipped": 0,
     "Success Rate": "0.00%",
-    "Execution Stamp": "2026-07-26T15-23-20-333Z",
-    "Deployment URL": "https://username.github.io/project-name/",
+    "Execution Stamp": "2026-07-26T17-40-12-420Z",
+    "Deployment URL": "https://santhoshnr16.github.io/MyApp/",
     "suiteName": "vulnerability",
     "failures": []
   },
@@ -43,8 +43,8 @@
     "Failed": 0,
     "Skipped": 0,
     "Success Rate": "0.00%",
-    "Execution Stamp": "2026-07-26T15-23-20-343Z",
-    "Deployment URL": "https://username.github.io/project-name/",
+    "Execution Stamp": "2026-07-26T17-40-12-427Z",
+    "Deployment URL": "https://santhoshnr16.github.io/MyApp/",
     "suiteName": "load",
     "failures": []
   }

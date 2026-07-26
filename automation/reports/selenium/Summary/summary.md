@@ -1,9 +1,9 @@
 # selenium Execution Summary
 
-- Deployment URL: https://username.github.io/project-name/
+- Deployment URL: https://santhoshnr16.github.io/MyApp/
 - Total Tests: 300
-- Passed: 0
+- Passed: 300
 - Failed: 0
 - Skipped: 0
-- Success Rate: 0.00%
-- Run Stamp: 2026-07-26T15-23-20-315Z
+- Success Rate: 100.00%
+- Run Stamp: 2026-07-26T17-40-12-403Z

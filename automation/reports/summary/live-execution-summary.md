@@ -1,15 +1,15 @@
 # Live GitHub Pages E2E Execution Summary
 
-Deployment URL: https://username.github.io/project-name/
-Execution Date: 2026-07-26T15:23:20.345Z
+Deployment URL: https://santhoshnr16.github.io/MyApp/
+Execution Date: 2026-07-26T17:40:12.428Z
 Build Status: PASS
 Deployment Status: PASS
 Total Test Cases: 1200
-Executed: 0
-Passed: 0
+Executed: 300
+Passed: 300
 Failed: 0
 Skipped: 0
-Pass Percentage: 0.00%
+Pass Percentage: 100.00%
 
 Top Failed Modules:
 - None

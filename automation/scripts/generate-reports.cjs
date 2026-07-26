@@ -1,4 +1,5 @@
 const path = require('node:path');
+const fs = require('node:fs');
 const { createAllTestCases } = require('../data/test-cases.cjs');
 const { ensureAutomationDirs, writeExcel, writeHtml, writeJson, writeText } = require('../utils.cjs');
 const { reportsRoot, runStamp, requiredBaseUrl } = require('../config.cjs');
@@ -90,8 +91,21 @@ async function main() {
   await ensureAutomationDirs();
   const baseUrl = requiredBaseUrl();
   const suites = createAllTestCases();
+  const seleniumExecutionFile = path.join(
+  reportsRoot(),
+  'selenium',
+  'execution-results.json'
+);
 
-  const seleniumRecords = suites.selenium;
+let seleniumRecords = suites.selenium;
+
+if (fs.existsSync(seleniumExecutionFile)) {
+  const seleniumExecution = JSON.parse(
+    fs.readFileSync(seleniumExecutionFile, 'utf8')
+  );
+
+  seleniumRecords = seleniumExecution.results;
+}
   const seleniumMetrics = await writeSuiteReports('selenium', seleniumRecords, baseUrl);
   const appiumMetrics = await writeSuiteReports('appium', suites.appium, baseUrl);
   const vulnerabilityMetrics = await writeSuiteReports('vulnerability', suites.vulnerability, baseUrl);
