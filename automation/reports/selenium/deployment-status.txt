@@ -2,15 +2,15 @@
   "baseUrl": "https://santhoshnr16.github.io/MyApp/",
   "status": 200,
   "ok": true,
-  "htmlLength": 43901,
+  "htmlLength": 43937,
   "cssAssets": 0,
   "jsAssets": 1,
   "assetResults": [
     {
-      "assetUrl": "https://santhoshnr16.github.io/_expo/static/js/web/entry-90be160052eb092e094ec33605d1e237.js",
-      "status": 404,
-      "ok": false
+      "assetUrl": "https://santhoshnr16.github.io/MyApp/_expo/static/js/web/entry-4278e92431bbc36e773c1f805aff5d0f.js",
+      "status": 200,
+      "ok": true
     }
   ],
-  "timestamp": "2026-07-26T16:18:23.273Z"
+  "timestamp": "2026-07-26T16:42:12.627Z"
 }

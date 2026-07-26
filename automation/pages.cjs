@@ -18,8 +18,15 @@ class BasePage {
     this.baseUrl = baseUrl;
   }
 
+  buildUrl(route) {
+    if (route === '/') {
+      return this.baseUrl;
+    }
+    return new URL(route.replace(/^\//, ''), this.baseUrl).toString();
+  }
+
   async open(route) {
-    const target = new URL(route, this.baseUrl).toString();
+    const target = this.buildUrl(route);
     await this.driver.get(target);
     await this.driver.wait(async () => {
       const state = await this.driver.executeScript('return document.readyState');
