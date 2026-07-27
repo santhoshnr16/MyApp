@@ -1,0 +1,6 @@
+"Suite Name","Total Cases","Executed","Passed","Failed","Skipped","Success Rate","Status"
+"Appium Mobile Testing","300","300","300","0","0","100.0%","PASSED"
+"Selenium Web Testing","300","300","300","0","0","100.0%","PASSED"
+"Vulnerability Testing","300","300","300","0","0","100.0%","PASSED"
+"Load & Performance Testing","300","300","300","0","0","100.0%","PASSED"
+"OVERALL TOTAL","1200","1200","1200","0","0","100.0%","PASSED"
