@@ -672,5 +672,8 @@ module.exports = {
   generateUniqueAppiumCases,
   generateUniqueVulnerabilityCases,
   generateUniqueLoadCases,
+  createSeleniumCases: generateUniqueSeleniumCases,
+  createPlannedCases: generateUniqueAppiumCases,
+  createSuiteCases: generateUniqueAppiumCases,
   createAllTestCases,
 };
