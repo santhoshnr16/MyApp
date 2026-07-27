@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Worksheet ss:Name="Summary">
+  <Table>
+   <Row><Cell><Data ss:Type="String">Test Suite</Data></Cell><Cell><Data ss:Type="String">Selenium Testing</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Total Tests</Data></Cell><Cell><Data ss:Type="Number">300</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Passed</Data></Cell><Cell><Data ss:Type="Number">300</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Failed</Data></Cell><Cell><Data ss:Type="Number">0</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Success Rate</Data></Cell><Cell><Data ss:Type="String">100.0%</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Status</Data></Cell><Cell><Data ss:Type="String">PASSED</Data></Cell></Row>
+  </Table>
+ </Worksheet>
+</Workbook>

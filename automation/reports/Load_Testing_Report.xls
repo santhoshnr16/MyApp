@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<?mso-application progid="Excel.Sheet"?>
+<Workbook xmlns="urn:schemas-microsoft-com:office:spreadsheet"
+ xmlns:o="urn:schemas-microsoft-com:office:office"
+ xmlns:x="urn:schemas-microsoft-com:office:excel"
+ xmlns:ss="urn:schemas-microsoft-com:office:spreadsheet">
+ <Worksheet ss:Name="Performance">
+  <Table>
+   <Row><Cell><Data ss:Type="String">Metric</Data></Cell><Cell><Data ss:Type="String">Value</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Endpoint</Data></Cell><Cell><Data ss:Type="String">https://TanveerS24.github.io/Policy-Lens/</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Total Requests</Data></Cell><Cell><Data ss:Type="Number">50</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Successful Requests</Data></Cell><Cell><Data ss:Type="String">50 (100.0%)</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Throughput (req/s)</Data></Cell><Cell><Data ss:Type="Number">56.37</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Average Latency (ms)</Data></Cell><Cell><Data ss:Type="Number">77.54</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Min Latency (ms)</Data></Cell><Cell><Data ss:Type="Number">51</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Max Latency (ms)</Data></Cell><Cell><Data ss:Type="Number">260</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">P50 / P90 / P99 (ms)</Data></Cell><Cell><Data ss:Type="String">52 / 260 / 260</Data></Cell></Row>
+   <Row><Cell><Data ss:Type="String">Status</Data></Cell><Cell><Data ss:Type="String">PASSED</Data></Cell></Row>
+  </Table>
+ </Worksheet>
+</Workbook>
