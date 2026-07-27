@@ -1,300 +1,300 @@
-SEL-001 | PASSED | Home navigation check 1
-SEL-002 | PASSED | Home text-presence check 2
-SEL-003 | PASSED | Home visibility check 3
-SEL-004 | PASSED | Home console-clean check 4
-SEL-005 | PASSED | Home navigation check 5
-SEL-006 | PASSED | Home visibility check 6
-SEL-007 | PASSED | Home navigation check 7
-SEL-008 | PASSED | Home console-clean check 8
-SEL-009 | PASSED | Home visibility check 9
-SEL-010 | PASSED | Home text-presence check 10
-SEL-011 | PASSED | Home navigation check 11
-SEL-012 | PASSED | Home console-clean check 12
-SEL-013 | PASSED | Home navigation check 13
-SEL-014 | PASSED | Home text-presence check 14
-SEL-015 | PASSED | Home visibility check 15
-SEL-016 | PASSED | Home console-clean check 16
-SEL-017 | PASSED | Home navigation check 17
-SEL-018 | PASSED | Home visibility check 18
-SEL-019 | PASSED | Home navigation check 19
-SEL-020 | PASSED | Home console-clean check 20
-SEL-021 | PASSED | Home visibility check 21
-SEL-022 | PASSED | Home text-presence check 22
-SEL-023 | PASSED | Home navigation check 23
-SEL-024 | PASSED | Home console-clean check 24
-SEL-025 | PASSED | Home navigation check 25
-SEL-026 | PASSED | Home text-presence check 26
-SEL-027 | PASSED | Home visibility check 27
-SEL-028 | PASSED | Home console-clean check 28
-SEL-029 | PASSED | Home navigation check 29
-SEL-030 | PASSED | Home visibility check 30
-SEL-031 | PASSED | Home navigation check 31
-SEL-032 | PASSED | Home console-clean check 32
-SEL-033 | PASSED | Home visibility check 33
-SEL-034 | PASSED | Home text-presence check 34
-SEL-035 | PASSED | Home navigation check 35
-SEL-036 | PASSED | Home console-clean check 36
-SEL-037 | PASSED | Home navigation check 37
-SEL-038 | PASSED | Home text-presence check 38
-SEL-039 | PASSED | Home visibility check 39
-SEL-040 | PASSED | Home console-clean check 40
-SEL-041 | PASSED | Home navigation check 41
-SEL-042 | PASSED | Home visibility check 42
-SEL-043 | PASSED | Home navigation check 43
-SEL-044 | PASSED | Home console-clean check 44
-SEL-045 | PASSED | Home visibility check 45
-SEL-046 | PASSED | Home text-presence check 46
-SEL-047 | PASSED | Home navigation check 47
-SEL-048 | PASSED | Home console-clean check 48
-SEL-049 | PASSED | Home navigation check 49
-SEL-050 | PASSED | Home text-presence check 50
-SEL-051 | PASSED | Home visibility check 51
-SEL-052 | PASSED | Home console-clean check 52
-SEL-053 | PASSED | Home navigation check 53
-SEL-054 | PASSED | Home visibility check 54
-SEL-055 | PASSED | Home navigation check 55
-SEL-056 | PASSED | Home console-clean check 56
-SEL-057 | PASSED | Home visibility check 57
-SEL-058 | PASSED | Home text-presence check 58
-SEL-059 | PASSED | Home navigation check 59
-SEL-060 | PASSED | Home console-clean check 60
-SEL-061 | PASSED | Upload navigation check 1
-SEL-062 | PASSED | Upload text-presence check 2
-SEL-063 | PASSED | Upload visibility check 3
-SEL-064 | PASSED | Upload console-clean check 4
-SEL-065 | PASSED | Upload navigation check 5
-SEL-066 | PASSED | Upload visibility check 6
-SEL-067 | PASSED | Upload navigation check 7
-SEL-068 | PASSED | Upload console-clean check 8
-SEL-069 | PASSED | Upload visibility check 9
-SEL-070 | PASSED | Upload text-presence check 10
-SEL-071 | PASSED | Upload navigation check 11
-SEL-072 | PASSED | Upload console-clean check 12
-SEL-073 | PASSED | Upload navigation check 13
-SEL-074 | PASSED | Upload text-presence check 14
-SEL-075 | PASSED | Upload visibility check 15
-SEL-076 | PASSED | Upload console-clean check 16
-SEL-077 | PASSED | Upload navigation check 17
-SEL-078 | PASSED | Upload visibility check 18
-SEL-079 | PASSED | Upload navigation check 19
-SEL-080 | PASSED | Upload console-clean check 20
-SEL-081 | PASSED | Upload visibility check 21
-SEL-082 | PASSED | Upload text-presence check 22
-SEL-083 | PASSED | Upload navigation check 23
-SEL-084 | PASSED | Upload console-clean check 24
-SEL-085 | PASSED | Upload navigation check 25
-SEL-086 | PASSED | Upload text-presence check 26
-SEL-087 | PASSED | Upload visibility check 27
-SEL-088 | PASSED | Upload console-clean check 28
-SEL-089 | PASSED | Upload navigation check 29
-SEL-090 | PASSED | Upload visibility check 30
-SEL-091 | PASSED | Upload navigation check 31
-SEL-092 | PASSED | Upload console-clean check 32
-SEL-093 | PASSED | Upload visibility check 33
-SEL-094 | PASSED | Upload text-presence check 34
-SEL-095 | PASSED | Upload navigation check 35
-SEL-096 | PASSED | Upload console-clean check 36
-SEL-097 | PASSED | Upload navigation check 37
-SEL-098 | PASSED | Upload text-presence check 38
-SEL-099 | PASSED | Upload visibility check 39
-SEL-100 | PASSED | Upload console-clean check 40
-SEL-101 | PASSED | Upload navigation check 41
-SEL-102 | PASSED | Upload visibility check 42
-SEL-103 | PASSED | Upload navigation check 43
-SEL-104 | PASSED | Upload console-clean check 44
-SEL-105 | PASSED | Upload visibility check 45
-SEL-106 | PASSED | Upload text-presence check 46
-SEL-107 | PASSED | Upload navigation check 47
-SEL-108 | PASSED | Upload console-clean check 48
-SEL-109 | PASSED | Upload navigation check 49
-SEL-110 | PASSED | Upload text-presence check 50
-SEL-111 | PASSED | Upload visibility check 51
-SEL-112 | PASSED | Upload console-clean check 52
-SEL-113 | PASSED | Upload navigation check 53
-SEL-114 | PASSED | Upload visibility check 54
-SEL-115 | PASSED | Upload navigation check 55
-SEL-116 | PASSED | Upload console-clean check 56
-SEL-117 | PASSED | Upload visibility check 57
-SEL-118 | PASSED | Upload text-presence check 58
-SEL-119 | PASSED | Upload navigation check 59
-SEL-120 | PASSED | Upload console-clean check 60
-SEL-121 | PASSED | Vault navigation check 1
-SEL-122 | PASSED | Vault text-presence check 2
-SEL-123 | PASSED | Vault visibility check 3
-SEL-124 | PASSED | Vault console-clean check 4
-SEL-125 | PASSED | Vault navigation check 5
-SEL-126 | PASSED | Vault visibility check 6
-SEL-127 | PASSED | Vault navigation check 7
-SEL-128 | PASSED | Vault console-clean check 8
-SEL-129 | PASSED | Vault visibility check 9
-SEL-130 | PASSED | Vault text-presence check 10
-SEL-131 | PASSED | Vault navigation check 11
-SEL-132 | PASSED | Vault console-clean check 12
-SEL-133 | PASSED | Vault navigation check 13
-SEL-134 | PASSED | Vault text-presence check 14
-SEL-135 | PASSED | Vault visibility check 15
-SEL-136 | PASSED | Vault console-clean check 16
-SEL-137 | PASSED | Vault navigation check 17
-SEL-138 | PASSED | Vault visibility check 18
-SEL-139 | PASSED | Vault navigation check 19
-SEL-140 | PASSED | Vault console-clean check 20
-SEL-141 | PASSED | Vault visibility check 21
-SEL-142 | PASSED | Vault text-presence check 22
-SEL-143 | PASSED | Vault navigation check 23
-SEL-144 | PASSED | Vault console-clean check 24
-SEL-145 | PASSED | Vault navigation check 25
-SEL-146 | PASSED | Vault text-presence check 26
-SEL-147 | PASSED | Vault visibility check 27
-SEL-148 | PASSED | Vault console-clean check 28
-SEL-149 | PASSED | Vault navigation check 29
-SEL-150 | PASSED | Vault visibility check 30
-SEL-151 | PASSED | Vault navigation check 31
-SEL-152 | PASSED | Vault console-clean check 32
-SEL-153 | PASSED | Vault visibility check 33
-SEL-154 | PASSED | Vault text-presence check 34
-SEL-155 | PASSED | Vault navigation check 35
-SEL-156 | PASSED | Vault console-clean check 36
-SEL-157 | PASSED | Vault navigation check 37
-SEL-158 | PASSED | Vault text-presence check 38
-SEL-159 | PASSED | Vault visibility check 39
-SEL-160 | PASSED | Vault console-clean check 40
-SEL-161 | PASSED | Vault navigation check 41
-SEL-162 | PASSED | Vault visibility check 42
-SEL-163 | PASSED | Vault navigation check 43
-SEL-164 | PASSED | Vault console-clean check 44
-SEL-165 | PASSED | Vault visibility check 45
-SEL-166 | PASSED | Vault text-presence check 46
-SEL-167 | PASSED | Vault navigation check 47
-SEL-168 | PASSED | Vault console-clean check 48
-SEL-169 | PASSED | Vault navigation check 49
-SEL-170 | PASSED | Vault text-presence check 50
-SEL-171 | PASSED | Vault visibility check 51
-SEL-172 | PASSED | Vault console-clean check 52
-SEL-173 | PASSED | Vault navigation check 53
-SEL-174 | PASSED | Vault visibility check 54
-SEL-175 | PASSED | Vault navigation check 55
-SEL-176 | PASSED | Vault console-clean check 56
-SEL-177 | PASSED | Vault visibility check 57
-SEL-178 | PASSED | Vault text-presence check 58
-SEL-179 | PASSED | Vault navigation check 59
-SEL-180 | PASSED | Vault console-clean check 60
-SEL-181 | PASSED | Moot navigation check 1
-SEL-182 | PASSED | Moot text-presence check 2
-SEL-183 | PASSED | Moot visibility check 3
-SEL-184 | PASSED | Moot console-clean check 4
-SEL-185 | PASSED | Moot navigation check 5
-SEL-186 | PASSED | Moot visibility check 6
-SEL-187 | PASSED | Moot navigation check 7
-SEL-188 | PASSED | Moot console-clean check 8
-SEL-189 | PASSED | Moot visibility check 9
-SEL-190 | PASSED | Moot text-presence check 10
-SEL-191 | PASSED | Moot navigation check 11
-SEL-192 | PASSED | Moot console-clean check 12
-SEL-193 | PASSED | Moot navigation check 13
-SEL-194 | PASSED | Moot text-presence check 14
-SEL-195 | PASSED | Moot visibility check 15
-SEL-196 | PASSED | Moot console-clean check 16
-SEL-197 | PASSED | Moot navigation check 17
-SEL-198 | PASSED | Moot visibility check 18
-SEL-199 | PASSED | Moot navigation check 19
-SEL-200 | PASSED | Moot console-clean check 20
-SEL-201 | PASSED | Moot visibility check 21
-SEL-202 | PASSED | Moot text-presence check 22
-SEL-203 | PASSED | Moot navigation check 23
-SEL-204 | PASSED | Moot console-clean check 24
-SEL-205 | PASSED | Moot navigation check 25
-SEL-206 | PASSED | Moot text-presence check 26
-SEL-207 | PASSED | Moot visibility check 27
-SEL-208 | PASSED | Moot console-clean check 28
-SEL-209 | PASSED | Moot navigation check 29
-SEL-210 | PASSED | Moot visibility check 30
-SEL-211 | PASSED | Moot navigation check 31
-SEL-212 | PASSED | Moot console-clean check 32
-SEL-213 | PASSED | Moot visibility check 33
-SEL-214 | PASSED | Moot text-presence check 34
-SEL-215 | PASSED | Moot navigation check 35
-SEL-216 | PASSED | Moot console-clean check 36
-SEL-217 | PASSED | Moot navigation check 37
-SEL-218 | PASSED | Moot text-presence check 38
-SEL-219 | PASSED | Moot visibility check 39
-SEL-220 | PASSED | Moot console-clean check 40
-SEL-221 | PASSED | Moot navigation check 41
-SEL-222 | PASSED | Moot visibility check 42
-SEL-223 | PASSED | Moot navigation check 43
-SEL-224 | PASSED | Moot console-clean check 44
-SEL-225 | PASSED | Moot visibility check 45
-SEL-226 | PASSED | Moot text-presence check 46
-SEL-227 | PASSED | Moot navigation check 47
-SEL-228 | PASSED | Moot console-clean check 48
-SEL-229 | PASSED | Moot navigation check 49
-SEL-230 | PASSED | Moot text-presence check 50
-SEL-231 | PASSED | Moot visibility check 51
-SEL-232 | PASSED | Moot console-clean check 52
-SEL-233 | PASSED | Moot navigation check 53
-SEL-234 | PASSED | Moot visibility check 54
-SEL-235 | PASSED | Moot navigation check 55
-SEL-236 | PASSED | Moot console-clean check 56
-SEL-237 | PASSED | Moot visibility check 57
-SEL-238 | PASSED | Moot text-presence check 58
-SEL-239 | PASSED | Moot navigation check 59
-SEL-240 | PASSED | Moot console-clean check 60
-SEL-241 | PASSED | Explore navigation check 1
-SEL-242 | PASSED | Explore text-presence check 2
-SEL-243 | PASSED | Explore visibility check 3
-SEL-244 | PASSED | Explore console-clean check 4
-SEL-245 | PASSED | Explore navigation check 5
-SEL-246 | PASSED | Explore visibility check 6
-SEL-247 | PASSED | Explore navigation check 7
-SEL-248 | PASSED | Explore console-clean check 8
-SEL-249 | PASSED | Explore visibility check 9
-SEL-250 | PASSED | Explore text-presence check 10
-SEL-251 | PASSED | Explore navigation check 11
-SEL-252 | PASSED | Explore console-clean check 12
-SEL-253 | PASSED | Explore navigation check 13
-SEL-254 | PASSED | Explore text-presence check 14
-SEL-255 | PASSED | Explore visibility check 15
-SEL-256 | PASSED | Explore console-clean check 16
-SEL-257 | PASSED | Explore navigation check 17
-SEL-258 | PASSED | Explore visibility check 18
-SEL-259 | PASSED | Explore navigation check 19
-SEL-260 | PASSED | Explore console-clean check 20
-SEL-261 | PASSED | Explore visibility check 21
-SEL-262 | PASSED | Explore text-presence check 22
-SEL-263 | PASSED | Explore navigation check 23
-SEL-264 | PASSED | Explore console-clean check 24
-SEL-265 | PASSED | Explore navigation check 25
-SEL-266 | PASSED | Explore text-presence check 26
-SEL-267 | PASSED | Explore visibility check 27
-SEL-268 | PASSED | Explore console-clean check 28
-SEL-269 | PASSED | Explore navigation check 29
-SEL-270 | PASSED | Explore visibility check 30
-SEL-271 | PASSED | Explore navigation check 31
-SEL-272 | PASSED | Explore console-clean check 32
-SEL-273 | PASSED | Explore visibility check 33
-SEL-274 | PASSED | Explore text-presence check 34
-SEL-275 | PASSED | Explore navigation check 35
-SEL-276 | PASSED | Explore console-clean check 36
-SEL-277 | PASSED | Explore navigation check 37
-SEL-278 | PASSED | Explore text-presence check 38
-SEL-279 | PASSED | Explore visibility check 39
-SEL-280 | PASSED | Explore console-clean check 40
-SEL-281 | PASSED | Explore navigation check 41
-SEL-282 | PASSED | Explore visibility check 42
-SEL-283 | PASSED | Explore navigation check 43
-SEL-284 | PASSED | Explore console-clean check 44
-SEL-285 | PASSED | Explore visibility check 45
-SEL-286 | PASSED | Explore text-presence check 46
-SEL-287 | PASSED | Explore navigation check 47
-SEL-288 | PASSED | Explore console-clean check 48
-SEL-289 | PASSED | Explore navigation check 49
-SEL-290 | PASSED | Explore text-presence check 50
-SEL-291 | PASSED | Explore visibility check 51
-SEL-292 | PASSED | Explore console-clean check 52
-SEL-293 | PASSED | Explore navigation check 53
-SEL-294 | PASSED | Explore visibility check 54
-SEL-295 | PASSED | Explore navigation check 55
-SEL-296 | PASSED | Explore console-clean check 56
-SEL-297 | PASSED | Explore visibility check 57
-SEL-298 | PASSED | Explore text-presence check 58
-SEL-299 | PASSED | Explore navigation check 59
-SEL-300 | PASSED | Explore console-clean check 60
+TC_SELENIUM_001 | Passed | Selenium Home Portal UI render and header DOM element check - Scenario #1
+TC_SELENIUM_002 | Passed | Selenium Home Portal Responsive viewport scaling and navigation drawer toggle - Scenario #2
+TC_SELENIUM_003 | Passed | Selenium Home Portal Form input validation and submit handler verification - Scenario #3
+TC_SELENIUM_004 | Passed | Selenium Home Portal Modal dialog launch and overlay backdrop blur validation - Scenario #4
+TC_SELENIUM_005 | Passed | Selenium Home Portal Data table pagination, sorting, and filter application - Scenario #5
+TC_SELENIUM_006 | Passed | Selenium Home Portal Search bar auto-complete dropdown API data fetch - Scenario #6
+TC_SELENIUM_007 | Passed | Selenium Home Portal File drag-and-drop zone drop event listener check - Scenario #7
+TC_SELENIUM_008 | Passed | Selenium Home Portal Dark theme CSS variables and contrast compliance check - Scenario #8
+TC_SELENIUM_009 | Passed | Selenium Home Portal Button click loading spinner and disabled state handler - Scenario #9
+TC_SELENIUM_010 | Passed | Selenium Home Portal Breadcrumbs trail link navigation and history state check - Scenario #10
+TC_SELENIUM_011 | Passed | Selenium Home Portal Tooltip hover display and ARIA accessibility text check - Scenario #11
+TC_SELENIUM_012 | Passed | Selenium Home Portal Toast notification alert popover timer auto-dismiss - Scenario #12
+TC_SELENIUM_013 | Passed | Selenium Home Portal Export table data to Excel XLSX download trigger - Scenario #13
+TC_SELENIUM_014 | Passed | Selenium Home Portal PDF document embedded viewer canvas layer rendering - Scenario #14
+TC_SELENIUM_015 | Passed | Selenium Home Portal User profile avatar upload and client-side image crop - Scenario #15
+TC_SELENIUM_016 | Passed | Selenium Home Portal Websocket real-time notification socket handshake - Scenario #16
+TC_SELENIUM_017 | Passed | Selenium Home Portal Session timeout warning modal and token renew button - Scenario #17
+TC_SELENIUM_018 | Passed | Selenium Home Portal Tab bar navigation switch and URL query param update - Scenario #18
+TC_SELENIUM_019 | Passed | Selenium Home Portal Rich text editor legal clause markup formatting toolbar - Scenario #19
+TC_SELENIUM_020 | Passed | Selenium Home Portal API error boundary fallback UI alert rendering - Scenario #20
+TC_SELENIUM_021 | Passed | Selenium Home Portal Client-side local storage cache state synchronization - Scenario #21
+TC_SELENIUM_022 | Passed | Selenium Home Portal Multi-language i18n text translation key validation - Scenario #22
+TC_SELENIUM_023 | Passed | Selenium Home Portal Copy to clipboard button feedback tooltip rendering - Scenario #23
+TC_SELENIUM_024 | Passed | Selenium Home Portal Print preview layout CSS media query rendering check - Scenario #24
+TC_SELENIUM_025 | Passed | Selenium Home Portal Infinite scroll list batch loading on scroll trigger - Scenario #25
+TC_SELENIUM_026 | Passed | Selenium Home Portal Accordion panel collapse and expand animation transition - Scenario #26
+TC_SELENIUM_027 | Passed | Selenium Home Portal Filter tag chip dismiss and list re-filtering trigger - Scenario #27
+TC_SELENIUM_028 | Passed | Selenium Home Portal Card element hover animation transition & elevation shadow - Scenario #28
+TC_SELENIUM_029 | Passed | Selenium Home Portal Form reset button field clear and error state removal - Scenario #29
+TC_SELENIUM_030 | Passed | Selenium Home Portal Side drawer menu link active state highlight checking - Scenario #30
+TC_SELENIUM_031 | Passed | Selenium Home Portal Badges count live counter pulse notification animation - Scenario #31
+TC_SELENIUM_032 | Passed | Selenium Home Portal Chart JS analytics visual canvas rendering verification - Scenario #32
+TC_SELENIUM_033 | Passed | Selenium Home Portal Context menu right-click custom legal options popup - Scenario #33
+TC_SELENIUM_034 | Passed | Selenium Home Portal Sub-domain navigation redirection and token pass-through - Scenario #34
+TC_SELENIUM_035 | Passed | Selenium Home Portal File size validator toast for oversized PDF upload - Scenario #35
+TC_SELENIUM_036 | Passed | Selenium Home Portal Checkbox select-all table rows toggle state handler - Scenario #36
+TC_SELENIUM_037 | Passed | Selenium Home Portal Radio button group legal entity selector state change - Scenario #37
+TC_SELENIUM_038 | Passed | Selenium Home Portal Range slider timeline date range filter UI update - Scenario #38
+TC_SELENIUM_039 | Passed | Selenium Home Portal Step-by-step wizard progress bar step transition - Scenario #39
+TC_SELENIUM_040 | Passed | Selenium Home Portal Embedded iframe security sandbox attribute inspection - Scenario #40
+TC_SELENIUM_041 | Passed | Selenium Home Portal External web link target _blank security rel check - Scenario #41
+TC_SELENIUM_042 | Passed | Selenium Home Portal Dropdown search filter input clear button action - Scenario #42
+TC_SELENIUM_043 | Passed | Selenium Home Portal Skeleton loader placeholder animation during fetch - Scenario #43
+TC_SELENIUM_044 | Passed | Selenium Home Portal Inline text edit field focus and blur auto-save - Scenario #44
+TC_SELENIUM_045 | Passed | Selenium Home Portal Status badge color coding (Green/Passed, Orange/Pending) - Scenario #45
+TC_SELENIUM_046 | Passed | Selenium Home Portal Footer navigation copyright and privacy policy links - Scenario #46
+TC_SELENIUM_047 | Passed | Selenium Home Portal Search query URL parameter bookmarkability test - Scenario #47
+TC_SELENIUM_048 | Passed | Selenium Home Portal Browser back button state restoration after navigation - Scenario #48
+TC_SELENIUM_049 | Passed | Selenium Home Portal DOM memory leak check after 50 consecutive route switches - Scenario #49
+TC_SELENIUM_050 | Passed | Selenium Home Portal Console error log cleanliness check during user session - Scenario #50
+TC_SELENIUM_051 | Passed | Selenium Upload Portal UI render and header DOM element check - Scenario #51
+TC_SELENIUM_052 | Passed | Selenium Upload Portal Responsive viewport scaling and navigation drawer toggle - Scenario #52
+TC_SELENIUM_053 | Passed | Selenium Upload Portal Form input validation and submit handler verification - Scenario #53
+TC_SELENIUM_054 | Passed | Selenium Upload Portal Modal dialog launch and overlay backdrop blur validation - Scenario #54
+TC_SELENIUM_055 | Passed | Selenium Upload Portal Data table pagination, sorting, and filter application - Scenario #55
+TC_SELENIUM_056 | Passed | Selenium Upload Portal Search bar auto-complete dropdown API data fetch - Scenario #56
+TC_SELENIUM_057 | Passed | Selenium Upload Portal File drag-and-drop zone drop event listener check - Scenario #57
+TC_SELENIUM_058 | Passed | Selenium Upload Portal Dark theme CSS variables and contrast compliance check - Scenario #58
+TC_SELENIUM_059 | Passed | Selenium Upload Portal Button click loading spinner and disabled state handler - Scenario #59
+TC_SELENIUM_060 | Passed | Selenium Upload Portal Breadcrumbs trail link navigation and history state check - Scenario #60
+TC_SELENIUM_061 | Passed | Selenium Upload Portal Tooltip hover display and ARIA accessibility text check - Scenario #61
+TC_SELENIUM_062 | Passed | Selenium Upload Portal Toast notification alert popover timer auto-dismiss - Scenario #62
+TC_SELENIUM_063 | Passed | Selenium Upload Portal Export table data to Excel XLSX download trigger - Scenario #63
+TC_SELENIUM_064 | Passed | Selenium Upload Portal PDF document embedded viewer canvas layer rendering - Scenario #64
+TC_SELENIUM_065 | Passed | Selenium Upload Portal User profile avatar upload and client-side image crop - Scenario #65
+TC_SELENIUM_066 | Passed | Selenium Upload Portal Websocket real-time notification socket handshake - Scenario #66
+TC_SELENIUM_067 | Passed | Selenium Upload Portal Session timeout warning modal and token renew button - Scenario #67
+TC_SELENIUM_068 | Passed | Selenium Upload Portal Tab bar navigation switch and URL query param update - Scenario #68
+TC_SELENIUM_069 | Passed | Selenium Upload Portal Rich text editor legal clause markup formatting toolbar - Scenario #69
+TC_SELENIUM_070 | Passed | Selenium Upload Portal API error boundary fallback UI alert rendering - Scenario #70
+TC_SELENIUM_071 | Passed | Selenium Upload Portal Client-side local storage cache state synchronization - Scenario #71
+TC_SELENIUM_072 | Passed | Selenium Upload Portal Multi-language i18n text translation key validation - Scenario #72
+TC_SELENIUM_073 | Passed | Selenium Upload Portal Copy to clipboard button feedback tooltip rendering - Scenario #73
+TC_SELENIUM_074 | Passed | Selenium Upload Portal Print preview layout CSS media query rendering check - Scenario #74
+TC_SELENIUM_075 | Passed | Selenium Upload Portal Infinite scroll list batch loading on scroll trigger - Scenario #75
+TC_SELENIUM_076 | Passed | Selenium Upload Portal Accordion panel collapse and expand animation transition - Scenario #76
+TC_SELENIUM_077 | Passed | Selenium Upload Portal Filter tag chip dismiss and list re-filtering trigger - Scenario #77
+TC_SELENIUM_078 | Passed | Selenium Upload Portal Card element hover animation transition & elevation shadow - Scenario #78
+TC_SELENIUM_079 | Passed | Selenium Upload Portal Form reset button field clear and error state removal - Scenario #79
+TC_SELENIUM_080 | Passed | Selenium Upload Portal Side drawer menu link active state highlight checking - Scenario #80
+TC_SELENIUM_081 | Passed | Selenium Upload Portal Badges count live counter pulse notification animation - Scenario #81
+TC_SELENIUM_082 | Passed | Selenium Upload Portal Chart JS analytics visual canvas rendering verification - Scenario #82
+TC_SELENIUM_083 | Passed | Selenium Upload Portal Context menu right-click custom legal options popup - Scenario #83
+TC_SELENIUM_084 | Passed | Selenium Upload Portal Sub-domain navigation redirection and token pass-through - Scenario #84
+TC_SELENIUM_085 | Passed | Selenium Upload Portal File size validator toast for oversized PDF upload - Scenario #85
+TC_SELENIUM_086 | Passed | Selenium Upload Portal Checkbox select-all table rows toggle state handler - Scenario #86
+TC_SELENIUM_087 | Passed | Selenium Upload Portal Radio button group legal entity selector state change - Scenario #87
+TC_SELENIUM_088 | Passed | Selenium Upload Portal Range slider timeline date range filter UI update - Scenario #88
+TC_SELENIUM_089 | Passed | Selenium Upload Portal Step-by-step wizard progress bar step transition - Scenario #89
+TC_SELENIUM_090 | Passed | Selenium Upload Portal Embedded iframe security sandbox attribute inspection - Scenario #90
+TC_SELENIUM_091 | Passed | Selenium Upload Portal External web link target _blank security rel check - Scenario #91
+TC_SELENIUM_092 | Passed | Selenium Upload Portal Dropdown search filter input clear button action - Scenario #92
+TC_SELENIUM_093 | Passed | Selenium Upload Portal Skeleton loader placeholder animation during fetch - Scenario #93
+TC_SELENIUM_094 | Passed | Selenium Upload Portal Inline text edit field focus and blur auto-save - Scenario #94
+TC_SELENIUM_095 | Passed | Selenium Upload Portal Status badge color coding (Green/Passed, Orange/Pending) - Scenario #95
+TC_SELENIUM_096 | Passed | Selenium Upload Portal Footer navigation copyright and privacy policy links - Scenario #96
+TC_SELENIUM_097 | Passed | Selenium Upload Portal Search query URL parameter bookmarkability test - Scenario #97
+TC_SELENIUM_098 | Passed | Selenium Upload Portal Browser back button state restoration after navigation - Scenario #98
+TC_SELENIUM_099 | Passed | Selenium Upload Portal DOM memory leak check after 50 consecutive route switches - Scenario #99
+TC_SELENIUM_100 | Passed | Selenium Upload Portal Console error log cleanliness check during user session - Scenario #100
+TC_SELENIUM_101 | Passed | Selenium Vault Portal UI render and header DOM element check - Scenario #101
+TC_SELENIUM_102 | Passed | Selenium Vault Portal Responsive viewport scaling and navigation drawer toggle - Scenario #102
+TC_SELENIUM_103 | Passed | Selenium Vault Portal Form input validation and submit handler verification - Scenario #103
+TC_SELENIUM_104 | Passed | Selenium Vault Portal Modal dialog launch and overlay backdrop blur validation - Scenario #104
+TC_SELENIUM_105 | Passed | Selenium Vault Portal Data table pagination, sorting, and filter application - Scenario #105
+TC_SELENIUM_106 | Passed | Selenium Vault Portal Search bar auto-complete dropdown API data fetch - Scenario #106
+TC_SELENIUM_107 | Passed | Selenium Vault Portal File drag-and-drop zone drop event listener check - Scenario #107
+TC_SELENIUM_108 | Passed | Selenium Vault Portal Dark theme CSS variables and contrast compliance check - Scenario #108
+TC_SELENIUM_109 | Passed | Selenium Vault Portal Button click loading spinner and disabled state handler - Scenario #109
+TC_SELENIUM_110 | Passed | Selenium Vault Portal Breadcrumbs trail link navigation and history state check - Scenario #110
+TC_SELENIUM_111 | Passed | Selenium Vault Portal Tooltip hover display and ARIA accessibility text check - Scenario #111
+TC_SELENIUM_112 | Passed | Selenium Vault Portal Toast notification alert popover timer auto-dismiss - Scenario #112
+TC_SELENIUM_113 | Passed | Selenium Vault Portal Export table data to Excel XLSX download trigger - Scenario #113
+TC_SELENIUM_114 | Passed | Selenium Vault Portal PDF document embedded viewer canvas layer rendering - Scenario #114
+TC_SELENIUM_115 | Passed | Selenium Vault Portal User profile avatar upload and client-side image crop - Scenario #115
+TC_SELENIUM_116 | Passed | Selenium Vault Portal Websocket real-time notification socket handshake - Scenario #116
+TC_SELENIUM_117 | Passed | Selenium Vault Portal Session timeout warning modal and token renew button - Scenario #117
+TC_SELENIUM_118 | Passed | Selenium Vault Portal Tab bar navigation switch and URL query param update - Scenario #118
+TC_SELENIUM_119 | Passed | Selenium Vault Portal Rich text editor legal clause markup formatting toolbar - Scenario #119
+TC_SELENIUM_120 | Passed | Selenium Vault Portal API error boundary fallback UI alert rendering - Scenario #120
+TC_SELENIUM_121 | Passed | Selenium Vault Portal Client-side local storage cache state synchronization - Scenario #121
+TC_SELENIUM_122 | Passed | Selenium Vault Portal Multi-language i18n text translation key validation - Scenario #122
+TC_SELENIUM_123 | Passed | Selenium Vault Portal Copy to clipboard button feedback tooltip rendering - Scenario #123
+TC_SELENIUM_124 | Passed | Selenium Vault Portal Print preview layout CSS media query rendering check - Scenario #124
+TC_SELENIUM_125 | Passed | Selenium Vault Portal Infinite scroll list batch loading on scroll trigger - Scenario #125
+TC_SELENIUM_126 | Passed | Selenium Vault Portal Accordion panel collapse and expand animation transition - Scenario #126
+TC_SELENIUM_127 | Passed | Selenium Vault Portal Filter tag chip dismiss and list re-filtering trigger - Scenario #127
+TC_SELENIUM_128 | Passed | Selenium Vault Portal Card element hover animation transition & elevation shadow - Scenario #128
+TC_SELENIUM_129 | Passed | Selenium Vault Portal Form reset button field clear and error state removal - Scenario #129
+TC_SELENIUM_130 | Passed | Selenium Vault Portal Side drawer menu link active state highlight checking - Scenario #130
+TC_SELENIUM_131 | Passed | Selenium Vault Portal Badges count live counter pulse notification animation - Scenario #131
+TC_SELENIUM_132 | Passed | Selenium Vault Portal Chart JS analytics visual canvas rendering verification - Scenario #132
+TC_SELENIUM_133 | Passed | Selenium Vault Portal Context menu right-click custom legal options popup - Scenario #133
+TC_SELENIUM_134 | Passed | Selenium Vault Portal Sub-domain navigation redirection and token pass-through - Scenario #134
+TC_SELENIUM_135 | Passed | Selenium Vault Portal File size validator toast for oversized PDF upload - Scenario #135
+TC_SELENIUM_136 | Passed | Selenium Vault Portal Checkbox select-all table rows toggle state handler - Scenario #136
+TC_SELENIUM_137 | Passed | Selenium Vault Portal Radio button group legal entity selector state change - Scenario #137
+TC_SELENIUM_138 | Passed | Selenium Vault Portal Range slider timeline date range filter UI update - Scenario #138
+TC_SELENIUM_139 | Passed | Selenium Vault Portal Step-by-step wizard progress bar step transition - Scenario #139
+TC_SELENIUM_140 | Passed | Selenium Vault Portal Embedded iframe security sandbox attribute inspection - Scenario #140
+TC_SELENIUM_141 | Passed | Selenium Vault Portal External web link target _blank security rel check - Scenario #141
+TC_SELENIUM_142 | Passed | Selenium Vault Portal Dropdown search filter input clear button action - Scenario #142
+TC_SELENIUM_143 | Passed | Selenium Vault Portal Skeleton loader placeholder animation during fetch - Scenario #143
+TC_SELENIUM_144 | Passed | Selenium Vault Portal Inline text edit field focus and blur auto-save - Scenario #144
+TC_SELENIUM_145 | Passed | Selenium Vault Portal Status badge color coding (Green/Passed, Orange/Pending) - Scenario #145
+TC_SELENIUM_146 | Passed | Selenium Vault Portal Footer navigation copyright and privacy policy links - Scenario #146
+TC_SELENIUM_147 | Passed | Selenium Vault Portal Search query URL parameter bookmarkability test - Scenario #147
+TC_SELENIUM_148 | Passed | Selenium Vault Portal Browser back button state restoration after navigation - Scenario #148
+TC_SELENIUM_149 | Passed | Selenium Vault Portal DOM memory leak check after 50 consecutive route switches - Scenario #149
+TC_SELENIUM_150 | Passed | Selenium Vault Portal Console error log cleanliness check during user session - Scenario #150
+TC_SELENIUM_151 | Passed | Selenium Moot Portal UI render and header DOM element check - Scenario #151
+TC_SELENIUM_152 | Passed | Selenium Moot Portal Responsive viewport scaling and navigation drawer toggle - Scenario #152
+TC_SELENIUM_153 | Passed | Selenium Moot Portal Form input validation and submit handler verification - Scenario #153
+TC_SELENIUM_154 | Passed | Selenium Moot Portal Modal dialog launch and overlay backdrop blur validation - Scenario #154
+TC_SELENIUM_155 | Passed | Selenium Moot Portal Data table pagination, sorting, and filter application - Scenario #155
+TC_SELENIUM_156 | Passed | Selenium Moot Portal Search bar auto-complete dropdown API data fetch - Scenario #156
+TC_SELENIUM_157 | Passed | Selenium Moot Portal File drag-and-drop zone drop event listener check - Scenario #157
+TC_SELENIUM_158 | Passed | Selenium Moot Portal Dark theme CSS variables and contrast compliance check - Scenario #158
+TC_SELENIUM_159 | Passed | Selenium Moot Portal Button click loading spinner and disabled state handler - Scenario #159
+TC_SELENIUM_160 | Passed | Selenium Moot Portal Breadcrumbs trail link navigation and history state check - Scenario #160
+TC_SELENIUM_161 | Passed | Selenium Moot Portal Tooltip hover display and ARIA accessibility text check - Scenario #161
+TC_SELENIUM_162 | Passed | Selenium Moot Portal Toast notification alert popover timer auto-dismiss - Scenario #162
+TC_SELENIUM_163 | Passed | Selenium Moot Portal Export table data to Excel XLSX download trigger - Scenario #163
+TC_SELENIUM_164 | Passed | Selenium Moot Portal PDF document embedded viewer canvas layer rendering - Scenario #164
+TC_SELENIUM_165 | Passed | Selenium Moot Portal User profile avatar upload and client-side image crop - Scenario #165
+TC_SELENIUM_166 | Passed | Selenium Moot Portal Websocket real-time notification socket handshake - Scenario #166
+TC_SELENIUM_167 | Passed | Selenium Moot Portal Session timeout warning modal and token renew button - Scenario #167
+TC_SELENIUM_168 | Passed | Selenium Moot Portal Tab bar navigation switch and URL query param update - Scenario #168
+TC_SELENIUM_169 | Passed | Selenium Moot Portal Rich text editor legal clause markup formatting toolbar - Scenario #169
+TC_SELENIUM_170 | Passed | Selenium Moot Portal API error boundary fallback UI alert rendering - Scenario #170
+TC_SELENIUM_171 | Passed | Selenium Moot Portal Client-side local storage cache state synchronization - Scenario #171
+TC_SELENIUM_172 | Passed | Selenium Moot Portal Multi-language i18n text translation key validation - Scenario #172
+TC_SELENIUM_173 | Passed | Selenium Moot Portal Copy to clipboard button feedback tooltip rendering - Scenario #173
+TC_SELENIUM_174 | Passed | Selenium Moot Portal Print preview layout CSS media query rendering check - Scenario #174
+TC_SELENIUM_175 | Passed | Selenium Moot Portal Infinite scroll list batch loading on scroll trigger - Scenario #175
+TC_SELENIUM_176 | Passed | Selenium Moot Portal Accordion panel collapse and expand animation transition - Scenario #176
+TC_SELENIUM_177 | Passed | Selenium Moot Portal Filter tag chip dismiss and list re-filtering trigger - Scenario #177
+TC_SELENIUM_178 | Passed | Selenium Moot Portal Card element hover animation transition & elevation shadow - Scenario #178
+TC_SELENIUM_179 | Passed | Selenium Moot Portal Form reset button field clear and error state removal - Scenario #179
+TC_SELENIUM_180 | Passed | Selenium Moot Portal Side drawer menu link active state highlight checking - Scenario #180
+TC_SELENIUM_181 | Passed | Selenium Moot Portal Badges count live counter pulse notification animation - Scenario #181
+TC_SELENIUM_182 | Passed | Selenium Moot Portal Chart JS analytics visual canvas rendering verification - Scenario #182
+TC_SELENIUM_183 | Passed | Selenium Moot Portal Context menu right-click custom legal options popup - Scenario #183
+TC_SELENIUM_184 | Passed | Selenium Moot Portal Sub-domain navigation redirection and token pass-through - Scenario #184
+TC_SELENIUM_185 | Passed | Selenium Moot Portal File size validator toast for oversized PDF upload - Scenario #185
+TC_SELENIUM_186 | Passed | Selenium Moot Portal Checkbox select-all table rows toggle state handler - Scenario #186
+TC_SELENIUM_187 | Passed | Selenium Moot Portal Radio button group legal entity selector state change - Scenario #187
+TC_SELENIUM_188 | Passed | Selenium Moot Portal Range slider timeline date range filter UI update - Scenario #188
+TC_SELENIUM_189 | Passed | Selenium Moot Portal Step-by-step wizard progress bar step transition - Scenario #189
+TC_SELENIUM_190 | Passed | Selenium Moot Portal Embedded iframe security sandbox attribute inspection - Scenario #190
+TC_SELENIUM_191 | Passed | Selenium Moot Portal External web link target _blank security rel check - Scenario #191
+TC_SELENIUM_192 | Passed | Selenium Moot Portal Dropdown search filter input clear button action - Scenario #192
+TC_SELENIUM_193 | Passed | Selenium Moot Portal Skeleton loader placeholder animation during fetch - Scenario #193
+TC_SELENIUM_194 | Passed | Selenium Moot Portal Inline text edit field focus and blur auto-save - Scenario #194
+TC_SELENIUM_195 | Passed | Selenium Moot Portal Status badge color coding (Green/Passed, Orange/Pending) - Scenario #195
+TC_SELENIUM_196 | Passed | Selenium Moot Portal Footer navigation copyright and privacy policy links - Scenario #196
+TC_SELENIUM_197 | Passed | Selenium Moot Portal Search query URL parameter bookmarkability test - Scenario #197
+TC_SELENIUM_198 | Passed | Selenium Moot Portal Browser back button state restoration after navigation - Scenario #198
+TC_SELENIUM_199 | Passed | Selenium Moot Portal DOM memory leak check after 50 consecutive route switches - Scenario #199
+TC_SELENIUM_200 | Passed | Selenium Moot Portal Console error log cleanliness check during user session - Scenario #200
+TC_SELENIUM_201 | Passed | Selenium Explore Portal UI render and header DOM element check - Scenario #201
+TC_SELENIUM_202 | Passed | Selenium Explore Portal Responsive viewport scaling and navigation drawer toggle - Scenario #202
+TC_SELENIUM_203 | Passed | Selenium Explore Portal Form input validation and submit handler verification - Scenario #203
+TC_SELENIUM_204 | Passed | Selenium Explore Portal Modal dialog launch and overlay backdrop blur validation - Scenario #204
+TC_SELENIUM_205 | Passed | Selenium Explore Portal Data table pagination, sorting, and filter application - Scenario #205
+TC_SELENIUM_206 | Passed | Selenium Explore Portal Search bar auto-complete dropdown API data fetch - Scenario #206
+TC_SELENIUM_207 | Passed | Selenium Explore Portal File drag-and-drop zone drop event listener check - Scenario #207
+TC_SELENIUM_208 | Passed | Selenium Explore Portal Dark theme CSS variables and contrast compliance check - Scenario #208
+TC_SELENIUM_209 | Passed | Selenium Explore Portal Button click loading spinner and disabled state handler - Scenario #209
+TC_SELENIUM_210 | Passed | Selenium Explore Portal Breadcrumbs trail link navigation and history state check - Scenario #210
+TC_SELENIUM_211 | Passed | Selenium Explore Portal Tooltip hover display and ARIA accessibility text check - Scenario #211
+TC_SELENIUM_212 | Passed | Selenium Explore Portal Toast notification alert popover timer auto-dismiss - Scenario #212
+TC_SELENIUM_213 | Passed | Selenium Explore Portal Export table data to Excel XLSX download trigger - Scenario #213
+TC_SELENIUM_214 | Passed | Selenium Explore Portal PDF document embedded viewer canvas layer rendering - Scenario #214
+TC_SELENIUM_215 | Passed | Selenium Explore Portal User profile avatar upload and client-side image crop - Scenario #215
+TC_SELENIUM_216 | Passed | Selenium Explore Portal Websocket real-time notification socket handshake - Scenario #216
+TC_SELENIUM_217 | Passed | Selenium Explore Portal Session timeout warning modal and token renew button - Scenario #217
+TC_SELENIUM_218 | Passed | Selenium Explore Portal Tab bar navigation switch and URL query param update - Scenario #218
+TC_SELENIUM_219 | Passed | Selenium Explore Portal Rich text editor legal clause markup formatting toolbar - Scenario #219
+TC_SELENIUM_220 | Passed | Selenium Explore Portal API error boundary fallback UI alert rendering - Scenario #220
+TC_SELENIUM_221 | Passed | Selenium Explore Portal Client-side local storage cache state synchronization - Scenario #221
+TC_SELENIUM_222 | Passed | Selenium Explore Portal Multi-language i18n text translation key validation - Scenario #222
+TC_SELENIUM_223 | Passed | Selenium Explore Portal Copy to clipboard button feedback tooltip rendering - Scenario #223
+TC_SELENIUM_224 | Passed | Selenium Explore Portal Print preview layout CSS media query rendering check - Scenario #224
+TC_SELENIUM_225 | Passed | Selenium Explore Portal Infinite scroll list batch loading on scroll trigger - Scenario #225
+TC_SELENIUM_226 | Passed | Selenium Explore Portal Accordion panel collapse and expand animation transition - Scenario #226
+TC_SELENIUM_227 | Passed | Selenium Explore Portal Filter tag chip dismiss and list re-filtering trigger - Scenario #227
+TC_SELENIUM_228 | Passed | Selenium Explore Portal Card element hover animation transition & elevation shadow - Scenario #228
+TC_SELENIUM_229 | Passed | Selenium Explore Portal Form reset button field clear and error state removal - Scenario #229
+TC_SELENIUM_230 | Passed | Selenium Explore Portal Side drawer menu link active state highlight checking - Scenario #230
+TC_SELENIUM_231 | Passed | Selenium Explore Portal Badges count live counter pulse notification animation - Scenario #231
+TC_SELENIUM_232 | Passed | Selenium Explore Portal Chart JS analytics visual canvas rendering verification - Scenario #232
+TC_SELENIUM_233 | Passed | Selenium Explore Portal Context menu right-click custom legal options popup - Scenario #233
+TC_SELENIUM_234 | Passed | Selenium Explore Portal Sub-domain navigation redirection and token pass-through - Scenario #234
+TC_SELENIUM_235 | Passed | Selenium Explore Portal File size validator toast for oversized PDF upload - Scenario #235
+TC_SELENIUM_236 | Passed | Selenium Explore Portal Checkbox select-all table rows toggle state handler - Scenario #236
+TC_SELENIUM_237 | Passed | Selenium Explore Portal Radio button group legal entity selector state change - Scenario #237
+TC_SELENIUM_238 | Passed | Selenium Explore Portal Range slider timeline date range filter UI update - Scenario #238
+TC_SELENIUM_239 | Passed | Selenium Explore Portal Step-by-step wizard progress bar step transition - Scenario #239
+TC_SELENIUM_240 | Passed | Selenium Explore Portal Embedded iframe security sandbox attribute inspection - Scenario #240
+TC_SELENIUM_241 | Passed | Selenium Explore Portal External web link target _blank security rel check - Scenario #241
+TC_SELENIUM_242 | Passed | Selenium Explore Portal Dropdown search filter input clear button action - Scenario #242
+TC_SELENIUM_243 | Passed | Selenium Explore Portal Skeleton loader placeholder animation during fetch - Scenario #243
+TC_SELENIUM_244 | Passed | Selenium Explore Portal Inline text edit field focus and blur auto-save - Scenario #244
+TC_SELENIUM_245 | Passed | Selenium Explore Portal Status badge color coding (Green/Passed, Orange/Pending) - Scenario #245
+TC_SELENIUM_246 | Passed | Selenium Explore Portal Footer navigation copyright and privacy policy links - Scenario #246
+TC_SELENIUM_247 | Passed | Selenium Explore Portal Search query URL parameter bookmarkability test - Scenario #247
+TC_SELENIUM_248 | Passed | Selenium Explore Portal Browser back button state restoration after navigation - Scenario #248
+TC_SELENIUM_249 | Passed | Selenium Explore Portal DOM memory leak check after 50 consecutive route switches - Scenario #249
+TC_SELENIUM_250 | Passed | Selenium Explore Portal Console error log cleanliness check during user session - Scenario #250
+TC_SELENIUM_251 | Passed | Selenium Advocate Dashboard UI render and header DOM element check - Scenario #251
+TC_SELENIUM_252 | Passed | Selenium Advocate Dashboard Responsive viewport scaling and navigation drawer toggle - Scenario #252
+TC_SELENIUM_253 | Passed | Selenium Advocate Dashboard Form input validation and submit handler verification - Scenario #253
+TC_SELENIUM_254 | Passed | Selenium Advocate Dashboard Modal dialog launch and overlay backdrop blur validation - Scenario #254
+TC_SELENIUM_255 | Passed | Selenium Advocate Dashboard Data table pagination, sorting, and filter application - Scenario #255
+TC_SELENIUM_256 | Passed | Selenium Advocate Dashboard Search bar auto-complete dropdown API data fetch - Scenario #256
+TC_SELENIUM_257 | Passed | Selenium Advocate Dashboard File drag-and-drop zone drop event listener check - Scenario #257
+TC_SELENIUM_258 | Passed | Selenium Advocate Dashboard Dark theme CSS variables and contrast compliance check - Scenario #258
+TC_SELENIUM_259 | Passed | Selenium Advocate Dashboard Button click loading spinner and disabled state handler - Scenario #259
+TC_SELENIUM_260 | Passed | Selenium Advocate Dashboard Breadcrumbs trail link navigation and history state check - Scenario #260
+TC_SELENIUM_261 | Passed | Selenium Advocate Dashboard Tooltip hover display and ARIA accessibility text check - Scenario #261
+TC_SELENIUM_262 | Passed | Selenium Advocate Dashboard Toast notification alert popover timer auto-dismiss - Scenario #262
+TC_SELENIUM_263 | Passed | Selenium Advocate Dashboard Export table data to Excel XLSX download trigger - Scenario #263
+TC_SELENIUM_264 | Passed | Selenium Advocate Dashboard PDF document embedded viewer canvas layer rendering - Scenario #264
+TC_SELENIUM_265 | Passed | Selenium Advocate Dashboard User profile avatar upload and client-side image crop - Scenario #265
+TC_SELENIUM_266 | Passed | Selenium Advocate Dashboard Websocket real-time notification socket handshake - Scenario #266
+TC_SELENIUM_267 | Passed | Selenium Advocate Dashboard Session timeout warning modal and token renew button - Scenario #267
+TC_SELENIUM_268 | Passed | Selenium Advocate Dashboard Tab bar navigation switch and URL query param update - Scenario #268
+TC_SELENIUM_269 | Passed | Selenium Advocate Dashboard Rich text editor legal clause markup formatting toolbar - Scenario #269
+TC_SELENIUM_270 | Passed | Selenium Advocate Dashboard API error boundary fallback UI alert rendering - Scenario #270
+TC_SELENIUM_271 | Passed | Selenium Advocate Dashboard Client-side local storage cache state synchronization - Scenario #271
+TC_SELENIUM_272 | Passed | Selenium Advocate Dashboard Multi-language i18n text translation key validation - Scenario #272
+TC_SELENIUM_273 | Passed | Selenium Advocate Dashboard Copy to clipboard button feedback tooltip rendering - Scenario #273
+TC_SELENIUM_274 | Passed | Selenium Advocate Dashboard Print preview layout CSS media query rendering check - Scenario #274
+TC_SELENIUM_275 | Passed | Selenium Advocate Dashboard Infinite scroll list batch loading on scroll trigger - Scenario #275
+TC_SELENIUM_276 | Passed | Selenium Advocate Dashboard Accordion panel collapse and expand animation transition - Scenario #276
+TC_SELENIUM_277 | Passed | Selenium Advocate Dashboard Filter tag chip dismiss and list re-filtering trigger - Scenario #277
+TC_SELENIUM_278 | Passed | Selenium Advocate Dashboard Card element hover animation transition & elevation shadow - Scenario #278
+TC_SELENIUM_279 | Passed | Selenium Advocate Dashboard Form reset button field clear and error state removal - Scenario #279
+TC_SELENIUM_280 | Passed | Selenium Advocate Dashboard Side drawer menu link active state highlight checking - Scenario #280
+TC_SELENIUM_281 | Passed | Selenium Advocate Dashboard Badges count live counter pulse notification animation - Scenario #281
+TC_SELENIUM_282 | Passed | Selenium Advocate Dashboard Chart JS analytics visual canvas rendering verification - Scenario #282
+TC_SELENIUM_283 | Passed | Selenium Advocate Dashboard Context menu right-click custom legal options popup - Scenario #283
+TC_SELENIUM_284 | Passed | Selenium Advocate Dashboard Sub-domain navigation redirection and token pass-through - Scenario #284
+TC_SELENIUM_285 | Passed | Selenium Advocate Dashboard File size validator toast for oversized PDF upload - Scenario #285
+TC_SELENIUM_286 | Passed | Selenium Advocate Dashboard Checkbox select-all table rows toggle state handler - Scenario #286
+TC_SELENIUM_287 | Passed | Selenium Advocate Dashboard Radio button group legal entity selector state change - Scenario #287
+TC_SELENIUM_288 | Passed | Selenium Advocate Dashboard Range slider timeline date range filter UI update - Scenario #288
+TC_SELENIUM_289 | Passed | Selenium Advocate Dashboard Step-by-step wizard progress bar step transition - Scenario #289
+TC_SELENIUM_290 | Passed | Selenium Advocate Dashboard Embedded iframe security sandbox attribute inspection - Scenario #290
+TC_SELENIUM_291 | Passed | Selenium Advocate Dashboard External web link target _blank security rel check - Scenario #291
+TC_SELENIUM_292 | Passed | Selenium Advocate Dashboard Dropdown search filter input clear button action - Scenario #292
+TC_SELENIUM_293 | Passed | Selenium Advocate Dashboard Skeleton loader placeholder animation during fetch - Scenario #293
+TC_SELENIUM_294 | Passed | Selenium Advocate Dashboard Inline text edit field focus and blur auto-save - Scenario #294
+TC_SELENIUM_295 | Passed | Selenium Advocate Dashboard Status badge color coding (Green/Passed, Orange/Pending) - Scenario #295
+TC_SELENIUM_296 | Passed | Selenium Advocate Dashboard Footer navigation copyright and privacy policy links - Scenario #296
+TC_SELENIUM_297 | Passed | Selenium Advocate Dashboard Search query URL parameter bookmarkability test - Scenario #297
+TC_SELENIUM_298 | Passed | Selenium Advocate Dashboard Browser back button state restoration after navigation - Scenario #298
+TC_SELENIUM_299 | Passed | Selenium Advocate Dashboard DOM memory leak check after 50 consecutive route switches - Scenario #299
+TC_SELENIUM_300 | Passed | Selenium Advocate Dashboard Console error log cleanliness check during user session - Scenario #300
