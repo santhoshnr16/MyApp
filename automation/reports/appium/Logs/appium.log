@@ -1,300 +1,300 @@
-TC_APPM_001 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #1
-TC_APPM_002 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #2
-TC_APPM_003 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #3
-TC_APPM_004 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #4
-TC_APPM_005 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #5
-TC_APPM_006 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #6
-TC_APPM_007 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #7
-TC_APPM_008 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #8
-TC_APPM_009 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #9
-TC_APPM_010 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #10
-TC_APPM_011 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #11
-TC_APPM_012 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #12
-TC_APPM_013 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #13
-TC_APPM_014 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #14
-TC_APPM_015 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #15
-TC_APPM_016 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #16
-TC_APPM_017 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #17
-TC_APPM_018 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #18
-TC_APPM_019 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #19
-TC_APPM_020 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #20
-TC_APPM_021 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #21
-TC_APPM_022 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #22
-TC_APPM_023 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #23
-TC_APPM_024 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #24
-TC_APPM_025 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #25
-TC_APPM_026 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #26
-TC_APPM_027 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #27
-TC_APPM_028 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #28
-TC_APPM_029 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #29
-TC_APPM_030 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #30
-TC_APPM_031 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #31
-TC_APPM_032 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #32
-TC_APPM_033 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #33
-TC_APPM_034 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #34
-TC_APPM_035 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #35
-TC_APPM_036 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #36
-TC_APPM_037 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #37
-TC_APPM_038 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #38
-TC_APPM_039 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #39
-TC_APPM_040 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #40
-TC_APPM_041 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #41
-TC_APPM_042 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #42
-TC_APPM_043 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #43
-TC_APPM_044 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #44
-TC_APPM_045 | Passed | Mobile Authentication & Onboarding boundary verification - Scenario #45
-TC_APPM_046 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #46
-TC_APPM_047 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #47
-TC_APPM_048 | Passed | Mobile Authentication & Onboarding negative-path verification - Scenario #48
-TC_APPM_049 | Passed | Mobile Authentication & Onboarding workflow verification - Scenario #49
-TC_APPM_050 | Passed | Mobile Authentication & Onboarding smoke verification - Scenario #50
-TC_APPM_051 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #51
-TC_APPM_052 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #52
-TC_APPM_053 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #53
-TC_APPM_054 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #54
-TC_APPM_055 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #55
-TC_APPM_056 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #56
-TC_APPM_057 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #57
-TC_APPM_058 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #58
-TC_APPM_059 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #59
-TC_APPM_060 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #60
-TC_APPM_061 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #61
-TC_APPM_062 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #62
-TC_APPM_063 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #63
-TC_APPM_064 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #64
-TC_APPM_065 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #65
-TC_APPM_066 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #66
-TC_APPM_067 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #67
-TC_APPM_068 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #68
-TC_APPM_069 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #69
-TC_APPM_070 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #70
-TC_APPM_071 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #71
-TC_APPM_072 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #72
-TC_APPM_073 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #73
-TC_APPM_074 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #74
-TC_APPM_075 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #75
-TC_APPM_076 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #76
-TC_APPM_077 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #77
-TC_APPM_078 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #78
-TC_APPM_079 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #79
-TC_APPM_080 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #80
-TC_APPM_081 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #81
-TC_APPM_082 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #82
-TC_APPM_083 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #83
-TC_APPM_084 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #84
-TC_APPM_085 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #85
-TC_APPM_086 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #86
-TC_APPM_087 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #87
-TC_APPM_088 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #88
-TC_APPM_089 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #89
-TC_APPM_090 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #90
-TC_APPM_091 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #91
-TC_APPM_092 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #92
-TC_APPM_093 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #93
-TC_APPM_094 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #94
-TC_APPM_095 | Passed | Mobile Policy Search & Eligibility Flow boundary verification - Scenario #95
-TC_APPM_096 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #96
-TC_APPM_097 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #97
-TC_APPM_098 | Passed | Mobile Policy Search & Eligibility Flow negative-path verification - Scenario #98
-TC_APPM_099 | Passed | Mobile Policy Search & Eligibility Flow workflow verification - Scenario #99
-TC_APPM_100 | Passed | Mobile Policy Search & Eligibility Flow smoke verification - Scenario #100
-TC_APPM_101 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #101
-TC_APPM_102 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #102
-TC_APPM_103 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #103
-TC_APPM_104 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #104
-TC_APPM_105 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #105
-TC_APPM_106 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #106
-TC_APPM_107 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #107
-TC_APPM_108 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #108
-TC_APPM_109 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #109
-TC_APPM_110 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #110
-TC_APPM_111 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #111
-TC_APPM_112 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #112
-TC_APPM_113 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #113
-TC_APPM_114 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #114
-TC_APPM_115 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #115
-TC_APPM_116 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #116
-TC_APPM_117 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #117
-TC_APPM_118 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #118
-TC_APPM_119 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #119
-TC_APPM_120 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #120
-TC_APPM_121 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #121
-TC_APPM_122 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #122
-TC_APPM_123 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #123
-TC_APPM_124 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #124
-TC_APPM_125 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #125
-TC_APPM_126 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #126
-TC_APPM_127 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #127
-TC_APPM_128 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #128
-TC_APPM_129 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #129
-TC_APPM_130 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #130
-TC_APPM_131 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #131
-TC_APPM_132 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #132
-TC_APPM_133 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #133
-TC_APPM_134 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #134
-TC_APPM_135 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #135
-TC_APPM_136 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #136
-TC_APPM_137 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #137
-TC_APPM_138 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #138
-TC_APPM_139 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #139
-TC_APPM_140 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #140
-TC_APPM_141 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #141
-TC_APPM_142 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #142
-TC_APPM_143 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #143
-TC_APPM_144 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #144
-TC_APPM_145 | Passed | Mobile Camera Scan & RAG AI Upload boundary verification - Scenario #145
-TC_APPM_146 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #146
-TC_APPM_147 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #147
-TC_APPM_148 | Passed | Mobile Camera Scan & RAG AI Upload negative-path verification - Scenario #148
-TC_APPM_149 | Passed | Mobile Camera Scan & RAG AI Upload workflow verification - Scenario #149
-TC_APPM_150 | Passed | Mobile Camera Scan & RAG AI Upload smoke verification - Scenario #150
-TC_APPM_151 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #151
-TC_APPM_152 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #152
-TC_APPM_153 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #153
-TC_APPM_154 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #154
-TC_APPM_155 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #155
-TC_APPM_156 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #156
-TC_APPM_157 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #157
-TC_APPM_158 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #158
-TC_APPM_159 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #159
-TC_APPM_160 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #160
-TC_APPM_161 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #161
-TC_APPM_162 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #162
-TC_APPM_163 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #163
-TC_APPM_164 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #164
-TC_APPM_165 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #165
-TC_APPM_166 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #166
-TC_APPM_167 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #167
-TC_APPM_168 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #168
-TC_APPM_169 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #169
-TC_APPM_170 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #170
-TC_APPM_171 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #171
-TC_APPM_172 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #172
-TC_APPM_173 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #173
-TC_APPM_174 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #174
-TC_APPM_175 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #175
-TC_APPM_176 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #176
-TC_APPM_177 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #177
-TC_APPM_178 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #178
-TC_APPM_179 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #179
-TC_APPM_180 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #180
-TC_APPM_181 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #181
-TC_APPM_182 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #182
-TC_APPM_183 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #183
-TC_APPM_184 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #184
-TC_APPM_185 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #185
-TC_APPM_186 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #186
-TC_APPM_187 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #187
-TC_APPM_188 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #188
-TC_APPM_189 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #189
-TC_APPM_190 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #190
-TC_APPM_191 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #191
-TC_APPM_192 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #192
-TC_APPM_193 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #193
-TC_APPM_194 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #194
-TC_APPM_195 | Passed | Mobile Client Vault & Document Sign boundary verification - Scenario #195
-TC_APPM_196 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #196
-TC_APPM_197 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #197
-TC_APPM_198 | Passed | Mobile Client Vault & Document Sign negative-path verification - Scenario #198
-TC_APPM_199 | Passed | Mobile Client Vault & Document Sign workflow verification - Scenario #199
-TC_APPM_200 | Passed | Mobile Client Vault & Document Sign smoke verification - Scenario #200
-TC_APPM_201 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #201
-TC_APPM_202 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #202
-TC_APPM_203 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #203
-TC_APPM_204 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #204
-TC_APPM_205 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #205
-TC_APPM_206 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #206
-TC_APPM_207 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #207
-TC_APPM_208 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #208
-TC_APPM_209 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #209
-TC_APPM_210 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #210
-TC_APPM_211 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #211
-TC_APPM_212 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #212
-TC_APPM_213 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #213
-TC_APPM_214 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #214
-TC_APPM_215 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #215
-TC_APPM_216 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #216
-TC_APPM_217 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #217
-TC_APPM_218 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #218
-TC_APPM_219 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #219
-TC_APPM_220 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #220
-TC_APPM_221 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #221
-TC_APPM_222 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #222
-TC_APPM_223 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #223
-TC_APPM_224 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #224
-TC_APPM_225 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #225
-TC_APPM_226 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #226
-TC_APPM_227 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #227
-TC_APPM_228 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #228
-TC_APPM_229 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #229
-TC_APPM_230 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #230
-TC_APPM_231 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #231
-TC_APPM_232 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #232
-TC_APPM_233 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #233
-TC_APPM_234 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #234
-TC_APPM_235 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #235
-TC_APPM_236 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #236
-TC_APPM_237 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #237
-TC_APPM_238 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #238
-TC_APPM_239 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #239
-TC_APPM_240 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #240
-TC_APPM_241 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #241
-TC_APPM_242 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #242
-TC_APPM_243 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #243
-TC_APPM_244 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #244
-TC_APPM_245 | Passed | Mobile Moot Court AI Simulator boundary verification - Scenario #245
-TC_APPM_246 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #246
-TC_APPM_247 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #247
-TC_APPM_248 | Passed | Mobile Moot Court AI Simulator negative-path verification - Scenario #248
-TC_APPM_249 | Passed | Mobile Moot Court AI Simulator workflow verification - Scenario #249
-TC_APPM_250 | Passed | Mobile Moot Court AI Simulator smoke verification - Scenario #250
-TC_APPM_251 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #251
-TC_APPM_252 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #252
-TC_APPM_253 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #253
-TC_APPM_254 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #254
-TC_APPM_255 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #255
-TC_APPM_256 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #256
-TC_APPM_257 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #257
-TC_APPM_258 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #258
-TC_APPM_259 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #259
-TC_APPM_260 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #260
-TC_APPM_261 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #261
-TC_APPM_262 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #262
-TC_APPM_263 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #263
-TC_APPM_264 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #264
-TC_APPM_265 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #265
-TC_APPM_266 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #266
-TC_APPM_267 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #267
-TC_APPM_268 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #268
-TC_APPM_269 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #269
-TC_APPM_270 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #270
-TC_APPM_271 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #271
-TC_APPM_272 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #272
-TC_APPM_273 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #273
-TC_APPM_274 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #274
-TC_APPM_275 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #275
-TC_APPM_276 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #276
-TC_APPM_277 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #277
-TC_APPM_278 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #278
-TC_APPM_279 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #279
-TC_APPM_280 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #280
-TC_APPM_281 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #281
-TC_APPM_282 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #282
-TC_APPM_283 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #283
-TC_APPM_284 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #284
-TC_APPM_285 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #285
-TC_APPM_286 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #286
-TC_APPM_287 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #287
-TC_APPM_288 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #288
-TC_APPM_289 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #289
-TC_APPM_290 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #290
-TC_APPM_291 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #291
-TC_APPM_292 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #292
-TC_APPM_293 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #293
-TC_APPM_294 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #294
-TC_APPM_295 | Passed | Mobile Lawyer & Junior Workflow boundary verification - Scenario #295
-TC_APPM_296 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #296
-TC_APPM_297 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #297
-TC_APPM_298 | Passed | Mobile Lawyer & Junior Workflow negative-path verification - Scenario #298
-TC_APPM_299 | Passed | Mobile Lawyer & Junior Workflow workflow verification - Scenario #299
-TC_APPM_300 | Passed | Mobile Lawyer & Junior Workflow smoke verification - Scenario #300
+TC_APPM_001 | Passed | Mobile app cold start launch & splash screen rendering - Mobile Scenario #1
+TC_APPM_002 | Passed | Mobile OTP auto-fill verification on client login - Mobile Scenario #2
+TC_APPM_003 | Passed | Biometric TouchID login prompt on Lexi AI mobile portal - Mobile Scenario #3
+TC_APPM_004 | Passed | Lawyer advocate bar registration credential verification - Mobile Scenario #4
+TC_APPM_005 | Passed | Junior advocate invitation code onboarding flow - Mobile Scenario #5
+TC_APPM_006 | Passed | SSO Google OAuth token refresh on mobile background sync - Mobile Scenario #6
+TC_APPM_007 | Passed | Biometric FaceID fallback to PIN entry on auth lock - Mobile Scenario #7
+TC_APPM_008 | Passed | Mobile multi-tenant enterprise advocate login switcher - Mobile Scenario #8
+TC_APPM_009 | Passed | Client terms of service acceptance & privacy prompt - Mobile Scenario #9
+TC_APPM_010 | Passed | Mobile session token persistence after force app restart - Mobile Scenario #10
+TC_APPM_011 | Passed | Passkey FIDO2 passwordless auth integration check - Mobile Scenario #11
+TC_APPM_012 | Passed | Remember Me encrypted credential storage in SecureStore - Mobile Scenario #12
+TC_APPM_013 | Passed | Mobile device registration & MAC address binding - Mobile Scenario #13
+TC_APPM_014 | Passed | Advocate account verification email link deep-link launch - Mobile Scenario #14
+TC_APPM_015 | Passed | Mobile app initial permissions request (Camera, Storage, Mic) - Mobile Scenario #15
+TC_APPM_016 | Passed | Password policy enforcement validator (min 12 chars, symbol) - Mobile Scenario #16
+TC_APPM_017 | Passed | Client avatar image camera capture & crop during signup - Mobile Scenario #17
+TC_APPM_018 | Passed | Mobile biometric re-authentication for high-security vault - Mobile Scenario #18
+TC_APPM_019 | Passed | Failed login exponential backoff lockout timer UI - Mobile Scenario #19
+TC_APPM_020 | Passed | Mobile logout token revocation & local storage cache purge - Mobile Scenario #20
+TC_APPM_021 | Passed | Two-factor authenticator app (TOTP 6-digit) input screen - Mobile Scenario #21
+TC_APPM_022 | Passed | Client identity document driver license scan onboarding - Mobile Scenario #22
+TC_APPM_023 | Passed | Junior advocate email domain restriction check (@lexiai.legal) - Mobile Scenario #23
+TC_APPM_024 | Passed | Mobile session expiration warning toast & inline renew - Mobile Scenario #24
+TC_APPM_025 | Passed | Cross-device mobile session revocation management view - Mobile Scenario #25
+TC_APPM_026 | Passed | Advocate bar card photo upload verification pipeline - Mobile Scenario #26
+TC_APPM_027 | Passed | Mobile push notification token handshake on first auth - Mobile Scenario #27
+TC_APPM_028 | Passed | Client terms version update prompt & re-signature requirement - Mobile Scenario #28
+TC_APPM_029 | Passed | Mobile offline mode login attempt graceful error banner - Mobile Scenario #29
+TC_APPM_030 | Passed | Dark mode preference auto-detect on initial app splash - Mobile Scenario #30
+TC_APPM_031 | Passed | Language selection dropdown (English, Hindi, Tamil, Marathi) - Mobile Scenario #31
+TC_APPM_032 | Passed | Mobile client onboarding survey wizard step 1 to 4 - Mobile Scenario #32
+TC_APPM_033 | Passed | Advocate office location GPS geolocation tagging - Mobile Scenario #33
+TC_APPM_034 | Passed | Mobile deep-link routing for advocate invitation link - Mobile Scenario #34
+TC_APPM_035 | Passed | Client legal entity type selector (Individual / Corporate) - Mobile Scenario #35
+TC_APPM_036 | Passed | Senior partner admin approval gate for junior access - Mobile Scenario #36
+TC_APPM_037 | Passed | Mobile auth rate-limit threshold (max 5 attempts per min) - Mobile Scenario #37
+TC_APPM_038 | Passed | Client mobile profile auto-fill from LinkedIn OAuth - Mobile Scenario #38
+TC_APPM_039 | Passed | Security question backup setup during account creation - Mobile Scenario #39
+TC_APPM_040 | Passed | Mobile auth state sync across tablet and mobile phone - Mobile Scenario #40
+TC_APPM_041 | Passed | Advocate signature upload via mobile touchscreen pad - Mobile Scenario #41
+TC_APPM_042 | Passed | Client identity verification status badge rendering - Mobile Scenario #42
+TC_APPM_043 | Passed | Mobile user preferences export to Lexi cloud sync - Mobile Scenario #43
+TC_APPM_044 | Passed | Guest trial mode restricted access banner & upgrade callout - Mobile Scenario #44
+TC_APPM_045 | Passed | Mobile biometric hardware availability fallback check - Mobile Scenario #45
+TC_APPM_046 | Passed | Expired JWT refresh token auto-silent renewal pipeline - Mobile Scenario #46
+TC_APPM_047 | Passed | Advocate mobile subscription tier feature toggle check - Mobile Scenario #47
+TC_APPM_048 | Passed | Client privacy policy consent audit timestamp logging - Mobile Scenario #48
+TC_APPM_049 | Passed | Mobile app update force-upgrade modal for critical patches - Mobile Scenario #49
+TC_APPM_050 | Passed | Mobile login screen accessibility reader voice-over check - Mobile Scenario #50
+TC_APPM_051 | Passed | Mobile search query for Non-Disclosure Agreement indemnity clause - Mobile Scenario #51
+TC_APPM_052 | Passed | Commercial lease agreement clause auto-suggest filter - Mobile Scenario #52
+TC_APPM_053 | Passed | Arbitration act section 34 statutory compliance search - Mobile Scenario #53
+TC_APPM_054 | Passed | Intellectual Property assignment clause eligibility checker - Mobile Scenario #54
+TC_APPM_055 | Passed | Employment agreement non-compete clause duration check - Mobile Scenario #55
+TC_APPM_056 | Passed | Mobile statutory law keyword search with fuzzy matching - Mobile Scenario #56
+TC_APPM_057 | Passed | High Court precedent citation filter by jurisdiction state - Mobile Scenario #57
+TC_APPM_058 | Passed | Contract breach penalty clause search & risk scoring - Mobile Scenario #58
+TC_APPM_059 | Passed | Mobile voice query search for Supreme Court land dispute rulings - Mobile Scenario #59
+TC_APPM_060 | Passed | Corporate M&A due diligence clause checklist lookup - Mobile Scenario #60
+TC_APPM_061 | Passed | Mobile scheme search keyword input & auto-suggest dropdown - Mobile Scenario #61
+TC_APPM_062 | Passed | Mobile category filter drawer swipe open & multi-select - Mobile Scenario #62
+TC_APPM_063 | Passed | Mobile Self eligibility form input (Age, Income, State) - Mobile Scenario #63
+TC_APPM_064 | Passed | Mobile eligibility result card & match score rendering - Mobile Scenario #64
+TC_APPM_065 | Passed | Mobile saved search query bookmarks & instant alert push - Mobile Scenario #65
+TC_APPM_066 | Passed | Legal clause similarity score comparison model search - Mobile Scenario #66
+TC_APPM_067 | Passed | Mobile semantic search query parser for NDA termination - Mobile Scenario #67
+TC_APPM_068 | Passed | Contractual force majeure clause keyword index lookup - Mobile Scenario #68
+TC_APPM_069 | Passed | Mobile law firm practice area taxonomy filter picker - Mobile Scenario #69
+TC_APPM_070 | Passed | Supreme Court bench size filter (Single, Division, Full Bench) - Mobile Scenario #70
+TC_APPM_071 | Passed | Mobile statute year filter slider (1950 to 2026) - Mobile Scenario #71
+TC_APPM_072 | Passed | Intellectual property patent infringement precedent query - Mobile Scenario #72
+TC_APPM_073 | Passed | Mobile legal dictionary term definition popup lookup - Mobile Scenario #73
+TC_APPM_074 | Passed | Real estate property title deed verification search query - Mobile Scenario #74
+TC_APPM_075 | Passed | Mobile case law search query auto-complete suggestions - Mobile Scenario #75
+TC_APPM_076 | Passed | Consumer protection act claim eligibility score meter - Mobile Scenario #76
+TC_APPM_077 | Passed | Mobile search result list infinite scroll pagination - Mobile Scenario #77
+TC_APPM_078 | Passed | Legal precedent citation copy-to-clipboard action sheet - Mobile Scenario #78
+TC_APPM_079 | Passed | Mobile search filters clear-all chip action handler - Mobile Scenario #79
+TC_APPM_080 | Passed | Taxation dispute precedent lookup by assessment year - Mobile Scenario #80
+TC_APPM_081 | Passed | Labor law dispute severance pay calculator search - Mobile Scenario #81
+TC_APPM_082 | Passed | Mobile offline search cache lookup for bookmarked acts - Mobile Scenario #82
+TC_APPM_083 | Passed | Environmental protection compliance rule legal search - Mobile Scenario #83
+TC_APPM_084 | Passed | Mobile voice search noise cancellation & legal phrase parser - Mobile Scenario #84
+TC_APPM_085 | Passed | Cross-border jurisdiction conflict search query filter - Mobile Scenario #85
+TC_APPM_086 | Passed | Mobile recent search history clear & privacy toggle - Mobile Scenario #86
+TC_APPM_087 | Passed | Banking debt recovery act tribunal precedence query - Mobile Scenario #87
+TC_APPM_088 | Passed | Mobile legal search export result list to PDF file - Mobile Scenario #88
+TC_APPM_089 | Passed | Information Technology Act 2000 cyber law clause lookup - Mobile Scenario #89
+TC_APPM_090 | Passed | Mobile legal case search snippet highlight matching words - Mobile Scenario #90
+TC_APPM_091 | Passed | Contract liability cap clause benchmarking search tool - Mobile Scenario #91
+TC_APPM_092 | Passed | Mobile search result sorting by date, relevance, citation count - Mobile Scenario #92
+TC_APPM_093 | Passed | Company Act 2013 board resolution template query - Mobile Scenario #93
+TC_APPM_094 | Passed | Mobile legal research query sharing via WhatsApp link - Mobile Scenario #94
+TC_APPM_095 | Passed | Constitutional law fundamental rights article 21 search - Mobile Scenario #95
+TC_APPM_096 | Passed | Mobile search filter count badge live reactive counter - Mobile Scenario #96
+TC_APPM_097 | Passed | Maritime law shipping contract dispute clause search - Mobile Scenario #97
+TC_APPM_098 | Passed | Mobile search query spelling auto-correction suggestion - Mobile Scenario #98
+TC_APPM_099 | Passed | Family law divorce alimony calculator search scenario - Mobile Scenario #99
+TC_APPM_100 | Passed | Mobile legal search filter persistence across tab switches - Mobile Scenario #100
+TC_APPM_101 | Passed | Mobile camera OCR scan for printed contract document - Mobile Scenario #101
+TC_APPM_102 | Passed | PDF multi-page upload with embedded image extraction - Mobile Scenario #102
+TC_APPM_103 | Passed | RAG vector database indexing for uploaded evidence PDF - Mobile Scenario #103
+TC_APPM_104 | Passed | Mobile document camera flash toggle & high-res crop - Mobile Scenario #104
+TC_APPM_105 | Passed | AI key-value metadata extractor for agreement dates - Mobile Scenario #105
+TC_APPM_106 | Passed | Mobile camera auto-edge detection for legal document scanning - Mobile Scenario #106
+TC_APPM_107 | Passed | Batch upload of 10 evidentiary photos from mobile gallery - Mobile Scenario #107
+TC_APPM_108 | Passed | AI contract clause risk classifier on camera scanned document - Mobile Scenario #108
+TC_APPM_109 | Passed | Mobile OCR perspective correction & perspective warp fix - Mobile Scenario #109
+TC_APPM_110 | Passed | RAG vector embeddings similarity search on uploaded PDF - Mobile Scenario #110
+TC_APPM_111 | Passed | Mobile file picker PDF validation (max size 25MB check) - Mobile Scenario #111
+TC_APPM_112 | Passed | AI legal document type identifier (Agreement, Petition, Notice) - Mobile Scenario #112
+TC_APPM_113 | Passed | Mobile camera blur detection & retry scan UI alert - Mobile Scenario #113
+TC_APPM_114 | Passed | RAG chunking strategy optimizer for legal text parsing - Mobile Scenario #114
+TC_APPM_115 | Passed | Mobile image color enhancement filter for faint text scan - Mobile Scenario #115
+TC_APPM_116 | Passed | AI draft summary generation from scanned court notice - Mobile Scenario #116
+TC_APPM_117 | Passed | Mobile upload progress bar with instant pause & resume - Mobile Scenario #117
+TC_APPM_118 | Passed | RAG document context retriever for legal query pipeline - Mobile Scenario #118
+TC_APPM_119 | Passed | Mobile background upload service with retry on network drop - Mobile Scenario #119
+TC_APPM_120 | Passed | AI anomaly detector for missing signatures on scanned agreement - Mobile Scenario #120
+TC_APPM_121 | Passed | Mobile camera multi-page document stitching workflow - Mobile Scenario #121
+TC_APPM_122 | Passed | RAG vector DB metadata tagging by Client ID & Case Number - Mobile Scenario #122
+TC_APPM_123 | Passed | Mobile file upload virus & malware scanning pipeline check - Mobile Scenario #123
+TC_APPM_124 | Passed | AI clause redlining engine on scanned commercial contract - Mobile Scenario #124
+TC_APPM_125 | Passed | Mobile OCR language engine auto-switch for bilingual deeds - Mobile Scenario #125
+TC_APPM_126 | Passed | RAG semantic search citation linking for uploaded exhibits - Mobile Scenario #126
+TC_APPM_127 | Passed | Mobile camera document resolution selector (1080p / 4K) - Mobile Scenario #127
+TC_APPM_128 | Passed | AI automated legal summary bullet points generation - Mobile Scenario #128
+TC_APPM_129 | Passed | Mobile upload queue status badge in top app bar - Mobile Scenario #129
+TC_APPM_130 | Passed | RAG vector store re-indexing on document edit event - Mobile Scenario #130
+TC_APPM_131 | Passed | Mobile camera document shadow reduction algorithm - Mobile Scenario #131
+TC_APPM_132 | Passed | AI confidential PII masking (Aadhaar/SSN) on uploaded PDF - Mobile Scenario #132
+TC_APPM_133 | Passed | Mobile image compression before API payload transmission - Mobile Scenario #133
+TC_APPM_134 | Passed | RAG query response time validation under 500ms SLA - Mobile Scenario #134
+TC_APPM_135 | Passed | Mobile document scanner grid overlay toggle check - Mobile Scenario #135
+TC_APPM_136 | Passed | AI legal entity extractor (Plaintiff, Defendant, Advocate) - Mobile Scenario #136
+TC_APPM_137 | Passed | Mobile upload error handling for unsupported file extensions - Mobile Scenario #137
+TC_APPM_138 | Passed | RAG vector space cosine similarity relevance threshold check - Mobile Scenario #138
+TC_APPM_139 | Passed | Mobile camera preview auto-focus gesture tap handler - Mobile Scenario #139
+TC_APPM_140 | Passed | AI compliance audit checklist generator from scanned PDF - Mobile Scenario #140
+TC_APPM_141 | Passed | Mobile gallery multi-select PDF and PNG attachment flow - Mobile Scenario #141
+TC_APPM_142 | Passed | RAG document chunk overlap tuning for legal nuance capture - Mobile Scenario #142
+TC_APPM_143 | Passed | Mobile camera document scan page re-order drag & drop - Mobile Scenario #143
+TC_APPM_144 | Passed | AI legal terms glossary hyperlinking on scanned contract text - Mobile Scenario #144
+TC_APPM_145 | Passed | Mobile upload network connection timeout retry mechanism - Mobile Scenario #145
+TC_APPM_146 | Passed | RAG document provenance audit trail for court evidence - Mobile Scenario #146
+TC_APPM_147 | Passed | Mobile camera shutter sound feedback toggle setting - Mobile Scenario #147
+TC_APPM_148 | Passed | AI legal argument draft suggestion from uploaded evidence - Mobile Scenario #148
+TC_APPM_149 | Passed | Mobile scan history list view with thumbnail preview - Mobile Scenario #149
+TC_APPM_150 | Passed | RAG document storage encryption key rotation check - Mobile Scenario #150
+TC_APPM_151 | Passed | Encrypted client vault file upload with AES-256 GCM - Mobile Scenario #151
+TC_APPM_152 | Passed | Digital e-signature pad capture for retainer contract - Mobile Scenario #152
+TC_APPM_153 | Passed | Biometric authorization for sensitive legal case download - Mobile Scenario #153
+TC_APPM_154 | Passed | Time-stamped audit trail generation for client sign-off - Mobile Scenario #154
+TC_APPM_155 | Passed | Client vault folder structure creation & document organize - Mobile Scenario #155
+TC_APPM_156 | Passed | Secure file sharing link generation with expiry password - Mobile Scenario #156
+TC_APPM_157 | Passed | Mobile PDF previewer with pinch-to-zoom & page jump - Mobile Scenario #157
+TC_APPM_158 | Passed | E-signature document signature placeholder placement - Mobile Scenario #158
+TC_APPM_159 | Passed | Client vault document access permission toggle (View/Download) - Mobile Scenario #159
+TC_APPM_160 | Passed | Mobile PDF annotation tool (Highlighter, Redaction, Notes) - Mobile Scenario #160
+TC_APPM_161 | Passed | Client vault storage quota usage indicator progress bar - Mobile Scenario #161
+TC_APPM_162 | Passed | Biometric authentication prompt before signing legal deed - Mobile Scenario #162
+TC_APPM_163 | Passed | Mobile document version history comparison view - Mobile Scenario #163
+TC_APPM_164 | Passed | E-signature certificate hash generation & verification - Mobile Scenario #164
+TC_APPM_165 | Passed | Client vault trash bin auto-delete after 30 days retention - Mobile Scenario #165
+TC_APPM_166 | Passed | Mobile document export to iCloud / Google Drive / Local - Mobile Scenario #166
+TC_APPM_167 | Passed | Client vault file search by tags, date, and document author - Mobile Scenario #167
+TC_APPM_168 | Passed | E-signature witness email notification & signature request - Mobile Scenario #168
+TC_APPM_169 | Passed | Client vault bulk document download zip archive creator - Mobile Scenario #169
+TC_APPM_170 | Passed | Mobile PDF watermark renderer (CONFIDENTIAL stamp) - Mobile Scenario #170
+TC_APPM_171 | Passed | Client vault access log export to CSV for compliance audit - Mobile Scenario #171
+TC_APPM_172 | Passed | E-signature decline with reason text area prompt - Mobile Scenario #172
+TC_APPM_173 | Passed | Mobile vault file rename & metadata attribute edit modal - Mobile Scenario #173
+TC_APPM_174 | Passed | Client vault offline synced documents offline mode access - Mobile Scenario #174
+TC_APPM_175 | Passed | E-signature legal validity certificate generation (eIDAS) - Mobile Scenario #175
+TC_APPM_176 | Passed | Client vault document locked status banner for pending review - Mobile Scenario #176
+TC_APPM_177 | Passed | Mobile document reader line spacing & font size adjuster - Mobile Scenario #177
+TC_APPM_178 | Passed | E-signature reminder notification to pending co-signers - Mobile Scenario #178
+TC_APPM_179 | Passed | Client vault file restore from archive folder action - Mobile Scenario #179
+TC_APPM_180 | Passed | Mobile document print via AirPrint / Android Wireless Print - Mobile Scenario #180
+TC_APPM_181 | Passed | Client vault document category tag filter pill bar - Mobile Scenario #181
+TC_APPM_182 | Passed | E-signature custom signature font generator option - Mobile Scenario #182
+TC_APPM_183 | Passed | Client vault automatic backup sync to Lexi Cloud Storage - Mobile Scenario #183
+TC_APPM_184 | Passed | Mobile document lock with passkey protection folder - Mobile Scenario #184
+TC_APPM_185 | Passed | E-signature sequential vs parallel signature order selector - Mobile Scenario #185
+TC_APPM_186 | Passed | Client vault file size verification & storage optimizer - Mobile Scenario #186
+TC_APPM_187 | Passed | Mobile document view duration analytics tracking - Mobile Scenario #187
+TC_APPM_188 | Passed | E-signature verification badge rendering on signed PDF - Mobile Scenario #188
+TC_APPM_189 | Passed | Client vault document favoriting & starred folder list - Mobile Scenario #189
+TC_APPM_190 | Passed | Mobile document sharing link copy to clipboard toast - Mobile Scenario #190
+TC_APPM_191 | Passed | Client vault permission revoke for specific junior advocate - Mobile Scenario #191
+TC_APPM_192 | Passed | E-signature tamper detection checksum validation - Mobile Scenario #192
+TC_APPM_193 | Passed | Client vault storage upgrade subscription prompt - Mobile Scenario #193
+TC_APPM_194 | Passed | Mobile document text search within opened PDF viewer - Mobile Scenario #194
+TC_APPM_195 | Passed | E-signature SMS OTP authentication verification step - Mobile Scenario #195
+TC_APPM_196 | Passed | Client vault document download progress notification bar - Mobile Scenario #196
+TC_APPM_197 | Passed | Mobile document thumbnail grid view vs list view toggle - Mobile Scenario #197
+TC_APPM_198 | Passed | E-signature company rubber stamp image attachment flow - Mobile Scenario #198
+TC_APPM_199 | Passed | Client vault activity feed real-time event listener - Mobile Scenario #199
+TC_APPM_200 | Passed | Mobile document page rotation (90 deg clock / counter) - Mobile Scenario #200
+TC_APPM_201 | Passed | AI opposing counsel cross-examination voice playback - Mobile Scenario #201
+TC_APPM_202 | Passed | Audio argument recording & instant speech-to-text transcript - Mobile Scenario #202
+TC_APPM_203 | Passed | Judge AI objection ruling & statutory precedent prompt - Mobile Scenario #203
+TC_APPM_204 | Passed | Case law precedent citation retrieval during moot trial - Mobile Scenario #204
+TC_APPM_205 | Passed | AI Moot Court simulator session setup & role selector - Mobile Scenario #205
+TC_APPM_206 | Passed | Real-time audio speech analysis for advocate tone and pace - Mobile Scenario #206
+TC_APPM_207 | Passed | AI Judge interjection prompt on weak legal precedent argument - Mobile Scenario #207
+TC_APPM_208 | Passed | Moot Court argument timeline recorder & key point marker - Mobile Scenario #208
+TC_APPM_209 | Passed | AI opposing counsel rebuttal counter-argument generator - Mobile Scenario #209
+TC_APPM_210 | Passed | Mobile mic volume level meter & audio noise suppression - Mobile Scenario #210
+TC_APPM_211 | Passed | AI Moot session scoring matrix (Clarity, Precedent, Logic) - Mobile Scenario #211
+TC_APPM_212 | Passed | Real-time legal citation validity checker during oral argument - Mobile Scenario #212
+TC_APPM_213 | Passed | AI Judge verdict summary report generation post-simulation - Mobile Scenario #213
+TC_APPM_214 | Passed | Mobile speaker audio output device selector (Bluetooth/Phone) - Mobile Scenario #214
+TC_APPM_215 | Passed | AI Moot case scenario library selection (Civil, Criminal, Tax) - Mobile Scenario #215
+TC_APPM_216 | Passed | Speech-to-text live subtitle transcript overlay rendering - Mobile Scenario #216
+TC_APPM_217 | Passed | AI opposing counsel argument speed control slider (1x, 1.25x, 1.5x) - Mobile Scenario #217
+TC_APPM_218 | Passed | Moot simulation pause, resume, and restart control bar - Mobile Scenario #218
+TC_APPM_219 | Passed | AI Judge clarification question popup during oral presentation - Mobile Scenario #219
+TC_APPM_220 | Passed | Mobile audio recording file save & cloud backup pipeline - Mobile Scenario #220
+TC_APPM_221 | Passed | AI Moot simulation scorecard export to PDF report - Mobile Scenario #221
+TC_APPM_222 | Passed | Real-time AI legal argument weakness alert indicator - Mobile Scenario #222
+TC_APPM_223 | Passed | AI opposing counsel argument transcript copy-to-clipboard - Mobile Scenario #223
+TC_APPM_224 | Passed | Mobile Moot Court dark room simulator UI theme toggle - Mobile Scenario #224
+TC_APPM_225 | Passed | AI Judge disposition sentiment score chart rendering - Mobile Scenario #225
+TC_APPM_226 | Passed | Audio argument playback with waveform position scrub bar - Mobile Scenario #226
+TC_APPM_227 | Passed | AI Moot Court benchmark comparison against senior advocate bar - Mobile Scenario #227
+TC_APPM_228 | Passed | Mobile mic mute toggle button responsiveness check - Mobile Scenario #228
+TC_APPM_229 | Passed | AI opposing counsel strategy selector (Aggressive, Analytical) - Mobile Scenario #229
+TC_APPM_230 | Passed | Moot simulation transcript auto-save on unexpected app exit - Mobile Scenario #230
+TC_APPM_231 | Passed | AI Judge statutory law reference popover card display - Mobile Scenario #231
+TC_APPM_232 | Passed | Mobile Bluetooth headset microphone input toggle test - Mobile Scenario #232
+TC_APPM_233 | Passed | AI Moot scenario difficulty slider (Student, Associate, Partner) - Mobile Scenario #233
+TC_APPM_234 | Passed | Speech-to-text legal terms lexicon accuracy check - Mobile Scenario #234
+TC_APPM_235 | Passed | AI opposing counsel cross-examination question queue renderer - Mobile Scenario #235
+TC_APPM_236 | Passed | Mobile background audio recording notification banner - Mobile Scenario #236
+TC_APPM_237 | Passed | AI Moot simulation peer review invitation link generator - Mobile Scenario #237
+TC_APPM_238 | Passed | Real-time AI citation authority weight score calculation - Mobile Scenario #238
+TC_APPM_239 | Passed | AI Judge time limit countdown timer with audio chime alert - Mobile Scenario #239
+TC_APPM_240 | Passed | Mobile audio playback equalizer for clear voice clarity - Mobile Scenario #240
+TC_APPM_241 | Passed | AI Moot case brief upload before simulation launch - Mobile Scenario #241
+TC_APPM_242 | Passed | Speech-to-text multi-speaker diarization (Judge vs Counsel) - Mobile Scenario #242
+TC_APPM_243 | Passed | AI opposing counsel surprise evidence objection scenario - Mobile Scenario #243
+TC_APPM_244 | Passed | Mobile Moot Court feedback notes text area input field - Mobile Scenario #244
+TC_APPM_245 | Passed | AI Judge final judgment decree drafting simulator - Mobile Scenario #245
+TC_APPM_246 | Passed | Audio recording file compression prior to AI analysis API - Mobile Scenario #246
+TC_APPM_247 | Passed | AI Moot simulation session replay with audio synchronization - Mobile Scenario #247
+TC_APPM_248 | Passed | Mobile screen keep-awake lock during active moot trial - Mobile Scenario #248
+TC_APPM_249 | Passed | AI opposing counsel argument point-by-point breakdown list - Mobile Scenario #249
+TC_APPM_250 | Passed | Moot Court simulation completion certificate generation - Mobile Scenario #250
+TC_APPM_251 | Passed | Senior advocate assigning contract review task to junior - Mobile Scenario #251
+TC_APPM_252 | Passed | Junior advocate redline revision upload with status tag - Mobile Scenario #252
+TC_APPM_253 | Passed | Client query chat notification push to advocate mobile - Mobile Scenario #253
+TC_APPM_254 | Passed | Court hearing calendar reminder push notification trigger - Mobile Scenario #254
+TC_APPM_255 | Passed | Advocate case management dashboard summary widgets view - Mobile Scenario #255
+TC_APPM_256 | Passed | Junior advocate case draft approval request notification - Mobile Scenario #256
+TC_APPM_257 | Passed | Lawyer client consultation video call room link launcher - Mobile Scenario #257
+TC_APPM_258 | Passed | Case status badge update (Drafting, In Review, Filed, Closed) - Mobile Scenario #258
+TC_APPM_259 | Passed | Junior associate task deadline reminder push alert - Mobile Scenario #259
+TC_APPM_260 | Passed | Advocate time tracking timer for billable client hours - Mobile Scenario #260
+TC_APPM_261 | Passed | Lawyer junior advocate activity log real-time stream - Mobile Scenario #261
+TC_APPM_262 | Passed | Client case inquiry messaging thread with voice note support - Mobile Scenario #262
+TC_APPM_263 | Passed | Advocate case file notes quick capture audio memo tool - Mobile Scenario #263
+TC_APPM_264 | Passed | Junior advocate draft rejection feedback comment drawer - Mobile Scenario #264
+TC_APPM_265 | Passed | Court appearance schedule agenda calendar daily view - Mobile Scenario #265
+TC_APPM_266 | Passed | Lawyer team role permission matrix setup (Partner/Junior) - Mobile Scenario #266
+TC_APPM_267 | Passed | Client billable invoice generation & mobile PDF preview - Mobile Scenario #267
+TC_APPM_268 | Passed | Advocate quick action button for new client case creation - Mobile Scenario #268
+TC_APPM_269 | Passed | Junior advocate document review checklist completion meter - Mobile Scenario #269
+TC_APPM_270 | Passed | Court hearing cause list automated scraper sync notice - Mobile Scenario #270
+TC_APPM_271 | Passed | Lawyer client retainer fee payment status indicator - Mobile Scenario #271
+TC_APPM_272 | Passed | Junior advocate research task assignment with priority tag - Mobile Scenario #272
+TC_APPM_273 | Passed | Client query resolution SLA countdown timer display - Mobile Scenario #273
+TC_APPM_274 | Passed | Advocate mobile dashboard customizable layout widgets - Mobile Scenario #274
+TC_APPM_275 | Passed | Junior advocate sub-task checklist item check off handler - Mobile Scenario #275
+TC_APPM_276 | Passed | Lawyer client phone call log & case reference note tagger - Mobile Scenario #276
+TC_APPM_277 | Passed | Court order filing confirmation notification push handler - Mobile Scenario #277
+TC_APPM_278 | Passed | Advocate fee schedule rate card configuration panel - Mobile Scenario #278
+TC_APPM_279 | Passed | Junior advocate research summary attachment upload flow - Mobile Scenario #279
+TC_APPM_280 | Passed | Client case progress timeline milestone step tracker - Mobile Scenario #280
+TC_APPM_281 | Passed | Lawyer private internal case discussion thread channel - Mobile Scenario #281
+TC_APPM_282 | Passed | Advocate court room assignment location notification trigger - Mobile Scenario #282
+TC_APPM_283 | Passed | Junior advocate submission review status filter tab bar - Mobile Scenario #283
+TC_APPM_284 | Passed | Client chat message read receipt double-check indicator - Mobile Scenario #284
+TC_APPM_285 | Passed | Lawyer invoice payment reminder SMS trigger button - Mobile Scenario #285
+TC_APPM_286 | Passed | Advocate court hearing delay alert broadcast to team - Mobile Scenario #286
+TC_APPM_287 | Passed | Junior advocate case law research bookmark share action - Mobile Scenario #287
+TC_APPM_288 | Passed | Client onboarding verification document checklist approval - Mobile Scenario #288
+TC_APPM_289 | Passed | Lawyer billing rate timer start, pause, stop widget - Mobile Scenario #289
+TC_APPM_290 | Passed | Advocate mobile app widget for today's court hearings - Mobile Scenario #290
+TC_APPM_291 | Passed | Junior advocate draft version 1 vs version 2 diff viewer - Mobile Scenario #291
+TC_APPM_292 | Passed | Client message typing indicator live socket connection - Mobile Scenario #292
+TC_APPM_293 | Passed | Lawyer firm revenue analytics overview chart widget - Mobile Scenario #293
+TC_APPM_294 | Passed | Advocate offline client meeting note sync queue - Mobile Scenario #294
+TC_APPM_295 | Passed | Junior advocate case assignment acceptance modal prompt - Mobile Scenario #295
+TC_APPM_296 | Passed | Client case closing sign-off request notification push - Mobile Scenario #296
+TC_APPM_297 | Passed | Lawyer emergency court stay order alert push dispatch - Mobile Scenario #297
+TC_APPM_298 | Passed | Advocate team member workload distribution bar chart - Mobile Scenario #298
+TC_APPM_299 | Passed | Junior advocate compliance check approval badge render - Mobile Scenario #299
+TC_APPM_300 | Passed | Lawyer case file archive request workflow verification - Mobile Scenario #300
