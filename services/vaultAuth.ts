@@ -20,7 +20,10 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
     return data as T;
   } catch (err: any) {
     clearTimeout(timer);
-    if (err.name === 'AbortError') throw new Error('Request timed out — check server is running');
+    if (err.name === 'AbortError') throw new Error('Request timed out — check vault server is running on port 3002');
+    if (err.message === 'Network request failed' || err.message?.includes('Failed to fetch') || err.code === 'ECONNREFUSED') {
+      throw new Error(`Cannot connect to Vault server at ${VAULT_BASE}. Please ensure vaultServer is running on port 3002.`);
+    }
     throw err;
   }
 }
