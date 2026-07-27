@@ -1,0 +1,16 @@
+{
+  "name": "lexi-ai-e2e",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "smoke": "node smoke.test.mjs",
+    "test:security": "node security.test.mjs",
+    "test:selenium": "node selenium.test.mjs",
+    "test:appium": "node appium.test.mjs",
+    "test:load": "node load.test.mjs",
+    "test": "node security.test.mjs && node load.test.mjs && node smoke.test.mjs"
+  },
+  "dependencies": {
+    "selenium-webdriver": "^4.29.0"
+  }
+}

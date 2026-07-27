@@ -1,15 +1,38 @@
-# Learn more https://docs.github.com/en/get-started/getting-started-with-git/ignoring-files
-
-# dependencies
+# Dependencies
 node_modules/
+**/node_modules/
 
-# Expo
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# Runtime Uploads & Vault Storage
+back-end/vault-uploads/*
+!back-end/vault-uploads/.gitkeep
+**/vault-uploads/*
+
+# E2E & Test Artifacts
+live-e2e-artifacts-*
+e2e-artifacts/
+*.log
+npm-debug.*
+yarn-debug.*
+yarn-error.*
+coverage/
+
+# Expo & Frontend Build Outputs
 .expo/
 dist/
 web-build/
 expo-env.d.ts
+app-example/
+.next/
+build/
+/ios
+/android
 
-# Native
+# Native & Security Keys
 .kotlin/
 *.orig.*
 *.jks
@@ -17,27 +40,21 @@ expo-env.d.ts
 *.p12
 *.key
 *.mobileprovision
-
-# Metro
-.metro-health-check*
-
-# debug
-npm-debug.*
-yarn-debug.*
-yarn-error.*
-
-# macOS
-.DS_Store
 *.pem
 
-# local env files
-.env*.local
+# Metro & Bundler Caches
+.metro-health-check*
 
-# typescript
+# TypeScript & Build Cache
 *.tsbuildinfo
 
-app-example
+# System & OS Files
+.DS_Store
+**/.DS_Store
+Thumbs.db
 
-# generated native folders
-/ios
-/android
+# IDE & Editor Settings
+.vscode/
+.idea/
+*.swp
+*.swo
