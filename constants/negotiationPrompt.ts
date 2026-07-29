@@ -5,17 +5,18 @@ export function buildNegotiationPrompt(ctx: NegotiationContext, documentText: st
 
   return `You are a senior Indian corporate lawyer with 25 years of experience in commercial negotiations. Analyse this contract and provide strategic negotiation advice.
 
-CONTRACT TYPE: ${ctx.contractType}
-YOUR COMPANY: ${ctx.yourCompanyName} (${ctx.yourType})
-COUNTERPARTY: ${ctx.counterpartyName} (${ctx.counterpartyType})
-DEAL VALUE: ${ctx.dealValue}
-DEAL DURATION: ${ctx.dealDuration}
-INDUSTRY: ${ctx.industry}
-JURISDICTION: ${ctx.jurisdiction}
-MARKET CONTEXT: ${ctx.marketContext}
-NEGOTIATION PRIORITY: ${ctx.priority}
-NEGOTIATION STAGE: ${ctx.stage}
-POWER DYNAMIC: ${ctx.powerDynamic}
+HEURISTIC CONSTRAINTS & FIELD WEIGHTS:
+- DEAL VALUE: ${ctx.dealValue} [HEURISTIC SCORE: 100/100 — Highest Commercial Stakes]
+- DEAL DURATION: ${ctx.dealDuration} [HEURISTIC SCORE: 90/100 — Highest Time Horizon & Commitment Risk]
+- NEGOTIATION PRIORITY: ${ctx.priority} [HEURISTIC SCORE: 80/100]
+- POWER DYNAMIC: ${ctx.powerDynamic} [HEURISTIC SCORE: 75/100]
+- MARKET CONTEXT: ${ctx.marketContext} [HEURISTIC SCORE: 65/100]
+- NEGOTIATION STAGE: ${ctx.stage} [HEURISTIC SCORE: 55/100]
+- COUNTERPARTY: ${ctx.counterpartyName} (${ctx.counterpartyType}) [HEURISTIC SCORE: 45/100]
+- YOUR COMPANY: ${ctx.yourCompanyName} (${ctx.yourType}) [HEURISTIC SCORE: 35/100]
+- CONTRACT TYPE: ${ctx.contractType} [HEURISTIC SCORE: 40/100]
+- JURISDICTION: ${ctx.jurisdiction} [HEURISTIC SCORE: 30/100]
+- INDUSTRY: ${ctx.industry} [HEURISTIC SCORE: 25/100]
 
 CONTRACT TEXT:
 ${truncated}

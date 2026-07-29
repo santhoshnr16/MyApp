@@ -3,6 +3,7 @@ const multer = require('multer');
 const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const pdfParse = require('pdf-parse');
+const vectorDb = require('./vectorDb');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -48,14 +49,124 @@ async function ollamaChat(messages, options = {}) {
   return data.message?.content ?? '';
 }
 
+// ─── RAG (Retrieval-Augmented Generation) Utilities ────────────────────────────
+
+function chunkText(text, chunkSize = 1000, overlap = 200) {
+  const chunks = [];
+  const cleaned = text.replace(/\r\n/g, '\n').trim();
+  let start = 0;
+  let chunkId = 0;
+
+  while (start < cleaned.length) {
+    let end = Math.min(start + chunkSize, cleaned.length);
+    if (end < cleaned.length) {
+      const breakPoint = Math.max(
+        cleaned.lastIndexOf('\n\n', end),
+        cleaned.lastIndexOf('. ', end),
+        cleaned.lastIndexOf('\n', end)
+      );
+      if (breakPoint > start + Math.floor(chunkSize * 0.4)) {
+        end = breakPoint + (cleaned[breakPoint] === '.' ? 1 : 0);
+      }
+    }
+
+    const chunkContent = cleaned.slice(start, end).trim();
+    if (chunkContent.length > 20) {
+      chunks.push({
+        id: chunkId++,
+        text: chunkContent,
+        startChar: start,
+        endChar: end,
+        embedding: null,
+      });
+    }
+
+    if (end >= cleaned.length) break;
+    start = Math.max(start + 1, end - overlap);
+  }
+
+  return chunks.length > 0 ? chunks : [{ id: 0, text: cleaned, startChar: 0, endChar: cleaned.length, embedding: null }];
+}
+
+async function ollamaEmbed(text) {
+  try {
+    const controller = new AbortController();
+    const timer = setTimeout(() => controller.abort(), 10000);
+    const res = await fetch(`${OLLAMA_BASE}/api/embeddings`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      signal: controller.signal,
+      body: JSON.stringify({
+        model: OLLAMA_MODEL,
+        prompt: text.slice(0, 1000),
+      }),
+    });
+    clearTimeout(timer);
+    if (res.ok) {
+      const data = await res.json();
+      if (Array.isArray(data.embedding) && data.embedding.length > 0) {
+        return data.embedding;
+      }
+    }
+  } catch (err) {
+    // Silent fallback if embedding API is unavailable
+  }
+  return null;
+}
+
+function cosineSimilarity(vecA, vecB) {
+  if (!vecA || !vecB || vecA.length !== vecB.length) return 0;
+  let dotProduct = 0;
+  let normA = 0;
+  let normB = 0;
+  for (let i = 0; i < vecA.length; i++) {
+    dotProduct += vecA[i] * vecB[i];
+    normA += vecA[i] * vecA[i];
+    normB += vecB[i] * vecB[i];
+  }
+  if (normA === 0 || normB === 0) return 0;
+  return dotProduct / (Math.sqrt(normA) * Math.sqrt(normB));
+}
+
+function keywordScore(query, text) {
+  const terms = query.toLowerCase().match(/\w+/g) || [];
+  if (terms.length === 0) return 0;
+  const lowerText = text.toLowerCase();
+  let matches = 0;
+  for (const term of terms) {
+    if (term.length > 2 && lowerText.includes(term)) matches++;
+  }
+  return matches / terms.length;
+}
+
+async function retrieveTopChunks(query, chunks, topK = 4) {
+  if (!chunks || chunks.length === 0) return [];
+  if (chunks.length <= topK) return chunks;
+
+  const queryEmbedding = await ollamaEmbed(query);
+
+  const scored = chunks.map((chunk) => {
+    let simScore = 0;
+    if (queryEmbedding && chunk.embedding) {
+      simScore = cosineSimilarity(queryEmbedding, chunk.embedding);
+    }
+    const kwScore = keywordScore(query, chunk.text);
+    // Hybrid score weighting (Vector 70% + Keyword 30%)
+    const finalScore = queryEmbedding && chunk.embedding ? (simScore * 0.7 + kwScore * 0.3) : kwScore;
+    return { ...chunk, score: finalScore };
+  });
+
+  scored.sort((a, b) => b.score - a.score);
+  return scored.slice(0, topK);
+}
+
 // ─── Analysis prompt ──────────────────────────────────────────────────────────
 
-function buildAnalysisPrompt(text, options, language) {
-  const truncated = text.slice(0, 6000);
+function buildAnalysisPrompt(sampleText, options, language) {
   return `You are LexAI, an expert Indian legal document analyser. Analyse this legal document and return ONLY a valid JSON object. No markdown, no explanation, just raw JSON.
 
-DOCUMENT TEXT:
-${truncated}
+DOCUMENT REPRESENTATIVE CONTEXT:
+${sampleText}
 
 ANALYSIS OPTIONS: ${JSON.stringify(options)}
 OUTPUT LANGUAGE: ${language || 'English'}
@@ -84,19 +195,6 @@ Rules:
 - riskScore: base on number and severity of risks found
 - ALL text in ${language || 'English'}
 - Return ONLY the JSON, nothing else`;
-}
-
-function buildChatPrompt(documentText, message, history) {
-  const truncated = documentText.slice(0, 4000);
-  return `You are LexAI, an AI legal assistant for Indian law. You have read the following legal document:
-
-DOCUMENT:
-${truncated}
-
-Answer the user's question based ONLY on this document. Be concise and clear. If you cannot answer from the document, say so.
-
-At the end of your answer, suggest 2-3 follow-up questions the user might ask, formatted as:
-FOLLOWUPS: ["question1", "question2", "question3"]`;
 }
 
 // ─── Routes ───────────────────────────────────────────────────────────────────
@@ -133,8 +231,24 @@ app.post('/api/documents/upload', upload.single('file'), async (req, res) => {
       return res.status(422).json({ error: 'PDF appears to be empty or image-only. Please use a text-based PDF.' });
     }
 
+    // Chunk text and generate vector embeddings for RAG
+    const chunks = chunkText(pdfText, 1000, 200);
+    for (let i = 0; i < chunks.length; i++) {
+      chunks[i].embedding = await ollamaEmbed(chunks[i].text);
+    }
+
+    // Sample representative context across entire document (beginning, middle, end)
+    let sampleContext = '';
+    if (chunks.length <= 6) {
+      sampleContext = chunks.map((c) => c.text).join('\n---\n');
+    } else {
+      const step = (chunks.length - 1) / 5;
+      const sampled = [0, 1, 2, 3, 4, 5].map((idx) => chunks[Math.round(idx * step)]);
+      sampleContext = sampled.map((c) => c.text).join('\n---\n');
+    }
+
     const language = options.language || 'English';
-    const prompt = buildAnalysisPrompt(pdfText, options, language);
+    const prompt = buildAnalysisPrompt(sampleContext, options, language);
 
     const aiResponse = await ollamaChat([
       { role: 'user', content: prompt },
@@ -159,6 +273,10 @@ app.post('/api/documents/upload', upload.single('file'), async (req, res) => {
     }
 
     const documentId = uuidv4();
+
+    // Store vectors into persistent Vector Database
+    vectorDb.upsertChunks(documentId, chunks);
+
     documentStore.set(documentId, {
       text: pdfText,
       analysis,
@@ -201,7 +319,7 @@ app.get('/api/documents/:documentId/summary', (req, res) => {
   });
 });
 
-// Chat
+// Chat with Vector DB RAG
 app.post('/api/chat/message', async (req, res) => {
   try {
     const { documentId, message, conversationHistory } = req.body;
@@ -214,15 +332,23 @@ app.post('/api/chat/message', async (req, res) => {
       return res.status(404).json({ error: 'Document not found. Please re-upload.' });
     }
 
-    const systemPrompt = `You are LexAI, an expert Indian legal AI assistant. You have read this document:
+    // Embed query and search persistent Vector DB
+    const queryEmbedding = await ollamaEmbed(message);
+    const topChunks = vectorDb.querySimilarity(documentId, queryEmbedding, message, 4);
+
+    const ragContext = topChunks.length > 0
+      ? topChunks.map((c, i) => `[EXCERPT ${i + 1}]:\n${c.text}`).join('\n\n')
+      : doc.text.slice(0, 4000);
+
+    const systemPrompt = `You are LexAI, an expert Indian legal AI assistant. You have access to these retrieved excerpts from the Vector Database:
 
 DOCUMENT SUMMARY: ${doc.analysis.summary}
 DOCUMENT TYPE: ${doc.analysis.documentType}
 
-FULL DOCUMENT TEXT:
-${doc.text.slice(0, 4000)}
+RETRIEVED VECTOR DB EXCERPTS (RAG Context):
+${ragContext}
 
-Answer questions based ONLY on this document. Be concise. Always add this disclaimer at the end: "[AI Analysis — Not legal advice]"
+Answer questions based ONLY on these document excerpts. Be concise and accurate. Always add this disclaimer at the end: "[AI Analysis — Not legal advice]"
 
 At the end, on a new line, suggest 2-3 follow-up questions as JSON: FOLLOWUPS: ["q1","q2","q3"]`;
 
@@ -383,16 +509,17 @@ app.post('/api/negotiate/analyse', async (req, res) => {
 
     const prompt = `You are a senior Indian corporate lawyer with 25 years of experience. Analyse this contract for negotiation.
 
-CONTRACT TYPE: ${context.contractType || doc.analysis?.documentType || 'Agreement'}
-YOUR COMPANY: ${context.yourCompanyName} (${context.yourType})
-COUNTERPARTY: ${context.counterpartyName} (${context.counterpartyType})
-DEAL VALUE: ${context.dealValue}
-DEAL DURATION: ${context.dealDuration}
-INDUSTRY: ${context.industry}
-JURISDICTION: ${context.jurisdiction || 'India'}
-MARKET CONTEXT: ${context.marketContext}
-NEGOTIATION PRIORITY: ${context.priority}
-POWER DYNAMIC: ${context.powerDynamic}
+HEURISTIC CONSTRAINTS & FIELD WEIGHTS:
+- DEAL VALUE: ${context.dealValue} [HEURISTIC SCORE: 100/100 — Highest Commercial Stakes]
+- DEAL DURATION: ${context.dealDuration} [HEURISTIC SCORE: 90/100 — Highest Time Horizon & Commitment Risk]
+- NEGOTIATION PRIORITY: ${context.priority} [HEURISTIC SCORE: 80/100]
+- POWER DYNAMIC: ${context.powerDynamic} [HEURISTIC SCORE: 75/100]
+- MARKET CONTEXT: ${context.marketContext} [HEURISTIC SCORE: 65/100]
+- COUNTERPARTY: ${context.counterpartyName} (${context.counterpartyType}) [HEURISTIC SCORE: 45/100]
+- YOUR COMPANY: ${context.yourCompanyName} (${context.yourType}) [HEURISTIC SCORE: 35/100]
+- CONTRACT TYPE: ${context.contractType || doc.analysis?.documentType || 'Agreement'} [HEURISTIC SCORE: 40/100]
+- JURISDICTION: ${context.jurisdiction || 'India'} [HEURISTIC SCORE: 30/100]
+- INDUSTRY: ${context.industry} [HEURISTIC SCORE: 25/100]
 
 CONTRACT TEXT:
 ${truncated}

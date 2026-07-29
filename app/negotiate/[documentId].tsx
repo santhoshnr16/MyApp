@@ -138,8 +138,17 @@ export default function NegotiateScreen() {
     ).start();
   }
 
+  const isFormComplete = Boolean(
+    ctx.contractType.trim() &&
+    ctx.yourCompanyName.trim() &&
+    ctx.counterpartyName.trim() &&
+    (ctx.counterpartyContact ?? '').trim() &&
+    ctx.dealValue.trim() &&
+    ctx.industry.trim()
+  );
+
   async function handleAnalyse() {
-    if (!documentId) return;
+    if (!documentId || !isFormComplete) return;
     setError(null);
     setPhase('loading');
     startSpin();
@@ -459,10 +468,21 @@ export default function NegotiateScreen() {
             />
           </View>
 
-          <TouchableOpacity style={styles.primaryBtn} onPress={handleAnalyse}>
-            <Ionicons name="scale-outline" size={20} color={C.bg} />
-            <Text style={styles.primaryBtnText}>Analyse for Negotiation</Text>
+          <TouchableOpacity
+            style={[styles.primaryBtn, !isFormComplete && styles.primaryBtnDisabled]}
+            onPress={handleAnalyse}
+            disabled={!isFormComplete}
+            activeOpacity={isFormComplete ? 0.8 : 1}>
+            <Ionicons name="scale-outline" size={20} color={isFormComplete ? C.bg : C.textMuted} />
+            <Text style={[styles.primaryBtnText, !isFormComplete && styles.primaryBtnTextDisabled]}>
+              Analyse for Negotiation
+            </Text>
           </TouchableOpacity>
+          {!isFormComplete && (
+            <Text style={styles.disabledHelperText}>
+              Please fill in all contract details above to enable analysis
+            </Text>
+          )}
         </ScrollView>
       </KeyboardAvoidingView>
     </SafeAreaView>
@@ -502,7 +522,16 @@ const styles = StyleSheet.create({
     marginTop: 8, shadowColor: C.gold, shadowOpacity: 0.3, shadowRadius: 12,
     shadowOffset: { width: 0, height: 4 }, elevation: 4,
   },
+  primaryBtnDisabled: {
+    backgroundColor: C.surface,
+    borderWidth: 1,
+    borderColor: C.border,
+    shadowOpacity: 0,
+    elevation: 0,
+  },
   primaryBtnText: { fontSize: 16, fontWeight: '700', color: C.bg },
+  primaryBtnTextDisabled: { color: C.textMuted },
+  disabledHelperText: { fontSize: 12, color: C.textMuted, textAlign: 'center', marginTop: 10 },
 });
 
 const fStyles = StyleSheet.create({

@@ -2,6 +2,8 @@ import { Ionicons } from '@expo/vector-icons';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { useEffect, useRef, useState } from 'react';
 import {
+  ActivityIndicator,
+  Alert,
   Animated,
   Platform,
   ScrollView,
@@ -14,6 +16,7 @@ import {
 import { SafeAreaView } from 'react-native-safe-area-context';
 
 import { C, GlassCard, Radius, RiskLevelColors } from '@/constants/colors';
+import { exportContractToDocx } from '@/services/docxExporter';
 import { loadDraft } from '@/storage/draftStorage';
 import type { DraftRecord, ComplianceIssue, DraftRisk } from '@/types/draft';
 
@@ -79,6 +82,7 @@ export default function DraftViewerScreen() {
   const [draft, setDraft] = useState<DraftRecord | null>(null);
   const [tab, setTab] = useState<ViewTab>('document');
   const [tabBarWidth, setTabBarWidth] = useState(360);
+  const [isExporting, setIsExporting] = useState(false);
   const tabIndicator = useRef(new Animated.Value(0)).current;
 
   const TAB_NAMES: ViewTab[] = ['document', 'compliance', 'risk'];
@@ -102,12 +106,25 @@ export default function DraftViewerScreen() {
     setTab(newTab);
   }
 
-  async function handleShare() {
+  async function handleShareText() {
     if (!draft) return;
     await Share.share({
       message: draft.documentText,
       title: draft.structure.documentTitle || draft.details.title,
     });
+  }
+
+  async function handleDownloadWordDoc() {
+    if (!draft) return;
+    setIsExporting(true);
+    try {
+      const docTitle = draft.structure.documentTitle || draft.details.title || 'Contract_Document';
+      await exportContractToDocx(docTitle, draft.documentText);
+    } catch (err) {
+      Alert.alert('Export Failed', (err as Error).message ?? 'Could not generate Word document');
+    } finally {
+      setIsExporting(false);
+    }
   }
 
   if (!draft) {
@@ -143,8 +160,12 @@ export default function DraftViewerScreen() {
             {draft.structure.documentTitle || draft.details.title}
           </Text>
         </View>
-        <TouchableOpacity onPress={handleShare} style={styles.backBtn}>
-          <Ionicons name="share-outline" size={20} color={C.gold} />
+        <TouchableOpacity onPress={handleDownloadWordDoc} style={styles.backBtn} disabled={isExporting}>
+          {isExporting ? (
+            <ActivityIndicator size="small" color={C.gold} />
+          ) : (
+            <Ionicons name="download-outline" size={20} color={C.gold} />
+          )}
         </TouchableOpacity>
       </View>
 
@@ -190,9 +211,33 @@ export default function DraftViewerScreen() {
         {/* Document tab */}
         {tab === 'document' && (
           <View style={styles.documentContainer}>
+            <TouchableOpacity
+              style={styles.downloadDocxBtn}
+              onPress={handleDownloadWordDoc}
+              disabled={isExporting}
+              activeOpacity={0.8}>
+              {isExporting ? (
+                <ActivityIndicator color={C.bg} size="small" />
+              ) : (
+                <>
+                  <Ionicons name="document-text" size={18} color={C.bg} />
+                  <Text style={styles.downloadDocxBtnText}>Download & Share Word Document (.docx)</Text>
+                  <Ionicons name="share-outline" size={18} color={C.bg} />
+                </>
+              )}
+            </TouchableOpacity>
+
             <View style={[GlassCard, styles.documentCard]}>
               <Text style={styles.documentText}>{draft.documentText}</Text>
             </View>
+
+            <View style={styles.actionRow}>
+              <TouchableOpacity style={styles.shareTextBtn} onPress={handleShareText}>
+                <Ionicons name="copy-outline" size={16} color={C.textPrimary} />
+                <Text style={styles.shareTextBtnText}>Share Raw Text</Text>
+              </TouchableOpacity>
+            </View>
+
             <View style={styles.disclaimer}>
               <Ionicons name="information-circle-outline" size={14} color={C.textMuted} />
               <Text style={styles.disclaimerText}>
@@ -358,12 +403,54 @@ const styles = StyleSheet.create({
   tabLabelActive: { color: C.gold },
   scroll: { paddingHorizontal: 20, paddingBottom: 60 },
   documentContainer: { gap: 12 },
+  downloadDocxBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 10,
+    backgroundColor: C.gold,
+    paddingVertical: 15,
+    paddingHorizontal: 20,
+    borderRadius: Radius.button,
+    shadowColor: C.gold,
+    shadowOpacity: 0.3,
+    shadowRadius: 10,
+    shadowOffset: { width: 0, height: 4 },
+    elevation: 4,
+    marginBottom: 4,
+  },
+  downloadDocxBtnText: {
+    fontSize: 14,
+    fontWeight: '700',
+    color: C.bg,
+  },
   documentCard: { padding: 20 },
   documentText: {
     fontSize: 13,
     color: C.legalText,
     lineHeight: 22,
     fontFamily: Platform.OS === 'ios' ? 'Courier New' : 'monospace',
+  },
+  actionRow: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 4,
+  },
+  shareTextBtn: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+    paddingVertical: 8,
+    paddingHorizontal: 14,
+    borderRadius: Radius.button,
+    backgroundColor: C.surface,
+    borderWidth: 1,
+    borderColor: C.border,
+  },
+  shareTextBtnText: {
+    fontSize: 12,
+    fontWeight: '600',
+    color: C.textPrimary,
   },
   disclaimer: {
     flexDirection: 'row',
@@ -455,4 +542,3 @@ const styles = StyleSheet.create({
   },
   mitigationText: { flex: 1, fontSize: 12, color: C.lowRisk, lineHeight: 17 },
 });
-

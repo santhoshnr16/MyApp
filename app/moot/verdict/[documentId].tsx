@@ -184,7 +184,7 @@ export default function VerdictScreen() {
         <View style={styles.scoreRow}>
           <View style={[GlassCard, styles.scoreCard]}>
             <Text style={styles.scoreSide}>PETITIONER</Text>
-            <AnimatedScore target={petScore} color={C.mootNavy === '#1A3A6B' ? '#6BAAFF' : C.mootNavy} />
+            <AnimatedScore target={petScore} color="#6BAAFF" />
             <Text style={styles.scoreLabel}>pts</Text>
           </View>
           <View style={styles.scoreVS}>

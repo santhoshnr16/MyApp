@@ -5,10 +5,11 @@
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "node --watch server.js",
+    "dev": "nodemon server.js",
     "vault": "node vaultServer.js",
-    "vault:dev": "node --watch vaultServer.js",
-    "start:all": "node server.js & node vaultServer.js"
+    "vault:dev": "nodemon vaultServer.js",
+    "start:all": "node server.js & node vaultServer.js",
+    "dev:all": "nodemon server.js & nodemon vaultServer.js"
   },
   "keywords": [],
   "author": "",
@@ -22,5 +23,8 @@
     "multer": "^2.1.1",
     "pdf-parse": "^1.1.1",
     "uuid": "^14.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
   }
 }

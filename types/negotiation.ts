@@ -42,3 +42,41 @@ export type NegotiationAnalysis = {
   finalRecommendation: string;
   rawAnalysis: string;
 };
+
+export type NegotiationFieldKey = keyof NegotiationContext;
+
+export type FieldConstraint = {
+  key: NegotiationFieldKey;
+  label: string;
+  heuristicScore: number;
+  priorityRank: number;
+  isRequired: boolean;
+  allowedValues?: readonly string[];
+  minLength?: number;
+  maxLength?: number;
+  description: string;
+  validate: (value: unknown) => { valid: boolean; error?: string };
+};
+
+export type FieldHeuristicScore = {
+  field: NegotiationFieldKey;
+  label: string;
+  heuristicWeight: number;
+  priorityRank: number;
+  computedRiskImpact: number;
+  explanation: string;
+};
+
+export type NegotiationHeuristicAnalysis = {
+  overallHeuristicScore: number;
+  totalWeight: number;
+  highestHeuristicFactor: string;
+  fieldScores: FieldHeuristicScore[];
+  sortedByPriority: FieldHeuristicScore[];
+};
+
+export type NegotiationValidationResult = {
+  isValid: boolean;
+  errors: Partial<Record<NegotiationFieldKey, string>>;
+};
+
