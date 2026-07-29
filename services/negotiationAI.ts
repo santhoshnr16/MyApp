@@ -373,12 +373,51 @@ export async function analyseForNegotiation(
   const heuristicAnalysis = calculateNegotiationHeuristicScore(context);
 
   // 3. Post to backend with validated context and heuristic metadata
-  const response = await apiClient.post<{ result: string }>('/api/negotiate/analyse', {
+  const response = await apiClient.post<{
+    result: string;
+    adaptiveData?: {
+      posture: import('@/types/negotiation').NegotiationPosture;
+      postureRewardEstimate: number;
+      rankedClauseIssues: import('@/types/negotiation').ClauseIssue[];
+      stats: {
+        totalClusters: number;
+        pendingCurationCount: number;
+        confidenceLogsCount: number;
+      };
+    };
+  }>('/api/negotiate/analyse', {
     documentId,
     context,
     heuristicAnalysis,
   });
 
   const raw = response.data.result;
-  return parseNegotiationAnalysis(raw);
+  const parsed = parseNegotiationAnalysis(raw);
+
+  if (response.data.adaptiveData) {
+    const ad = response.data.adaptiveData;
+    parsed.posture = ad.posture || parsed.posture;
+    parsed.postureRewardEstimate = ad.postureRewardEstimate;
+    if (ad.rankedClauseIssues && ad.rankedClauseIssues.length > 0) {
+      parsed.clauseIssues = ad.rankedClauseIssues;
+    }
+    parsed.adaptiveStats = ad.stats;
+  }
+
+  return parsed;
+}
+
+export async function recordNegotiationFeedback(payload: import('@/types/negotiation').FeedbackPayload) {
+  const response = await apiClient.post('/api/negotiate/feedback', payload);
+  return response.data;
+}
+
+export async function fetchCurationQueue() {
+  const response = await apiClient.get<{ queue: import('@/types/negotiation').CurationQueueItem[] }>('/api/negotiate/curation-queue');
+  return response.data;
+}
+
+export async function resolveCurationItem(queueId: string, precedentText: string, clusterName: string) {
+  const response = await apiClient.post('/api/negotiate/curation-queue/resolve', { queueId, precedentText, clusterName });
+  return response.data;
 }

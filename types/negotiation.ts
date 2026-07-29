@@ -23,11 +23,24 @@ export type NegotiationContext = {
   counterpartyContact?: string;
 };
 
+export type ReviewSignal = 'READY' | 'REVIEW_SUGGESTED' | 'FLAG_FOR_LAWYER';
+export type FeedbackAction = 'COPY_UNEDITED' | 'COPY_EDITED' | 'VIEW_ONLY' | 'REJECT';
+
 export type ClauseIssue = {
+  id?: string;
   clauseName: string;
   risk: 'HIGH' | 'MEDIUM' | 'LOW' | 'STANDARD';
   issue: string;
   counter: string;
+  clusterId?: string;
+  clusterName?: string;
+  isNovel?: boolean;
+  noveltyScore?: number;
+  calibratedConfidence?: number;
+  reviewSignal?: ReviewSignal;
+  reviewSignalLabel?: string;
+  badgeColor?: string;
+  rankingScore?: number;
 };
 
 export type NegotiationAnalysis = {
@@ -41,6 +54,30 @@ export type NegotiationAnalysis = {
   emailDraft: string;
   finalRecommendation: string;
   rawAnalysis: string;
+  postureRewardEstimate?: number;
+  curationQueueCount?: number;
+  adaptiveStats?: {
+    totalClusters: number;
+    pendingCurationCount: number;
+    confidenceLogsCount: number;
+  };
+};
+
+export type FeedbackPayload = {
+  postureArm?: NegotiationPosture;
+  actionType: FeedbackAction;
+  context: NegotiationContext;
+  rawConfidence?: number;
+  clauseId?: string;
+};
+
+export type CurationQueueItem = {
+  id: string;
+  text: string;
+  minDistance: number;
+  status: string;
+  timestamp: string;
+  precedentText?: string;
 };
 
 export type NegotiationFieldKey = keyof NegotiationContext;
@@ -79,4 +116,3 @@ export type NegotiationValidationResult = {
   isValid: boolean;
   errors: Partial<Record<NegotiationFieldKey, string>>;
 };
-

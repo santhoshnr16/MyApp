@@ -35,6 +35,7 @@ export default function RootLayout() {
           <Stack.Screen name="draft/[draftId]" options={{ headerShown: false }} />
           <Stack.Screen name="negotiate/[documentId]" options={{ headerShown: false }} />
           <Stack.Screen name="assist/[documentId]" options={{ headerShown: false }} />
+          <Stack.Screen name="prison/index" options={{ headerShown: false }} />
           <Stack.Screen name="modal" options={{ presentation: 'modal', title: 'Modal' }} />
         </Stack>
       </DocumentProvider>

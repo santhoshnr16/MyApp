@@ -128,7 +128,7 @@ export default function SummaryScreen() {
           )}
         </View>
 
-        {/* Action Grid — 2×2 */}
+        {/* Action Grid */}
         <View style={styles.actionGrid}>
           <TouchableOpacity style={[styles.actionBtn, styles.actionBtnHalf]} onPress={handleShare}>
             <Ionicons name="copy-outline" size={15} color={C.textSecondary} />
@@ -151,6 +151,12 @@ export default function SummaryScreen() {
             onPress={() => router.push({ pathname: '/assist/[documentId]', params: { documentId: activeDocumentId } } as unknown as Href)}>
             <Ionicons name="chatbubble-outline" size={15} color={C.textSecondary} />
             <Text style={styles.actionBtnText}>Explain</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.actionBtn, styles.actionBtnHalf]}
+            onPress={() => router.push('/prison' as Href)}>
+            <Ionicons name="key-outline" size={15} color={C.gold} />
+            <Text style={[styles.actionBtnText, { color: C.gold }]}>Bail Check</Text>
           </TouchableOpacity>
         </View>
 

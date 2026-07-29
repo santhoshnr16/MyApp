@@ -4,6 +4,8 @@ const cors = require('cors');
 const { v4: uuidv4 } = require('uuid');
 const pdfParse = require('pdf-parse');
 const vectorDb = require('./vectorDb');
+const adaptiveEngine = require('./adaptiveEngine');
+const prisonerDataIntegrationService = require('./prisonerDataIntegrationService');
 
 const app = express();
 const PORT = process.env.PORT || 3001;
@@ -673,6 +675,42 @@ app.post('/api/draft/document', async (req, res) => {
       return res.status(503).json({ error: 'AI service unavailable.' });
     }
     return res.status(500).json({ error: err.message || 'Document drafting failed' });
+  }
+});
+
+// ─── Undertrial Bail Eligibility (BNSS Sec 479) Routes ─────────────────────────
+
+// Webhook intake endpoint (Approach B - Partner DLSA / Prison Authority Push)
+app.post('/api/v1/webhook/prison-intake', async (req, res) => {
+  try {
+    const payload = req.body;
+    const record = await prisonerDataIntegrationService.processWebhookIntakePayload(payload);
+    const evaluation = prisonerDataIntegrationService.evaluateBNSS479Eligibility(record);
+    return res.status(201).json({
+      message: 'Prisoner intake record successfully ingested via webhook.',
+      record,
+      evaluation,
+    });
+  } catch (err) {
+    console.error('Webhook intake error:', err);
+    return res.status(400).json({ error: err.message || 'Failed to process prisoner intake webhook' });
+  }
+});
+
+// Lookup & BNSS Sec 479 Bail Eligibility Evaluation Endpoint
+app.post('/api/v1/undertrial/eligibility', async (req, res) => {
+  try {
+    const searchParams = req.body || {};
+    const prisonerRecord = await prisonerDataIntegrationService.getPrisonerRecord(searchParams);
+    const evaluation = prisonerDataIntegrationService.evaluateBNSS479Eligibility(prisonerRecord);
+
+    return res.json({
+      record: prisonerRecord,
+      evaluation,
+    });
+  } catch (err) {
+    console.error('Undertrial eligibility error:', err);
+    return res.status(500).json({ error: err.message || 'Failed to evaluate undertrial eligibility' });
   }
 });
 

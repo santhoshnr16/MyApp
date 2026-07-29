@@ -1,0 +1,152 @@
+{
+  "UTP-2026-76066": {
+    "prisonerId": "UTP-2026-76066",
+    "fullName": "Sunita Devi",
+    "gender": "MALE",
+    "age": 22,
+    "prisonLocation": "Alipore Central Jail, Kolkata",
+    "districtLegalServicesAuthority": "DLSA Central District",
+    "firNumber": "FIR-5756/2024",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2025-07-09T17:40:41.215Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS 303(2) / IPC 379",
+        "description": "Theft of property belonging to a person who has died or is dead",
+        "maxSentenceMonths": 7,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "SIMULATION_MODE",
+      "fetchedAt": "2026-07-29T17:40:41.215Z"
+    }
+  },
+  "UTP-2026-97578": {
+    "prisonerId": "UTP-2026-97578",
+    "fullName": "Anand Verma",
+    "gender": "MALE",
+    "age": 38,
+    "prisonLocation": "Tihar Jail No. 3, New Delhi",
+    "districtLegalServicesAuthority": "DLSA Central District",
+    "firNumber": "FIR-3518/2024",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2025-07-09T17:45:39.565Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS 303(2) / IPC 379",
+        "description": "Theft of property belonging to a person who has died or is dead",
+        "maxSentenceMonths": 10,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "SIMULATION_MODE",
+      "fetchedAt": "2026-07-29T17:45:39.568Z"
+    }
+  },
+  "UTP-DLSA-57087": {
+    "prisonerId": "UTP-DLSA-57087",
+    "fullName": "Sunita Devi",
+    "gender": "FEMALE",
+    "age": 31,
+    "prisonLocation": "Tihar Jail No. 3, New Delhi",
+    "districtLegalServicesAuthority": "DLSA Central District",
+    "firNumber": "FIR-1092/2024",
+    "caseType": "Undertrial Review",
+    "incarcerationDate": "2025-07-09T17:46:09.542Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS Section 303(2) / IPC 379",
+        "description": "Theft of property belonging to a person who has died or is dead",
+        "maxSentenceMonths": 10,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "DLSA_WEBHOOK",
+      "fetchedAt": "2026-07-29T17:46:11.348Z"
+    }
+  },
+  "UTP-DLSA-17473": {
+    "prisonerId": "UTP-DLSA-17473",
+    "fullName": "Sunita Devi",
+    "gender": "FEMALE",
+    "age": 31,
+    "prisonLocation": "Tihar Jail No. 3, New Delhi",
+    "districtLegalServicesAuthority": "DLSA Central District",
+    "firNumber": "FIR-1092/2024",
+    "caseType": "Undertrial Review",
+    "incarcerationDate": "2025-07-09T17:46:14.557Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS Section 303(2) / IPC 379",
+        "description": "Theft of property belonging to a person who has died or is dead",
+        "maxSentenceMonths": 10,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "DLSA_WEBHOOK",
+      "fetchedAt": "2026-07-29T17:46:16.121Z"
+    }
+  },
+  "UTP-DLSA-99120": {
+    "prisonerId": "UTP-DLSA-99120",
+    "fullName": "Sunita Devi",
+    "gender": "MALE",
+    "age": 30,
+    "prisonLocation": "State Prison",
+    "districtLegalServicesAuthority": "DLSA State Headquarters",
+    "firNumber": "FIR-267152",
+    "caseType": "Undertrial Intake",
+    "incarcerationDate": "2024-02-01T00:00:00.000Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS 318(4) / IPC 420",
+        "description": "Cheating and dishonestly inducing delivery of property",
+        "maxSentenceMonths": 7,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "DLSA_WEBHOOK",
+      "fetchedAt": "2026-07-29T17:47:47.152Z"
+    }
+  },
+  "UTP-DLSA-86721": {
+    "prisonerId": "UTP-DLSA-86721",
+    "fullName": "Sunita Devi",
+    "gender": "FEMALE",
+    "age": 31,
+    "prisonLocation": "Tihar Jail No. 3, New Delhi",
+    "districtLegalServicesAuthority": "DLSA Central District",
+    "firNumber": "FIR-1092/2024",
+    "caseType": "Undertrial Review",
+    "incarcerationDate": "2025-07-09T17:49:00.696Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "charges": [
+      {
+        "section": "BNS Section 303(2) / IPC 379",
+        "description": "Theft of property belonging to a person who has died or is dead",
+        "maxSentenceMonths": 10,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "DLSA_WEBHOOK",
+      "fetchedAt": "2026-07-29T17:49:02.435Z"
+    }
+  }
+}

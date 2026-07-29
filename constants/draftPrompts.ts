@@ -1,4 +1,4 @@
-import type { DraftDetails, DocumentStructure } from '@/types/draft';
+import type { DocumentStructure, DraftDetails } from '@/types/draft';
 
 export function buildStructurePrompt(details: DraftDetails): string {
   const flagDescriptions: Record<string, string> = {
@@ -13,20 +13,28 @@ export function buildStructurePrompt(details: DraftDetails): string {
     IS_ENTERPRISE: 'enterprise compliance requirements',
   };
 
-  const activeFlags = details.flags.map((f) => flagDescriptions[f] ?? f).join(', ');
-  const partiesList = details.parties.map((p) => `${p.name} (${p.role}, ${p.type})`).join(', ');
+  const flags = Array.isArray(details?.flags) ? details.flags : [];
+  const activeFlags = flags.map((f) => flagDescriptions[f] ?? f).join(', ');
+
+  const parties = Array.isArray(details?.parties) ? details.parties : [];
+  const partiesList = parties.length > 0
+    ? parties.map((p) => `${p?.name || 'Party'} (${p?.role || 'Party'}, ${p?.type || 'entity'})`).join(', ')
+    : 'Party A, Party B';
+
+  const docType = details?.documentType || 'AGREEMENT';
+  const title = details?.title || `${docType} Agreement`;
 
   return `You are LexAI DraftCounsel. Return ONLY a JSON object. No markdown. No explanation. No extra text before or after.
 
-TYPE: ${details.documentType}
+TYPE: ${docType}
 PARTIES: ${partiesList}
-JURISDICTION: ${details.jurisdiction}
+JURISDICTION: ${details?.jurisdiction || 'India'}
 FLAGS: ${activeFlags || 'none'}
 
 JSON (fill in the values, keep descriptions under 10 words):
-{"documentTitle":"${details.title || details.documentType + ' Agreement'}","sections":[{"id":"sec1","title":"Parties and Recitals","description":"Names, addresses and background","required":true},{"id":"sec2","title":"Term and Duration","description":"Start date and duration","required":true},{"id":"sec3","title":"Rights and Obligations","description":"What each party must do","required":true},{"id":"sec4","title":"Confidentiality","description":"Information protection terms","required":true},{"id":"sec5","title":"Termination","description":"How agreement can end","required":true},{"id":"sec6","title":"Governing Law","description":"Jurisdiction and dispute resolution","required":true}],"questions":[{"id":"q1","question":"What is the start date and duration of this agreement?","sectionId":"sec2","placeholder":"e.g. 1 year from 1 June 2025"},{"id":"q2","question":"What are the key obligations of each party?","sectionId":"sec3","placeholder":"e.g. Party A provides services, Party B pays monthly"},{"id":"q3","question":"What is the payment amount and schedule?","sectionId":"sec3","placeholder":"e.g. Rs. 50,000 per month, paid by 5th"},{"id":"q4","question":"What are the grounds for early termination?","sectionId":"sec5","placeholder":"e.g. 30 days notice, material breach"}],"estimatedClauses":8}
+{"documentTitle":"${title}","sections":[{"id":"sec1","title":"Parties and Recitals","description":"Names, addresses and background","required":true},{"id":"sec2","title":"Term and Duration","description":"Start date and duration","required":true},{"id":"sec3","title":"Rights and Obligations","description":"What each party must do","required":true},{"id":"sec4","title":"Confidentiality","description":"Information protection terms","required":true},{"id":"sec5","title":"Termination","description":"How agreement can end","required":true},{"id":"sec6","title":"Governing Law","description":"Jurisdiction and dispute resolution","required":true}],"questions":[{"id":"q1","question":"What is the start date and duration of this agreement?","sectionId":"sec2","placeholder":"e.g. 1 year from 1 June 2025"},{"id":"q2","question":"What are the key obligations of each party?","sectionId":"sec3","placeholder":"e.g. Party A provides services, Party B pays monthly"},{"id":"q3","question":"What is the payment amount and schedule?","sectionId":"sec3","placeholder":"e.g. Rs. 50,000 per month, paid by 5th"},{"id":"q4","question":"What are the grounds for early termination?","sectionId":"sec5","placeholder":"e.g. 30 days notice, material breach"}],"estimatedClauses":8}
 
-Return that JSON with values filled in for this ${details.documentType}. ONLY JSON, nothing else.`;
+Return that JSON with values filled in for this ${docType}. ONLY JSON, nothing else.`;
 }
 
 export function buildFormattingPrompt(documentText: string): string {
@@ -73,20 +81,35 @@ export function buildDraftingPrompt(
   structure: DocumentStructure,
   answers: Record<string, string>
 ): string {
-  const partiesList = details.parties.map((p) => `${p.name} (${p.role})`).join(' and ');
-  const sectionTitles = structure.sections.map((s) => `- ${s.title}: ${s.description}`).join('\n');
-  const answeredQuestions = structure.questions
-    .map((q) => `${q.question}: ${answers[q.id] ?? 'Not specified'}`)
+  const docType = details?.documentType || 'AGREEMENT';
+  const docTypeUpper = docType.toUpperCase();
+  const parties = Array.isArray(details?.parties) ? details.parties : [];
+  const partiesList = parties.length > 0
+    ? parties.map((p) => `${p?.name || 'Party'} (${p?.role || 'Party'})`).join(' and ')
+    : 'Party A and Party B';
+  const partiesFormatted = parties.length > 0
+    ? parties.map((p) => `${p?.name || 'Party'} ("${p?.role || 'Party'}")`).join(' and ')
+    : 'Party A ("First Party") and Party B ("Second Party")';
+
+  const sections = Array.isArray(structure?.sections) ? structure.sections : [];
+  const sectionTitles = sections.map((s) => `- ${s?.title || 'Section'}: ${s?.description || ''}`).join('\n');
+
+  const questions = Array.isArray(structure?.questions) ? structure.questions : [];
+  const answeredQuestions = questions
+    .map((q) => `${q?.question || 'Question'}: ${(answers && answers[q?.id]) ?? 'Not specified'}`)
     .join('\n');
+
+  const flags = Array.isArray(details?.flags) ? details.flags : [];
+  const flagsStr = flags.join(', ') || 'none';
 
   return `You are LexAI DraftCounsel. Draft a complete Indian legal document and analysis. Output ONLY the three sections below with their exact delimiters.
 
-DOCUMENT TYPE: ${details.documentType}
-TITLE: ${structure.documentTitle || details.title}
+DOCUMENT TYPE: ${docType}
+TITLE: ${structure?.documentTitle || details?.title || docType}
 PARTIES: ${partiesList}
-JURISDICTION: ${details.jurisdiction}
-CONTEXT: ${details.context}
-FLAGS: ${details.flags.join(', ') || 'none'}
+JURISDICTION: ${details?.jurisdiction || 'India'}
+CONTEXT: ${details?.context || 'Commercial agreement under Indian Law'}
+FLAGS: ${flagsStr}
 
 REQUIRED SECTIONS:
 ${sectionTitles}
@@ -97,7 +120,7 @@ ${answeredQuestions}
 Output format (use these exact delimiters, no text outside them):
 
 ---DOCUMENT_START---
-THIS ${details.documentType.toUpperCase()} ("Agreement") is entered into on [DATE] between ${details.parties.map((p) => `${p.name} ("${p.role}")`).join(' and ')}.
+THIS ${docTypeUpper} ("Agreement") is entered into on [DATE] between ${partiesFormatted}.
 
 [Draft all required sections with proper Indian legal language. Include clause numbers. End with signature blocks.]
 ---DOCUMENT_END---

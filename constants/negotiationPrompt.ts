@@ -1,4 +1,4 @@
-import type { NegotiationContext } from '@/types/negotiation';
+import type { NegotiationAnalysis, NegotiationContext } from '@/types/negotiation';
 
 export function buildNegotiationPrompt(ctx: NegotiationContext, documentText: string): string {
   const truncated = documentText.slice(0, 4000);
@@ -75,7 +75,7 @@ FINAL_RECOMMENDATION:
 ---NEGOTIATION_END---`;
 }
 
-export function parseNegotiationAnalysis(raw: string) {
+export function parseNegotiationAnalysis(raw: string): NegotiationAnalysis {
   const after = raw.split('---NEGOTIATION_START---').pop() ?? raw;
   const body = after.replace(/---NEGOTIATION_END---[\s\S]*$/, '').trim();
 

@@ -80,6 +80,22 @@ export default function HomeScreen() {
           <Ionicons name="chevron-forward" size={18} color={C.textMuted} />
         </TouchableOpacity>
 
+        {/* e-Prisons / BNSS 479 Undertrial Bail Engine CTA */}
+        <TouchableOpacity
+          style={[styles.draftCta, { marginBottom: 28, borderColor: C.goldBorder }]}
+          onPress={() => router.push('/prison' as Href)}>
+          <View style={styles.draftCtaLeft}>
+            <View style={[styles.draftCtaIcon, { backgroundColor: C.gold }]}>
+              <Ionicons name="key-outline" size={20} color={C.bg} />
+            </View>
+            <View style={{ flex: 1 }}>
+              <Text style={styles.draftCtaTitle}>e-Prisons & BNSS 479 Engine</Text>
+              <Text style={styles.draftCtaSub}>Undertrial prisoner bail calculator (Sec 479)</Text>
+            </View>
+          </View>
+          <Ionicons name="chevron-forward" size={18} color={C.gold} />
+        </TouchableOpacity>
+
         {/* Recent section */}
         <View style={styles.section}>
           <View style={styles.sectionHeader}>
