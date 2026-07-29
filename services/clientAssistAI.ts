@@ -14,8 +14,8 @@ export async function clientAssist(
   input: string,
   context: AssistContext,
   documentId?: string
-): Promise<AssistResponse> {
-  const response = await apiClient.post<AssistResponse>('/api/client/assist', {
+): Promise<AssistResponse & { sources?: string[] }> {
+  const response = await apiClient.post<AssistResponse & { sources?: string[] }>('/api/client/assist', {
     taskType,
     input,
     context,

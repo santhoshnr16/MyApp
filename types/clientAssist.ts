@@ -109,5 +109,6 @@ export type AssistHistoryItem = {
   taskType: TaskType;
   input: string;
   response: AssistResponse;
+  sources?: string[];
   timestamp: string;
 };

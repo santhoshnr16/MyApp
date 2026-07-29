@@ -20,7 +20,13 @@ import { useDocumentContext } from '@/context/document-context';
 import { useChat } from '@/hooks/useChat';
 import type { ChatMessage } from '@/types/chat';
 
-function Bubble({ message }: { message: ChatMessage }) {
+function Bubble({
+  message,
+  onSelectSuggestion,
+}: {
+  message: ChatMessage;
+  onSelectSuggestion?: (s: string) => void;
+}) {
   const isUser = message.sender === 'user';
   const time = new Date(message.timestamp).toLocaleTimeString([], {
     hour: '2-digit',
@@ -38,6 +44,19 @@ function Bubble({ message }: { message: ChatMessage }) {
         <Text style={[styles.bubbleText, isUser && styles.userBubbleText]}>
           {message.message}
         </Text>
+        {!isUser && message.sources && message.sources.length > 0 && (
+          <View style={styles.sourcesBox}>
+            <View style={styles.sourcesHeader}>
+              <Ionicons name="document-text-outline" size={13} color={C.gold} />
+              <Text style={styles.sourcesHeaderTitle}>Document Excerpts (RAG Context)</Text>
+            </View>
+            {message.sources.map((src, idx) => (
+              <Text key={idx} style={styles.sourceText} numberOfLines={3}>
+                • {src}
+              </Text>
+            ))}
+          </View>
+        )}
         {!isUser && message.disclaimer && (
           <Text style={styles.disclaimer}>{message.disclaimer}</Text>
         )}
@@ -48,9 +67,9 @@ function Bubble({ message }: { message: ChatMessage }) {
           showsHorizontalScrollIndicator={false}
           contentContainerStyle={styles.suggestions}>
           {message.followUpSuggestions.map((s) => (
-            <View key={s} style={styles.suggestionChip}>
+            <TouchableOpacity key={s} style={styles.suggestionChip} onPress={() => onSelectSuggestion?.(s)}>
               <Text style={styles.suggestionText}>{s}</Text>
-            </View>
+            </TouchableOpacity>
           ))}
         </ScrollView>
       )}
@@ -134,7 +153,7 @@ export default function ChatScreen() {
           keyExtractor={(item) => item.id}
           contentContainerStyle={styles.listContent}
           keyboardShouldPersistTaps="handled"
-          renderItem={({ item }) => <Bubble message={item} />}
+          renderItem={({ item }) => <Bubble message={item} onSelectSuggestion={sendMessage} />}
           ListEmptyComponent={
             <View style={styles.emptyState}>
               <Ionicons name="chatbubble-ellipses-outline" size={48} color={C.gold} />
@@ -177,7 +196,7 @@ export default function ChatScreen() {
               <TouchableOpacity
                 key={a}
                 onPress={() => {
-                  setInputValue(a);
+                  sendMessage(a);
                 }}
                 style={styles.quickChip}>
                 <Text style={styles.quickChipText}>{a}</Text>
@@ -531,5 +550,32 @@ const styles = StyleSheet.create({
     backgroundColor: C.border,
     shadowOpacity: 0,
     elevation: 0,
+  },
+  sourcesBox: {
+    backgroundColor: 'rgba(212, 175, 55, 0.08)',
+    borderWidth: 1,
+    borderColor: 'rgba(212, 175, 55, 0.25)',
+    borderRadius: Radius.button,
+    padding: 10,
+    marginTop: 8,
+    gap: 4,
+  },
+  sourcesHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  sourcesHeaderTitle: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: C.gold,
+    letterSpacing: 1,
+    textTransform: 'uppercase',
+  },
+  sourceText: {
+    fontSize: 11,
+    color: C.textSecondary,
+    lineHeight: 16,
+    fontStyle: 'italic',
   },
 });

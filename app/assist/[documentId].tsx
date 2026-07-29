@@ -317,6 +317,7 @@ export default function ClientAssistScreen() {
         taskType,
         input: input.trim(),
         response,
+        sources: response.sources,
         timestamp: new Date().toISOString(),
       };
       setHistory((prev) => [item, ...prev]);
@@ -446,6 +447,17 @@ export default function ClientAssistScreen() {
               <Text style={styles.questionText}>{item.input}</Text>
             </View>
             <ResponseCard response={item.response} />
+            {item.sources && item.sources.length > 0 && (
+              <View style={cardStyles.ragSourceBox}>
+                <View style={cardStyles.ragSourceHeader}>
+                  <Ionicons name="document-text-outline" size={13} color={C.gold} />
+                  <Text style={cardStyles.ragSourceTitle}>RAG RETRIEVED PDF CONTEXT</Text>
+                </View>
+                {item.sources.map((src, i) => (
+                  <Text key={i} style={cardStyles.ragSourceText}>• {src}</Text>
+                ))}
+              </View>
+            )}
           </View>
         ))}
 
@@ -717,4 +729,31 @@ const cardStyles = StyleSheet.create({
   urgencyDot: { width: 7, height: 7, borderRadius: 3.5 },
   urgencyLabel: { fontSize: 11, fontWeight: '800', letterSpacing: 1 },
   urgencyReason: { flex: 1, fontSize: 12, color: C.textSecondary, lineHeight: 16 },
+
+  ragSourceBox: {
+    backgroundColor: C.surface,
+    borderRadius: Radius.card,
+    padding: 12,
+    marginTop: 8,
+    gap: 6,
+    borderWidth: 1,
+    borderColor: C.borderSubtle,
+  },
+  ragSourceHeader: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    gap: 6,
+  },
+  ragSourceTitle: {
+    fontSize: 10,
+    fontWeight: '800',
+    color: C.gold,
+    letterSpacing: 1.2,
+  },
+  ragSourceText: {
+    fontSize: 11,
+    color: C.textSecondary,
+    lineHeight: 16,
+    fontStyle: 'italic',
+  },
 });

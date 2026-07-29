@@ -338,17 +338,27 @@ app.post('/api/chat/message', async (req, res) => {
 
     const ragContext = topChunks.length > 0
       ? topChunks.map((c, i) => `[EXCERPT ${i + 1}]:\n${c.text}`).join('\n\n')
-      : doc.text.slice(0, 4000);
+      : (doc.text ? doc.text.slice(0, 4000) : '');
 
-    const systemPrompt = `You are LexAI, an expert Indian legal AI assistant. You have access to these retrieved excerpts from the Vector Database:
+    const sources = topChunks.length > 0
+      ? topChunks.map((c) => c.text.length > 180 ? c.text.slice(0, 180).trim() + '...' : c.text.trim())
+      : (doc.text ? [doc.text.slice(0, 180).trim() + '...'] : []);
 
-DOCUMENT SUMMARY: ${doc.analysis.summary}
-DOCUMENT TYPE: ${doc.analysis.documentType}
+    const systemPrompt = `You are LexAI, an expert Indian legal AI assistant. You are answering a question about an uploaded document.
+You have access to these retrieved RAG excerpts from the vector database:
 
-RETRIEVED VECTOR DB EXCERPTS (RAG Context):
+DOCUMENT NAME: ${doc.filename}
+DOCUMENT SUMMARY: ${doc.analysis?.summary || 'N/A'}
+DOCUMENT TYPE: ${doc.analysis?.documentType || 'N/A'}
+
+RETRIEVED VECTOR DB EXCERPTS (RAG Context from uploaded PDF):
 ${ragContext}
 
-Answer questions based ONLY on these document excerpts. Be concise and accurate. Always add this disclaimer at the end: "[AI Analysis — Not legal advice]"
+CRITICAL GROUNDING RULES:
+1. Answer the question based directly on the RETRIEVED VECTOR DB EXCERPTS provided above.
+2. Quote or reference specific facts, figures, obligations, deadlines, or clauses from the document context.
+3. If the retrieved excerpts do not contain enough info, state what is present in the document context.
+4. Always add this disclaimer at the end: "[AI Analysis — Grounded in Document RAG Context]"
 
 At the end, on a new line, suggest 2-3 follow-up questions as JSON: FOLLOWUPS: ["q1","q2","q3"]`;
 
@@ -380,8 +390,9 @@ At the end, on a new line, suggest 2-3 follow-up questions as JSON: FOLLOWUPS: [
 
     return res.json({
       reply,
+      sources,
       followUpSuggestions,
-      disclaimer: 'This is AI analysis, not legal advice. Consult a qualified lawyer.',
+      disclaimer: 'This is AI analysis grounded in your document. Consult a qualified lawyer.',
     });
   } catch (err) {
     console.error('Chat error:', err);
@@ -409,11 +420,22 @@ app.post('/api/client/assist', async (req, res) => {
     const language = ctx.preferredLanguage || 'English';
     const education = ctx.educationLevel || 'intermediate';
 
-    // Optionally include document text for context
+    // RAG Retrieval from persistent Vector DB if documentId is provided or exists
     let docContext = '';
+    let sources = [];
     if (documentId && documentStore.has(documentId)) {
       const doc = documentStore.get(documentId);
-      docContext = `\nRELATED DOCUMENT SUMMARY: ${doc.analysis?.summary || 'Not available'}\nDOCUMENT TYPE: ${doc.analysis?.documentType || 'Unknown'}`;
+      const queryEmbedding = await ollamaEmbed(input);
+      const topChunks = vectorDb.querySimilarity(documentId, queryEmbedding, input, 4);
+
+      if (topChunks && topChunks.length > 0) {
+        docContext = `\nDOCUMENT NAME: ${doc.filename}\nRELATED DOCUMENT SUMMARY: ${doc.analysis?.summary || 'Not available'}\nDOCUMENT TYPE: ${doc.analysis?.documentType || 'Unknown'}\n\nRETRIEVED VECTOR DB EXCERPTS (RAG Context from uploaded PDF):\n` +
+          topChunks.map((c, i) => `[EXCERPT ${i + 1}]:\n${c.text}`).join('\n\n');
+        sources = topChunks.map((c) => c.text.length > 180 ? c.text.slice(0, 180).trim() + '...' : c.text.trim());
+      } else if (doc.text) {
+        docContext = `\nDOCUMENT NAME: ${doc.filename}\nRELATED DOCUMENT SUMMARY: ${doc.analysis?.summary || 'Not available'}\nDOCUMENT TYPE: ${doc.analysis?.documentType || 'Unknown'}\n\nDOCUMENT FULL TEXT EXCERPT:\n${doc.text.slice(0, 4000)}`;
+        sources = [doc.text.slice(0, 180).trim() + '...'];
+      }
     }
 
     const sectionMap = {
@@ -441,7 +463,7 @@ app.post('/api/client/assist', async (req, res) => {
 
     const instruction = sectionInstructions[taskType] || sectionInstructions.UNKNOWN;
 
-    const prompt = `You are LexAI Client Assistant — a legal communication specialist. You explain legal concepts to ordinary people in India in plain, warm language. You are NOT a lawyer and never give legal advice or predictions.
+    const prompt = `You are LexAI Client Assistant — a legal communication specialist. You explain legal concepts to ordinary people in India in plain, warm language based on their uploaded document. You are NOT a lawyer and never give legal advice or predictions.
 
 CLIENT: ${clientName}
 LAWYER: ${lawyerName}
@@ -452,8 +474,11 @@ EDUCATION LEVEL: ${education}${docContext}
 
 TASK: ${instruction}
 
-RULES:
+CRITICAL RAG GROUNDING RULES:
 - Output ONLY valid JSON, no text outside JSON
+- MANDATORY: Ground your explanation directly in the RETRIEVED VECTOR DB EXCERPTS (RAG Context) from the uploaded PDF document whenever available.
+- Connect legal terms, questions, translations, and statuses directly to specific clauses, facts, or dates found in the document.
+- Do NOT provide purely generic textbook definitions when document context is available.
 - No jargon in explanations — use simple Indian English
 - Be warm, calm, reassuring
 - Never predict outcomes, never give strategy
@@ -480,7 +505,7 @@ Return ONLY the JSON object:`;
       return res.status(422).json({ error: 'Invalid JSON from AI', raw: result.slice(0, 500) });
     }
 
-    return res.json({ taskType, data: parsed });
+    return res.json({ taskType, data: parsed, sources });
   } catch (err) {
     console.error('Client assist error:', err);
     if (err.message?.includes('Ollama')) {
