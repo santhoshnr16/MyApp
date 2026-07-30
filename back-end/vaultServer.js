@@ -43,6 +43,70 @@ const caseUsers = new Map();       // caseId  -> Set<userId>
 const memberRoles = new Map();     // `${caseId}:${userId}` -> { userId, name, email, role, addedAt, addedBy }
 const userLastRead = new Map();    // `${caseId}:${userId}` -> ISO timestamp
 
+// ─── Persistence Storage Setup ────────────────────────────────────────────────
+const VAULT_USERS_PATH = path.join(__dirname, 'storage', 'vault_users.json');
+const VAULT_CASES_PATH = path.join(__dirname, 'storage', 'vault_cases.json');
+
+if (!fs.existsSync(path.dirname(VAULT_USERS_PATH))) {
+  fs.mkdirSync(path.dirname(VAULT_USERS_PATH), { recursive: true });
+}
+
+function loadPersistedVaultData() {
+  try {
+    if (fs.existsSync(VAULT_USERS_PATH)) {
+      const raw = fs.readFileSync(VAULT_USERS_PATH, 'utf8');
+      const userList = JSON.parse(raw);
+      userList.forEach((u) => {
+        users.set(u.id, u);
+        usersByEmail.set(u.email.toLowerCase(), u.id);
+      });
+      console.log(`[LexVault] Loaded ${users.size} registered users from disk storage.`);
+    }
+  } catch (err) {
+    console.warn('[LexVault] Error loading persisted users:', err.message);
+  }
+
+  try {
+    if (fs.existsSync(VAULT_CASES_PATH)) {
+      const raw = fs.readFileSync(VAULT_CASES_PATH, 'utf8');
+      const casesData = JSON.parse(raw);
+      if (casesData.cases) {
+        casesData.cases.forEach((c) => cases.set(c.id, c));
+      }
+      if (casesData.members) {
+        casesData.members.forEach((m) => addMember(m.caseId, m.userId, m.role, m.addedBy));
+      }
+    }
+  } catch (err) {
+    console.warn('[LexVault] Error loading persisted cases:', err.message);
+  }
+}
+
+function savePersistedVaultData() {
+  try {
+    const userList = Array.from(users.values());
+    fs.writeFileSync(VAULT_USERS_PATH, JSON.stringify(userList, null, 2), 'utf8');
+  } catch (err) {
+    console.error('[LexVault] Failed saving user storage:', err.message);
+  }
+}
+
+function savePersistedCasesData() {
+  try {
+    const caseList = Array.from(cases.values());
+    const memberList = Array.from(memberRoles.entries()).map(([key, val]) => ({
+      caseId: key.split(':')[0],
+      ...val,
+    }));
+    fs.writeFileSync(VAULT_CASES_PATH, JSON.stringify({ cases: caseList, members: memberList }, null, 2), 'utf8');
+  } catch (err) {
+    console.error('[LexVault] Failed saving cases storage:', err.message);
+  }
+}
+
+// Load accounts from storage on server boot
+loadPersistedVaultData();
+
 // ─── Member Helpers ───────────────────────────────────────────────────────────
 
 function addMember(caseId, userId, role, addedBy) {
@@ -59,6 +123,7 @@ function addMember(caseId, userId, role, addedBy) {
     userId, name: u?.name || 'Unknown', email: u?.email || '',
     role, addedAt: new Date().toISOString(), addedBy,
   });
+  savePersistedCasesData();
 }
 
 function removeMember(caseId, userId) {
@@ -67,6 +132,7 @@ function removeMember(caseId, userId) {
   const cuSet = caseUsers.get(caseId);
   if (cuSet) cuSet.delete(userId);
   memberRoles.delete(`${caseId}:${userId}`);
+  savePersistedCasesData();
 }
 
 function canAccess(caseId, userId) {
@@ -143,6 +209,7 @@ app.post('/vault/auth/register', async (req, res) => {
     };
     users.set(userId, user);
     usersByEmail.set(email.toLowerCase(), userId);
+    savePersistedVaultData();
 
     const token = jwt.sign({ userId, role, email: email.toLowerCase() }, JWT_SECRET, { expiresIn: TOKEN_EXPIRY });
     return res.status(201).json({
@@ -346,7 +413,7 @@ app.delete('/vault/cases/:caseId/documents/:docId', authMiddleware, (req, res) =
   if (!doc || doc.caseId !== req.params.caseId) return res.status(403).json({ error: 'Access denied' });
   const myRole = getMemberRole(req.params.caseId, userId);
   if (doc.uploadedBy !== userId && !isPrivileged(myRole)) return res.status(403).json({ error: 'Only the uploader or advocate can delete' });
-  try { if (fs.existsSync(doc.filePath)) fs.unlinkSync(doc.filePath); } catch {}
+  try { if (fs.existsSync(doc.filePath)) fs.unlinkSync(doc.filePath); } catch { }
   documents.delete(req.params.docId);
   const list = (caseDocuments.get(req.params.caseId) || []).filter((id) => id !== req.params.docId);
   caseDocuments.set(req.params.caseId, list);

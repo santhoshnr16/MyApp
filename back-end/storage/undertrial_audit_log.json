@@ -1,0 +1,672 @@
+[
+  {
+    "id": "AUDIT-1785413629869-3822",
+    "prisonerId": "UTP-DLSA-10293",
+    "timestamp": "2026-07-30T12:13:49.869Z",
+    "eventType": "REMAND_CLOCK_ADJUSTED",
+    "actor": "JAIL_STAFF",
+    "description": "Remand clock adjusted by 1 days. Total pause days: 1. Reason: Forensic stay / mental health evaluation stay granted.",
+    "metadata": {
+      "id": "RM-1785413629869",
+      "adjustmentDate": "2026-07-30T12:13:49.869Z",
+      "pauseDays": 1,
+      "reason": "Forensic stay / mental health evaluation stay granted.",
+      "recordedBy": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785413603376-6429",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:13:23.376Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [BAIL_PROCESS_HUMAN_CONFIRMED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785413603376-9608",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "9899f0fc5ec34e839130beaca6e7a5d5045ab8ff0e2cd7d7c96470c28f6d520c"
+    }
+  },
+  {
+    "id": "AUDIT-1785413603375-2028",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:13:23.375Z",
+    "eventType": "HUMAN_CONFIRMED_BAIL_INITIATION",
+    "actor": "LEGAL_AID_OFFICER",
+    "description": "Human checkpoint confirmed by Superintendent / Court Clerk. Bail application process kicked off. Comments: Pre-verified by DLSA Legal Aid Counsel.",
+    "metadata": {
+      "staffName": "Superintendent / Court Clerk",
+      "comments": "Pre-verified by DLSA Legal Aid Counsel."
+    }
+  },
+  {
+    "id": "AUDIT-1785413595753-6514",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:13:15.753Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [BAIL_PROCESS_HUMAN_CONFIRMED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785413595752-8835",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "a74f0d54887a086402ad4db5fc51cc6871c89847040db945066bf168368b03d1"
+    }
+  },
+  {
+    "id": "AUDIT-1785413595752-8307",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:13:15.752Z",
+    "eventType": "HUMAN_CONFIRMED_BAIL_INITIATION",
+    "actor": "LEGAL_AID_OFFICER",
+    "description": "Human checkpoint confirmed by Superintendent / Court Clerk. Bail application process kicked off. Comments: Pre-verified by DLSA Legal Aid Counsel.",
+    "metadata": {
+      "staffName": "Superintendent / Court Clerk",
+      "comments": "Pre-verified by DLSA Legal Aid Counsel."
+    }
+  },
+  {
+    "id": "AUDIT-1785413592078-3883",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:13:12.078Z",
+    "eventType": "STAFF_MANUAL_OVERRIDE",
+    "actor": "JAIL_STAFF",
+    "description": "Manual override REMOVED by Superintendent / Court Clerk",
+    "metadata": {
+      "isOverridden": false,
+      "reason": "Multiple pending production warrants across districts.",
+      "staffName": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785413522206-7942",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:12:02.206Z",
+    "eventType": "REMAND_CLOCK_ADJUSTED",
+    "actor": "JAIL_STAFF",
+    "description": "Remand clock adjusted by 14 days. Total pause days: 24. Reason: Forensic stay / mental health evaluation stay granted.",
+    "metadata": {
+      "id": "RM-1785413522203",
+      "adjustmentDate": "2026-07-30T12:12:02.203Z",
+      "pauseDays": 14,
+      "reason": "Forensic stay / mental health evaluation stay granted.",
+      "recordedBy": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785413517392-2663",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:11:57.392Z",
+    "eventType": "STAFF_MANUAL_OVERRIDE",
+    "actor": "JAIL_STAFF",
+    "description": "Manual override APPLIED by Superintendent / Court Clerk: Multiple pending production warrants across districts.",
+    "metadata": {
+      "isOverridden": true,
+      "reason": "Multiple pending production warrants across districts.",
+      "staffName": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785413506629-8833",
+    "prisonerId": "UTP-DLSA-10295",
+    "timestamp": "2026-07-30T12:11:46.629Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 283/366",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785413506629-4827",
+    "prisonerId": "UTP-DLSA-10294",
+    "timestamp": "2026-07-30T12:11:46.629Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 901/1218",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785413506629-6048",
+    "prisonerId": "UTP-DLSA-10293",
+    "timestamp": "2026-07-30T12:11:46.629Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 122/853",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785413506628-1744",
+    "prisonerId": "UTP-DLSA-10292",
+    "timestamp": "2026-07-30T12:11:46.628Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 1348/1348",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785413506626-8231",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T12:11:46.626Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 765/765",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785410956253-5792",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T11:29:16.253Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [BAIL_PROCESS_HUMAN_CONFIRMED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785410956252-1730",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "85be8fd24d903e5ee37b7a47bfe6d736c0d46ffcc3209124b78b7d68e514eabc"
+    }
+  },
+  {
+    "id": "AUDIT-1785410956252-2625",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T11:29:16.252Z",
+    "eventType": "HUMAN_CONFIRMED_BAIL_INITIATION",
+    "actor": "LEGAL_AID_OFFICER",
+    "description": "Human checkpoint confirmed by Superintendent / Court Clerk. Bail application process kicked off. Comments: Pre-verified by DLSA Legal Aid Counsel.",
+    "metadata": {
+      "staffName": "Superintendent / Court Clerk",
+      "comments": "Pre-verified by DLSA Legal Aid Counsel."
+    }
+  },
+  {
+    "id": "AUDIT-1785410934310-4555",
+    "prisonerId": "UTP-DLSA-10295",
+    "timestamp": "2026-07-30T11:28:54.310Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 283/366",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410934309-1751",
+    "prisonerId": "UTP-DLSA-10294",
+    "timestamp": "2026-07-30T11:28:54.309Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 901/1218",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785410934309-9991",
+    "prisonerId": "UTP-DLSA-10293",
+    "timestamp": "2026-07-30T11:28:54.309Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 122/853",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410934308-2574",
+    "prisonerId": "UTP-DLSA-10292",
+    "timestamp": "2026-07-30T11:28:54.309Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 1348/1348",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785410934307-9606",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T11:28:54.307Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 765/765",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785410250189-1939",
+    "prisonerId": "UTP-DLSA-10295",
+    "timestamp": "2026-07-30T11:17:30.189Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 283/366",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410250188-4907",
+    "prisonerId": "UTP-DLSA-10294",
+    "timestamp": "2026-07-30T11:17:30.188Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 901/1218",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785410250188-2829",
+    "prisonerId": "UTP-DLSA-10293",
+    "timestamp": "2026-07-30T11:17:30.188Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 122/853",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410250188-3130",
+    "prisonerId": "UTP-DLSA-10292",
+    "timestamp": "2026-07-30T11:17:30.188Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 1348/1348",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785410250187-4432",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T11:17:30.187Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 765/765",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785410243112-4464",
+    "prisonerId": "UTP-DLSA-10295",
+    "timestamp": "2026-07-30T11:17:23.112Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 283/366",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410243111-1807",
+    "prisonerId": "UTP-DLSA-10294",
+    "timestamp": "2026-07-30T11:17:23.111Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 901/1218",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785410243111-4076",
+    "prisonerId": "UTP-DLSA-10293",
+    "timestamp": "2026-07-30T11:17:23.111Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: IN_CUSTODY, Effective Days: 122/853",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "IN_CUSTODY"
+    }
+  },
+  {
+    "id": "AUDIT-1785410243110-9109",
+    "prisonerId": "UTP-DLSA-10292",
+    "timestamp": "2026-07-30T11:17:23.110Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 1348/1348",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785410243109-4524",
+    "prisonerId": "UTP-DLSA-10291",
+    "timestamp": "2026-07-30T11:17:23.109Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 765/765",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785410139912-8031",
+    "prisonerId": "UTP-2026-76066",
+    "timestamp": "2026-07-30T11:15:39.912Z",
+    "eventType": "STAFF_MANUAL_OVERRIDE",
+    "actor": "JAIL_STAFF",
+    "description": "Manual override REMOVED by Superintendent / Court Clerk",
+    "metadata": {
+      "isOverridden": false,
+      "reason": "Multiple pending production warrants across districts.",
+      "staffName": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741449-7730",
+    "prisonerId": "UTP-DLSA-86721",
+    "timestamp": "2026-07-30T11:09:01.449Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741449-1632",
+    "prisonerId": "UTP-DLSA-99120",
+    "timestamp": "2026-07-30T11:09:01.449Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 910/910",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741449-5472",
+    "prisonerId": "UTP-DLSA-17473",
+    "timestamp": "2026-07-30T11:09:01.449Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741449-3309",
+    "prisonerId": "UTP-DLSA-57087",
+    "timestamp": "2026-07-30T11:09:01.449Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741448-9889",
+    "prisonerId": "UTP-2026-97578",
+    "timestamp": "2026-07-30T11:09:01.448Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409741447-8123",
+    "prisonerId": "UTP-2026-76066",
+    "timestamp": "2026-07-30T11:09:01.447Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587135-6748",
+    "prisonerId": "UTP-DLSA-86721",
+    "timestamp": "2026-07-30T11:06:27.135Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587134-6634",
+    "prisonerId": "UTP-DLSA-86721",
+    "timestamp": "2026-07-30T11:06:27.134Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [UNDERTRIAL_BAIL_ELIGIBILITY_FLIPPED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785409587134-2220",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "3bc3e237ac7e37e349a9a761335ff96a1ff85cb3b77031917193e7fee0ce2bfa"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587134-6899",
+    "prisonerId": "UTP-DLSA-86721",
+    "timestamp": "2026-07-30T11:06:27.134Z",
+    "eventType": "STATUS_FLIPPED_ELIGIBLE",
+    "actor": "SYSTEM_CRON",
+    "description": "AUTOMATED RULE FLIP: Prisoner Sunita Devi reached threshold (385 days served >= 3.3 mos required). Status changed to ELIGIBLE.",
+    "metadata": {
+      "prevStatus": "IN_CUSTODY",
+      "newStatus": "ELIGIBLE",
+      "daysServed": 385
+    }
+  },
+  {
+    "id": "AUDIT-1785409587134-6811",
+    "prisonerId": "UTP-DLSA-99120",
+    "timestamp": "2026-07-30T11:06:27.134Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: BAIL_PROCESS_STARTED, Effective Days: 910/910",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "BAIL_PROCESS_STARTED"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587134-3748",
+    "prisonerId": "UTP-DLSA-17473",
+    "timestamp": "2026-07-30T11:06:27.134Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587133-7391",
+    "prisonerId": "UTP-DLSA-17473",
+    "timestamp": "2026-07-30T11:06:27.133Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [UNDERTRIAL_BAIL_ELIGIBILITY_FLIPPED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785409587133-9836",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "5ecc4b4906f095ffb9fd815630b189e90db54ca33ee8ece8ca33810be3451d92"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587133-9045",
+    "prisonerId": "UTP-DLSA-17473",
+    "timestamp": "2026-07-30T11:06:27.133Z",
+    "eventType": "STATUS_FLIPPED_ELIGIBLE",
+    "actor": "SYSTEM_CRON",
+    "description": "AUTOMATED RULE FLIP: Prisoner Sunita Devi reached threshold (385 days served >= 3.3 mos required). Status changed to ELIGIBLE.",
+    "metadata": {
+      "prevStatus": "IN_CUSTODY",
+      "newStatus": "ELIGIBLE",
+      "daysServed": 385
+    }
+  },
+  {
+    "id": "AUDIT-1785409587133-3940",
+    "prisonerId": "UTP-DLSA-57087",
+    "timestamp": "2026-07-30T11:06:27.133Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587133-2483",
+    "prisonerId": "UTP-DLSA-57087",
+    "timestamp": "2026-07-30T11:06:27.133Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [UNDERTRIAL_BAIL_ELIGIBILITY_FLIPPED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785409587133-8534",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "0948d5c178e39bf0708a3d75abdbfb5f7cb423f5ea34409284c386c5b3142a77"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587132-5244",
+    "prisonerId": "UTP-DLSA-57087",
+    "timestamp": "2026-07-30T11:06:27.132Z",
+    "eventType": "STATUS_FLIPPED_ELIGIBLE",
+    "actor": "SYSTEM_CRON",
+    "description": "AUTOMATED RULE FLIP: Prisoner Sunita Devi reached threshold (385 days served >= 3.3 mos required). Status changed to ELIGIBLE.",
+    "metadata": {
+      "prevStatus": "IN_CUSTODY",
+      "newStatus": "ELIGIBLE",
+      "daysServed": 385
+    }
+  },
+  {
+    "id": "AUDIT-1785409587132-1063",
+    "prisonerId": "UTP-2026-97578",
+    "timestamp": "2026-07-30T11:06:27.132Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: ELIGIBLE, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": true,
+      "custodyStatus": "ELIGIBLE"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587132-5755",
+    "prisonerId": "UTP-2026-97578",
+    "timestamp": "2026-07-30T11:06:27.132Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [UNDERTRIAL_BAIL_ELIGIBILITY_FLIPPED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785409587131-1851",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "5afa8924c5af105e94d773864ba5ca5e1883fffa07d35914ecf77c8564f03158"
+    }
+  },
+  {
+    "id": "AUDIT-1785409587131-3766",
+    "prisonerId": "UTP-2026-97578",
+    "timestamp": "2026-07-30T11:06:27.131Z",
+    "eventType": "STATUS_FLIPPED_ELIGIBLE",
+    "actor": "SYSTEM_CRON",
+    "description": "AUTOMATED RULE FLIP: Prisoner Anand Verma reached threshold (385 days served >= 3.3 mos required). Status changed to ELIGIBLE.",
+    "metadata": {
+      "prevStatus": "IN_CUSTODY",
+      "newStatus": "ELIGIBLE",
+      "daysServed": 385
+    }
+  },
+  {
+    "id": "AUDIT-1785409587130-3469",
+    "prisonerId": "UTP-2026-76066",
+    "timestamp": "2026-07-30T11:06:27.130Z",
+    "eventType": "AUTOMATED_ELIGIBILITY_EVALUATION",
+    "actor": "SYSTEM_CRON",
+    "description": "Daily cron evaluation completed. Status: INELIGIBLE_OVERRIDDEN, Effective Days: 385/385",
+    "metadata": {
+      "isEligible": false,
+      "custodyStatus": "INELIGIBLE_OVERRIDDEN"
+    }
+  },
+  {
+    "id": "AUDIT-1785409558415-4540",
+    "prisonerId": "UTP-2026-76066",
+    "timestamp": "2026-07-30T11:05:58.415Z",
+    "eventType": "STAFF_MANUAL_OVERRIDE",
+    "actor": "JAIL_STAFF",
+    "description": "Manual override APPLIED by Superintendent / Court Clerk: Multiple pending production warrants across districts.",
+    "metadata": {
+      "isOverridden": true,
+      "reason": "Multiple pending production warrants across districts.",
+      "staffName": "Superintendent / Court Clerk"
+    }
+  },
+  {
+    "id": "AUDIT-1785409511973-8165",
+    "prisonerId": "UTP-DLSA-99120",
+    "timestamp": "2026-07-30T11:05:11.973Z",
+    "eventType": "WEBHOOK_AUTOMATED_FIRE",
+    "actor": "SYSTEM_CRON",
+    "description": "Outbound webhook [BAIL_PROCESS_HUMAN_CONFIRMED] fired to https://dlsa.gov.in/api/v1/undertrial-bail-events",
+    "metadata": {
+      "eventId": "EVT-1785409511973-4408",
+      "webhookUrl": "https://dlsa.gov.in/api/v1/undertrial-bail-events",
+      "hmacSignature": "cebca0082334ef27c03c9cd66f129ca07c5a5a2ca46e5b6c23a3992ec557be24"
+    }
+  },
+  {
+    "id": "AUDIT-1785409511973-4245",
+    "prisonerId": "UTP-DLSA-99120",
+    "timestamp": "2026-07-30T11:05:11.973Z",
+    "eventType": "HUMAN_CONFIRMED_BAIL_INITIATION",
+    "actor": "LEGAL_AID_OFFICER",
+    "description": "Human checkpoint confirmed by Superintendent / Court Clerk. Bail application process kicked off. Comments: Pre-verified by DLSA Legal Aid Counsel.",
+    "metadata": {
+      "staffName": "Superintendent / Court Clerk",
+      "comments": "Pre-verified by DLSA Legal Aid Counsel."
+    }
+  }
+]

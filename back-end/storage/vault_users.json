@@ -1,0 +1,11 @@
+[
+  {
+    "id": "d51a5b27-5ac2-4626-9bfa-248db5466718",
+    "name": "Madhan",
+    "email": "madhan@gmail.com",
+    "passwordHash": "$2b$12$.hK2UyIqw0a4za4gAq5ay.hwaJYxLFY12a/MXbBRlrhJGyrL40d8u",
+    "role": "advocate",
+    "barNumber": null,
+    "enrolledAt": "2026-07-30T11:28:26.735Z"
+  }
+]

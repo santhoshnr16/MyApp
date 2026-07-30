@@ -9,7 +9,7 @@ import type {
   VaultUserSearchResult,
 } from '@/types/vault';
 
-const VAULT_BASE = process.env.EXPO_PUBLIC_VAULT_BASE_URL ?? 'http://localhost:3002';
+const VAULT_BASE = process.env.EXPO_PUBLIC_VAULT_BASE_URL || 'http://localhost:3002';
 
 async function vaultReq<T>(path: string, token: string, options?: RequestInit): Promise<T> {
   const controller = new AbortController();

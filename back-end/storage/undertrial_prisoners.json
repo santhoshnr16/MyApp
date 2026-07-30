@@ -1,152 +1,192 @@
 {
-  "UTP-2026-76066": {
-    "prisonerId": "UTP-2026-76066",
-    "fullName": "Sunita Devi",
+  "UTP-DLSA-10291": {
+    "prisonerId": "UTP-DLSA-10291",
+    "fullName": "Ramesh Kumar",
     "gender": "MALE",
-    "age": 22,
-    "prisonLocation": "Alipore Central Jail, Kolkata",
-    "districtLegalServicesAuthority": "DLSA Central District",
-    "firNumber": "FIR-5756/2024",
-    "caseType": "Undertrial Review Under BNSS Sec 479",
-    "incarcerationDate": "2025-07-09T17:40:41.215Z",
-    "isFirstOffender": true,
-    "hasMultipleCases": false,
-    "charges": [
-      {
-        "section": "BNS 303(2) / IPC 379",
-        "description": "Theft of property belonging to a person who has died or is dead",
-        "maxSentenceMonths": 7,
-        "isDeathOrLifePunishable": false
-      }
-    ],
-    "metadata": {
-      "source": "SIMULATION_MODE",
-      "fetchedAt": "2026-07-29T17:40:41.215Z"
-    }
-  },
-  "UTP-2026-97578": {
-    "prisonerId": "UTP-2026-97578",
-    "fullName": "Anand Verma",
-    "gender": "MALE",
-    "age": 38,
+    "age": 28,
     "prisonLocation": "Tihar Jail No. 3, New Delhi",
-    "districtLegalServicesAuthority": "DLSA Central District",
-    "firNumber": "FIR-3518/2024",
-    "caseType": "Undertrial Review Under BNSS Sec 479",
-    "incarcerationDate": "2025-07-09T17:45:39.565Z",
-    "isFirstOffender": true,
-    "hasMultipleCases": false,
-    "charges": [
-      {
-        "section": "BNS 303(2) / IPC 379",
-        "description": "Theft of property belonging to a person who has died or is dead",
-        "maxSentenceMonths": 10,
-        "isDeathOrLifePunishable": false
-      }
-    ],
-    "metadata": {
-      "source": "SIMULATION_MODE",
-      "fetchedAt": "2026-07-29T17:45:39.568Z"
-    }
-  },
-  "UTP-DLSA-57087": {
-    "prisonerId": "UTP-DLSA-57087",
-    "fullName": "Sunita Devi",
-    "gender": "FEMALE",
-    "age": 31,
-    "prisonLocation": "Tihar Jail No. 3, New Delhi",
-    "districtLegalServicesAuthority": "DLSA Central District",
+    "districtLegalServicesAuthority": "DLSA Central, Delhi",
     "firNumber": "FIR-1092/2024",
-    "caseType": "Undertrial Review",
-    "incarcerationDate": "2025-07-09T17:46:09.542Z",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2024-06-15T00:00:00.000Z",
     "isFirstOffender": true,
     "hasMultipleCases": false,
+    "custodyStatus": "BAIL_PROCESS_STARTED",
+    "remandPauseDays": 24,
+    "remandAdjustments": [
+      {
+        "id": "RM-1785413522203",
+        "adjustmentDate": "2026-07-30T12:12:02.203Z",
+        "pauseDays": 14,
+        "reason": "Forensic stay / mental health evaluation stay granted.",
+        "recordedBy": "Superintendent / Court Clerk"
+      },
+      {
+        "id": "RM-101",
+        "adjustmentDate": "2025-01-10T00:00:00.000Z",
+        "pauseDays": 10,
+        "reason": "Forensic laboratory stay / custody stay extension granted",
+        "recordedBy": "Jail Admin (Court Order #812)"
+      }
+    ],
+    "manualOverride": {
+      "isOverridden": false,
+      "reason": "Multiple pending production warrants across districts.",
+      "overriddenBy": "Superintendent / Court Clerk",
+      "overriddenAt": "2026-07-30T12:13:12.077Z"
+    },
     "charges": [
       {
-        "section": "BNS Section 303(2) / IPC 379",
-        "description": "Theft of property belonging to a person who has died or is dead",
-        "maxSentenceMonths": 10,
+        "section": "BNS 303(2) / IPC 379",
+        "description": "Theft of movable property",
+        "maxSentenceMonths": 36,
         "isDeathOrLifePunishable": false
       }
     ],
     "metadata": {
       "source": "DLSA_WEBHOOK",
-      "fetchedAt": "2026-07-29T17:46:11.348Z"
+      "fetchedAt": "2026-07-30T10:00:00.000Z"
     }
   },
-  "UTP-DLSA-17473": {
-    "prisonerId": "UTP-DLSA-17473",
+  "UTP-DLSA-10292": {
+    "prisonerId": "UTP-DLSA-10292",
     "fullName": "Sunita Devi",
     "gender": "FEMALE",
-    "age": 31,
-    "prisonLocation": "Tihar Jail No. 3, New Delhi",
-    "districtLegalServicesAuthority": "DLSA Central District",
-    "firNumber": "FIR-1092/2024",
-    "caseType": "Undertrial Review",
-    "incarcerationDate": "2025-07-09T17:46:14.557Z",
-    "isFirstOffender": true,
+    "age": 34,
+    "prisonLocation": "Arthur Road Jail, Mumbai",
+    "districtLegalServicesAuthority": "DLSA South Mumbai",
+    "firNumber": "FIR-402/2023",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2022-11-20T00:00:00.000Z",
+    "isFirstOffender": false,
     "hasMultipleCases": false,
-    "charges": [
-      {
-        "section": "BNS Section 303(2) / IPC 379",
-        "description": "Theft of property belonging to a person who has died or is dead",
-        "maxSentenceMonths": 10,
-        "isDeathOrLifePunishable": false
-      }
-    ],
-    "metadata": {
-      "source": "DLSA_WEBHOOK",
-      "fetchedAt": "2026-07-29T17:46:16.121Z"
-    }
-  },
-  "UTP-DLSA-99120": {
-    "prisonerId": "UTP-DLSA-99120",
-    "fullName": "Sunita Devi",
-    "gender": "MALE",
-    "age": 30,
-    "prisonLocation": "State Prison",
-    "districtLegalServicesAuthority": "DLSA State Headquarters",
-    "firNumber": "FIR-267152",
-    "caseType": "Undertrial Intake",
-    "incarcerationDate": "2024-02-01T00:00:00.000Z",
-    "isFirstOffender": true,
-    "hasMultipleCases": false,
+    "custodyStatus": "BAIL_PROCESS_STARTED",
+    "remandPauseDays": 0,
+    "remandAdjustments": [],
+    "manualOverride": {
+      "isOverridden": false
+    },
     "charges": [
       {
         "section": "BNS 318(4) / IPC 420",
         "description": "Cheating and dishonestly inducing delivery of property",
-        "maxSentenceMonths": 7,
+        "maxSentenceMonths": 84,
         "isDeathOrLifePunishable": false
       }
     ],
     "metadata": {
-      "source": "DLSA_WEBHOOK",
-      "fetchedAt": "2026-07-29T17:47:47.152Z"
+      "source": "LIVE_THIRD_PARTY_API",
+      "fetchedAt": "2026-07-30T10:00:00.000Z"
     }
   },
-  "UTP-DLSA-86721": {
-    "prisonerId": "UTP-DLSA-86721",
-    "fullName": "Sunita Devi",
-    "gender": "FEMALE",
+  "UTP-DLSA-10293": {
+    "prisonerId": "UTP-DLSA-10293",
+    "fullName": "Vikram Singh",
+    "gender": "MALE",
     "age": 31,
-    "prisonLocation": "Tihar Jail No. 3, New Delhi",
-    "districtLegalServicesAuthority": "DLSA Central District",
-    "firNumber": "FIR-1092/2024",
-    "caseType": "Undertrial Review",
-    "incarcerationDate": "2025-07-09T17:49:00.696Z",
+    "prisonLocation": "Yerwada Central Jail, Pune",
+    "districtLegalServicesAuthority": "DLSA Pune District",
+    "firNumber": "FIR-881/2025",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2026-03-30T00:00:00.000Z",
     "isFirstOffender": true,
     "hasMultipleCases": false,
+    "custodyStatus": "IN_CUSTODY",
+    "remandPauseDays": 1,
+    "remandAdjustments": [
+      {
+        "id": "RM-1785413629869",
+        "adjustmentDate": "2026-07-30T12:13:49.869Z",
+        "pauseDays": 1,
+        "reason": "Forensic stay / mental health evaluation stay granted.",
+        "recordedBy": "Superintendent / Court Clerk"
+      }
+    ],
+    "manualOverride": {
+      "isOverridden": false
+    },
     "charges": [
       {
-        "section": "BNS Section 303(2) / IPC 379",
-        "description": "Theft of property belonging to a person who has died or is dead",
-        "maxSentenceMonths": 10,
+        "section": "BNS 305 / IPC 380",
+        "description": "Theft in dwelling house or vessel",
+        "maxSentenceMonths": 84,
         "isDeathOrLifePunishable": false
       }
     ],
     "metadata": {
-      "source": "DLSA_WEBHOOK",
-      "fetchedAt": "2026-07-29T17:49:02.435Z"
+      "source": "SIMULATION_MODE",
+      "fetchedAt": "2026-07-30T10:00:00.000Z"
+    }
+  },
+  "UTP-DLSA-10294": {
+    "prisonerId": "UTP-DLSA-10294",
+    "fullName": "Mohd. Salim",
+    "gender": "MALE",
+    "age": 42,
+    "prisonLocation": "Alipore Central Jail, Kolkata",
+    "districtLegalServicesAuthority": "DLSA Kolkata Headquarters",
+    "firNumber": "FIR-511/2023",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2024-02-10T00:00:00.000Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": true,
+    "custodyStatus": "INELIGIBLE_OVERRIDDEN",
+    "remandPauseDays": 0,
+    "remandAdjustments": [],
+    "manualOverride": {
+      "isOverridden": true,
+      "reason": "Multiple pending production warrants across districts (CrPC 436A Bar)",
+      "overriddenBy": "Superintendent Office",
+      "overriddenAt": "2026-07-28T14:30:00.000Z"
+    },
+    "charges": [
+      {
+        "section": "BNS 310(2) / IPC 395",
+        "description": "Dacoity and armed robbery",
+        "maxSentenceMonths": 120,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "SIMULATION_MODE",
+      "fetchedAt": "2026-07-30T10:00:00.000Z"
+    }
+  },
+  "UTP-DLSA-10295": {
+    "prisonerId": "UTP-DLSA-10295",
+    "fullName": "Anand Verma",
+    "gender": "MALE",
+    "age": 26,
+    "prisonLocation": "Central Jail, Jaipur",
+    "districtLegalServicesAuthority": "DLSA Jaipur District",
+    "firNumber": "FIR-319/2025",
+    "caseType": "Undertrial Review Under BNSS Sec 479",
+    "incarcerationDate": "2025-10-20T00:00:00.000Z",
+    "isFirstOffender": true,
+    "hasMultipleCases": false,
+    "custodyStatus": "IN_CUSTODY",
+    "remandPauseDays": 0,
+    "remandAdjustments": [],
+    "manualOverride": {
+      "isOverridden": false
+    },
+    "charges": [
+      {
+        "section": "BNS 308(2) / IPC 384",
+        "description": "Extortion by putting person in fear of injury",
+        "maxSentenceMonths": 36,
+        "isDeathOrLifePunishable": false
+      },
+      {
+        "section": "BNS 351(2) / IPC 506",
+        "description": "Criminal Intimidation",
+        "maxSentenceMonths": 24,
+        "isDeathOrLifePunishable": false
+      }
+    ],
+    "metadata": {
+      "source": "SIMULATION_MODE",
+      "fetchedAt": "2026-07-30T10:00:00.000Z"
     }
   }
 }

@@ -714,10 +714,94 @@ app.post('/api/v1/undertrial/eligibility', async (req, res) => {
   }
 });
 
+// List all undertrial prisoner cases for Dashboard
+app.get('/api/v1/undertrial/cases', async (req, res) => {
+  try {
+    const cases = await prisonerDataIntegrationService.getAllPrisonerCases();
+    return res.json({ cases });
+  } catch (err) {
+    return res.status(500).json({ error: err.message || 'Failed to fetch cases' });
+  }
+});
+
+// Get single case detail with audit log
+app.get('/api/v1/undertrial/cases/:prisonerId', async (req, res) => {
+  try {
+    const record = await prisonerDataIntegrationService.getPrisonerRecord({ prisonerId: req.params.prisonerId });
+    const evaluation = prisonerDataIntegrationService.evaluateBNSS479Eligibility(record);
+    const auditLogs = prisonerDataIntegrationService.getAuditLogsForPrisoner(req.params.prisonerId);
+    return res.json({ record, evaluation, auditLogs });
+  } catch (err) {
+    return res.status(404).json({ error: err.message || 'Case not found' });
+  }
+});
+
+// Staff Manual Override
+app.post('/api/v1/undertrial/cases/:prisonerId/override', async (req, res) => {
+  try {
+    const { isOverridden, reason, staffName } = req.body;
+    const result = prisonerDataIntegrationService.setManualOverride(req.params.prisonerId, {
+      isOverridden,
+      reason,
+      staffName,
+    });
+    return res.json(result);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+});
+
+// Remand Clock Adjustment
+app.post('/api/v1/undertrial/cases/:prisonerId/remand-adjust', async (req, res) => {
+  try {
+    const { pauseDays, reason, recordedBy } = req.body;
+    const result = prisonerDataIntegrationService.addRemandAdjustment(req.params.prisonerId, {
+      pauseDays,
+      reason,
+      recordedBy,
+    });
+    return res.json(result);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+});
+
+// Human-in-the-Loop Checkpoint: Confirm & Kick Off Bail Process
+app.post('/api/v1/undertrial/cases/:prisonerId/confirm-bail', async (req, res) => {
+  try {
+    const { staffName, comments, targetWebhookUrl } = req.body;
+    const result = await prisonerDataIntegrationService.confirmAndInitiateBailProcess(req.params.prisonerId, {
+      staffName,
+      comments,
+      targetWebhookUrl,
+    });
+    return res.json(result);
+  } catch (err) {
+    return res.status(400).json({ error: err.message });
+  }
+});
+
+// Scheduled Background Daily Cron Run (Triggerable manually or via system crontab)
+app.post('/api/v1/undertrial/cron/run-daily-check', async (req, res) => {
+  try {
+    const summary = await prisonerDataIntegrationService.runScheduledEligibilityCheck();
+    return res.json({ message: 'Background scheduled eligibility check complete.', summary });
+  } catch (err) {
+    return res.status(500).json({ error: err.message });
+  }
+});
+
+// Get Audit Logs
+app.get('/api/v1/undertrial/cases/:prisonerId/audit-log', (req, res) => {
+  const logs = prisonerDataIntegrationService.getAuditLogsForPrisoner(req.params.prisonerId);
+  return res.json({ auditLogs: logs });
+});
+
+
 // ─── Start ────────────────────────────────────────────────────────────────────
 
-app.listen(PORT, () => {
-  console.log(`\nLexAI Backend running on http://localhost:${PORT}`);
+app.listen(PORT, '0.0.0.0', () => {
+  console.log(`\nLexAI Backend running on http://0.0.0.0:${PORT} (or http://localhost:${PORT})`);
   console.log(`Ollama: ${OLLAMA_BASE}  Model: ${OLLAMA_MODEL}`);
   console.log(`Health: http://localhost:${PORT}/health\n`);
 });

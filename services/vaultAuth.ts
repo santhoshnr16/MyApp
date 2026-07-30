@@ -1,7 +1,7 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import type { VaultUser } from '@/types/vault';
 
-const VAULT_BASE = process.env.EXPO_PUBLIC_VAULT_BASE_URL ?? 'http://localhost:3002';
+const VAULT_BASE = process.env.EXPO_PUBLIC_VAULT_BASE_URL || 'http://localhost:3002';
 const TOKEN_KEY = '@lexvault/token';
 const USER_KEY = '@lexvault/user';
 
